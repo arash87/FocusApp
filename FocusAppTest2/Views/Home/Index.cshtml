@@ -1,0 +1,19 @@
+﻿@*@model FocusAppTest2.ViewModels.MemberVM
+
+@using (Html.BeginForm("Login", "Home"))
+{
+    @Html.ValidationSummary()
+    <div>
+        @Html.EditorFor(x => x.Email)
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Password)
+    </div>
+    <div>
+        <input  type="submit" value="Login" />
+    </div>
+}*@
+
+
+
+<a href="@Url.Action("Course","Main")" class="ui-btn" data-transition="slide">Course</a>
