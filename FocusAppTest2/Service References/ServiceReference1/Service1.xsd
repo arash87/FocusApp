@@ -77,4 +77,30 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="JoinCourse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="memberId" type="xs:int" />
+        <xs:element minOccurs="0" name="courseId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JoinCourseResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeaveCourse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="memberId" type="xs:int" />
+        <xs:element minOccurs="0" name="courseId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeaveCourseResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -29,6 +29,12 @@ namespace FocusWCF
 
         [OperationContract]
         void SetPasswordForMember(Member m, string passwordhash);
+
+        [OperationContract]
+        void JoinCourse(int memberId, int courseId);
+
+        [OperationContract]
+        void LeaveCourse(int memberId, int courseId);
        
     }
 }

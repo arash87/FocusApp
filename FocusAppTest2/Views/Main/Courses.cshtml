@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<FocusAppTest2.ViewModels.CourseVM>
+
 @{
-    ViewBag.Title = "My Courses";
+    ViewBag.Title = "Courses";
 }
+
 <section data-role="page">
     @RenderPage("../Shared/MainHeader.cshtml")
     <div class="ui-content">
@@ -20,35 +22,22 @@
                         }<br />
                         Pris: @item.Price
                     </p>
-                    <form method="post" action="">
-                        <button style="width:100px;" id="@item.Id">Cancel</button>
-                    </form>
-                    
+                    @using (Html.BeginForm()) {
+                        <button style="width:100px;" id="@item.Id">Join</button>
+                    }
                 </div>
             }
         </div>
-        <a href="@Url.Action("Courses", "Main")" class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-notext col-xs-1 "></a>
+        <a href="@Url.Action("MyCourses", "Main")" class="ui-btn ui-corner-all ui-icon-carat-r ui-btn-icon-notext col-xs-2"></a>
     </div>
     <div data-role="footer" data-position="fixed">
         <div data-role="navbar">
             <ul>
-                <li><a href="@Url.Action("Courses","Main")" class="ui-state-persist ui-btn-active">Courses</a></li>
+                <li><a href="@Url.Action("Courses","Main")" class="ui-state-persist ui-btn-active">Course</a></li>
                 <li><a href="@Url.Action("Profile","Main")">Profile</a></li>
                 <li><a href="@Url.Action("Contact","Main")">Contact</a></li>
             </ul>
         </div>
     </div>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
 

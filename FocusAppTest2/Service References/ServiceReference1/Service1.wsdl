@@ -43,6 +43,18 @@
   <wsdl:message name="IService1_SetPasswordForMember_OutputMessage">
     <wsdl:part name="parameters" element="tns:SetPasswordForMemberResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_JoinCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinCourse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_JoinCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JoinCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LeaveCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveCourse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LeaveCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveCourseResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetMembers">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMembers" message="tns:IService1_GetMembers_InputMessage" />
@@ -67,6 +79,14 @@
     <wsdl:operation name="SetPasswordForMember">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetPasswordForMember" message="tns:IService1_SetPasswordForMember_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetPasswordForMemberResponse" message="tns:IService1_SetPasswordForMember_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JoinCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/JoinCourse" message="tns:IService1_JoinCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/JoinCourseResponse" message="tns:IService1_JoinCourse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LeaveCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LeaveCourse" message="tns:IService1_LeaveCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LeaveCourseResponse" message="tns:IService1_LeaveCourse_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -118,6 +138,24 @@
     </wsdl:operation>
     <wsdl:operation name="SetPasswordForMember">
       <soap:operation soapAction="http://tempuri.org/IService1/SetPasswordForMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JoinCourse">
+      <soap:operation soapAction="http://tempuri.org/IService1/JoinCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeaveCourse">
+      <soap:operation soapAction="http://tempuri.org/IService1/LeaveCourse" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -53,5 +53,15 @@ namespace FocusWCF
 
             dx.SubmitChanges();
         }
+
+        public void JoinCourse(int memberId, int courseId)
+        {
+
+        }
+
+        public void LeaveCourse(int memberId, int courseId)
+        {
+
+        }
     }
 }

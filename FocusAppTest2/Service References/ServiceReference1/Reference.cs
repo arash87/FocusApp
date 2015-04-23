@@ -536,6 +536,18 @@ namespace FocusAppTest2.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetPasswordForMember", ReplyAction="http://tempuri.org/IService1/SetPasswordForMemberResponse")]
         System.Threading.Tasks.Task SetPasswordForMemberAsync(FocusAppTest2.ServiceReference1.Member m, string passwordhash);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/JoinCourse", ReplyAction="http://tempuri.org/IService1/JoinCourseResponse")]
+        void JoinCourse(int memberId, int courseId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/JoinCourse", ReplyAction="http://tempuri.org/IService1/JoinCourseResponse")]
+        System.Threading.Tasks.Task JoinCourseAsync(int memberId, int courseId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LeaveCourse", ReplyAction="http://tempuri.org/IService1/LeaveCourseResponse")]
+        void LeaveCourse(int memberId, int courseId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LeaveCourse", ReplyAction="http://tempuri.org/IService1/LeaveCourseResponse")]
+        System.Threading.Tasks.Task LeaveCourseAsync(int memberId, int courseId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -611,6 +623,22 @@ namespace FocusAppTest2.ServiceReference1 {
         
         public System.Threading.Tasks.Task SetPasswordForMemberAsync(FocusAppTest2.ServiceReference1.Member m, string passwordhash) {
             return base.Channel.SetPasswordForMemberAsync(m, passwordhash);
+        }
+        
+        public void JoinCourse(int memberId, int courseId) {
+            base.Channel.JoinCourse(memberId, courseId);
+        }
+        
+        public System.Threading.Tasks.Task JoinCourseAsync(int memberId, int courseId) {
+            return base.Channel.JoinCourseAsync(memberId, courseId);
+        }
+        
+        public void LeaveCourse(int memberId, int courseId) {
+            base.Channel.LeaveCourse(memberId, courseId);
+        }
+        
+        public System.Threading.Tasks.Task LeaveCourseAsync(int memberId, int courseId) {
+            return base.Channel.LeaveCourseAsync(memberId, courseId);
         }
     }
 }
