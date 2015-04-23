@@ -33,5 +33,25 @@ namespace FocusWCF
         {
             return dx.Courses.ToList();
         }
+
+        public Member AddMember(string email, string passwordhash)
+        {
+            Member mb = new Member();
+            mb.email = email;
+            mb.password = passwordhash;
+            
+            dx.Members.InsertOnSubmit(mb);
+            dx.SubmitChanges();
+
+            return dx.Members.First(x => x.email == mb.email);
+        }
+
+        public void SetPasswordForMember(Member m, string passwordhash)
+        {
+            Member mbr = dx.Members.First(x => x.email == m.email);
+            mbr.password = passwordhash;
+
+            dx.SubmitChanges();
+        }
     }
 }

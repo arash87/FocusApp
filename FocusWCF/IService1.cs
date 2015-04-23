@@ -23,6 +23,12 @@ namespace FocusWCF
 
         [OperationContract]
         List<Course> GetCourses();
+
+        [OperationContract]
+        Member AddMember(string email, string passwordhash);
+
+        [OperationContract]
+        void SetPasswordForMember(Member m, string passwordhash);
        
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FocusAppTest2.ServiceReference1 {
+namespace FocusAppTest2.ServiceReference2 {
     using System.Runtime.Serialization;
     using System;
     
@@ -498,53 +498,53 @@ namespace FocusAppTest2.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference2.IService1")]
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMembers", ReplyAction="http://tempuri.org/IService1/GetMembersResponse")]
-        FocusAppTest2.ServiceReference1.Member[] GetMembers();
+        FocusAppTest2.ServiceReference2.Member[] GetMembers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMembers", ReplyAction="http://tempuri.org/IService1/GetMembersResponse")]
-        System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Member[]> GetMembersAsync();
+        System.Threading.Tasks.Task<FocusAppTest2.ServiceReference2.Member[]> GetMembersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetProfiles", ReplyAction="http://tempuri.org/IService1/GetProfilesResponse")]
-        FocusAppTest2.ServiceReference1.Profile[] GetProfiles();
+        FocusAppTest2.ServiceReference2.Profile[] GetProfiles();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetProfiles", ReplyAction="http://tempuri.org/IService1/GetProfilesResponse")]
-        System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Profile[]> GetProfilesAsync();
+        System.Threading.Tasks.Task<FocusAppTest2.ServiceReference2.Profile[]> GetProfilesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCourseMembers", ReplyAction="http://tempuri.org/IService1/GetCourseMembersResponse")]
-        FocusAppTest2.ServiceReference1.CourseMember[] GetCourseMembers();
+        FocusAppTest2.ServiceReference2.CourseMember[] GetCourseMembers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCourseMembers", ReplyAction="http://tempuri.org/IService1/GetCourseMembersResponse")]
-        System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.CourseMember[]> GetCourseMembersAsync();
+        System.Threading.Tasks.Task<FocusAppTest2.ServiceReference2.CourseMember[]> GetCourseMembersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCourses", ReplyAction="http://tempuri.org/IService1/GetCoursesResponse")]
-        FocusAppTest2.ServiceReference1.Course[] GetCourses();
+        FocusAppTest2.ServiceReference2.Course[] GetCourses();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCourses", ReplyAction="http://tempuri.org/IService1/GetCoursesResponse")]
-        System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Course[]> GetCoursesAsync();
+        System.Threading.Tasks.Task<FocusAppTest2.ServiceReference2.Course[]> GetCoursesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddMember", ReplyAction="http://tempuri.org/IService1/AddMemberResponse")]
-        FocusAppTest2.ServiceReference1.Member AddMember(string email, string passwordhash);
+        FocusAppTest2.ServiceReference2.Member AddMember(string email, string passwordhash);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddMember", ReplyAction="http://tempuri.org/IService1/AddMemberResponse")]
-        System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Member> AddMemberAsync(string email, string passwordhash);
+        System.Threading.Tasks.Task<FocusAppTest2.ServiceReference2.Member> AddMemberAsync(string email, string passwordhash);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetPasswordForMember", ReplyAction="http://tempuri.org/IService1/SetPasswordForMemberResponse")]
-        void SetPasswordForMember(FocusAppTest2.ServiceReference1.Member m, string passwordhash);
+        void SetPasswordForMember(FocusAppTest2.ServiceReference2.Member m, string passwordhash);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetPasswordForMember", ReplyAction="http://tempuri.org/IService1/SetPasswordForMemberResponse")]
-        System.Threading.Tasks.Task SetPasswordForMemberAsync(FocusAppTest2.ServiceReference1.Member m, string passwordhash);
+        System.Threading.Tasks.Task SetPasswordForMemberAsync(FocusAppTest2.ServiceReference2.Member m, string passwordhash);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IService1Channel : FocusAppTest2.ServiceReference1.IService1, System.ServiceModel.IClientChannel {
+    public interface IService1Channel : FocusAppTest2.ServiceReference2.IService1, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Service1Client : System.ServiceModel.ClientBase<FocusAppTest2.ServiceReference1.IService1>, FocusAppTest2.ServiceReference1.IService1 {
+    public partial class Service1Client : System.ServiceModel.ClientBase<FocusAppTest2.ServiceReference2.IService1>, FocusAppTest2.ServiceReference2.IService1 {
         
         public Service1Client() {
         }
@@ -565,51 +565,51 @@ namespace FocusAppTest2.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public FocusAppTest2.ServiceReference1.Member[] GetMembers() {
+        public FocusAppTest2.ServiceReference2.Member[] GetMembers() {
             return base.Channel.GetMembers();
         }
         
-        public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Member[]> GetMembersAsync() {
+        public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference2.Member[]> GetMembersAsync() {
             return base.Channel.GetMembersAsync();
         }
         
-        public FocusAppTest2.ServiceReference1.Profile[] GetProfiles() {
+        public FocusAppTest2.ServiceReference2.Profile[] GetProfiles() {
             return base.Channel.GetProfiles();
         }
         
-        public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Profile[]> GetProfilesAsync() {
+        public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference2.Profile[]> GetProfilesAsync() {
             return base.Channel.GetProfilesAsync();
         }
         
-        public FocusAppTest2.ServiceReference1.CourseMember[] GetCourseMembers() {
+        public FocusAppTest2.ServiceReference2.CourseMember[] GetCourseMembers() {
             return base.Channel.GetCourseMembers();
         }
         
-        public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.CourseMember[]> GetCourseMembersAsync() {
+        public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference2.CourseMember[]> GetCourseMembersAsync() {
             return base.Channel.GetCourseMembersAsync();
         }
         
-        public FocusAppTest2.ServiceReference1.Course[] GetCourses() {
+        public FocusAppTest2.ServiceReference2.Course[] GetCourses() {
             return base.Channel.GetCourses();
         }
         
-        public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Course[]> GetCoursesAsync() {
+        public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference2.Course[]> GetCoursesAsync() {
             return base.Channel.GetCoursesAsync();
         }
         
-        public FocusAppTest2.ServiceReference1.Member AddMember(string email, string passwordhash) {
+        public FocusAppTest2.ServiceReference2.Member AddMember(string email, string passwordhash) {
             return base.Channel.AddMember(email, passwordhash);
         }
         
-        public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Member> AddMemberAsync(string email, string passwordhash) {
+        public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference2.Member> AddMemberAsync(string email, string passwordhash) {
             return base.Channel.AddMemberAsync(email, passwordhash);
         }
         
-        public void SetPasswordForMember(FocusAppTest2.ServiceReference1.Member m, string passwordhash) {
+        public void SetPasswordForMember(FocusAppTest2.ServiceReference2.Member m, string passwordhash) {
             base.Channel.SetPasswordForMember(m, passwordhash);
         }
         
-        public System.Threading.Tasks.Task SetPasswordForMemberAsync(FocusAppTest2.ServiceReference1.Member m, string passwordhash) {
+        public System.Threading.Tasks.Task SetPasswordForMemberAsync(FocusAppTest2.ServiceReference2.Member m, string passwordhash) {
             return base.Channel.SetPasswordForMemberAsync(m, passwordhash);
         }
     }

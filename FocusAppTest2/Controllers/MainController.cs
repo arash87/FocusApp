@@ -9,6 +9,7 @@ using FocusAppTest2.ViewModels;
 
 namespace FocusAppTest2.Controllers
 {
+    [Authorize(Roles="member")]
     public class MainController : Controller
     {
         ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
