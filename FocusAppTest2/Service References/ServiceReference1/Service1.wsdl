@@ -4,7 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://focustest.duckdns.org/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://focustest.duckdns.org/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://focustest.duckdns.org/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/FocusWCF" />
+      <xsd:import schemaLocation="http://focustest.duckdns.org/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/FocusAppService" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_GetMembers_InputMessage">
@@ -31,6 +31,36 @@
   <wsdl:message name="IService1_GetCourses_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCoursesResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_JoinCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinCourse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_JoinCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JoinCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CancelCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelCourse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CancelCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfile" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProfile" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAdmin_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdmin" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAdmin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdminResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_AddMember_InputMessage">
     <wsdl:part name="parameters" element="tns:AddMember" />
   </wsdl:message>
@@ -42,18 +72,6 @@
   </wsdl:message>
   <wsdl:message name="IService1_SetPasswordForMember_OutputMessage">
     <wsdl:part name="parameters" element="tns:SetPasswordForMemberResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_JoinCourse_InputMessage">
-    <wsdl:part name="parameters" element="tns:JoinCourse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_JoinCourse_OutputMessage">
-    <wsdl:part name="parameters" element="tns:JoinCourseResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_LeaveCourse_InputMessage">
-    <wsdl:part name="parameters" element="tns:LeaveCourse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_LeaveCourse_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LeaveCourseResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetMembers">
@@ -72,6 +90,26 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCourses" message="tns:IService1_GetCourses_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCoursesResponse" message="tns:IService1_GetCourses_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="JoinCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/JoinCourse" message="tns:IService1_JoinCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/JoinCourseResponse" message="tns:IService1_JoinCourse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CancelCourse" message="tns:IService1_CancelCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CancelCourseResponse" message="tns:IService1_CancelCourse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProfile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetProfile" message="tns:IService1_GetProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetProfileResponse" message="tns:IService1_GetProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProfile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateProfile" message="tns:IService1_UpdateProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateProfileResponse" message="tns:IService1_UpdateProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdmin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAdmin" message="tns:IService1_GetAdmin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAdminResponse" message="tns:IService1_GetAdmin_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AddMember">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddMember" message="tns:IService1_AddMember_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddMemberResponse" message="tns:IService1_AddMember_OutputMessage" />
@@ -79,14 +117,6 @@
     <wsdl:operation name="SetPasswordForMember">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetPasswordForMember" message="tns:IService1_SetPasswordForMember_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetPasswordForMemberResponse" message="tns:IService1_SetPasswordForMember_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="JoinCourse">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/JoinCourse" message="tns:IService1_JoinCourse_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/JoinCourseResponse" message="tns:IService1_JoinCourse_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="LeaveCourse">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LeaveCourse" message="tns:IService1_LeaveCourse_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LeaveCourseResponse" message="tns:IService1_LeaveCourse_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -127,6 +157,51 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="JoinCourse">
+      <soap:operation soapAction="http://tempuri.org/IService1/JoinCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelCourse">
+      <soap:operation soapAction="http://tempuri.org/IService1/CancelCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfile">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProfile">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdmin">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddMember">
       <soap:operation soapAction="http://tempuri.org/IService1/AddMember" style="document" />
       <wsdl:input>
@@ -138,24 +213,6 @@
     </wsdl:operation>
     <wsdl:operation name="SetPasswordForMember">
       <soap:operation soapAction="http://tempuri.org/IService1/SetPasswordForMember" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="JoinCourse">
-      <soap:operation soapAction="http://tempuri.org/IService1/JoinCourse" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LeaveCourse">
-      <soap:operation soapAction="http://tempuri.org/IService1/LeaveCourse" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

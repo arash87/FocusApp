@@ -17,10 +17,10 @@ namespace FocusAppTest2.Helpers
         }
         
         // Set a new password for an existing member
-        public static void SetPassword(Member m, string password)
+        public static void SetPassword(int memberId, string password)
         {
             Service1Client obj = new Service1Client();            
-            obj.SetPasswordForMember(m, HashPassword(password));
+            obj.SetPasswordForMember(memberId, HashPassword(password));
         }
 
         // Verifies the input password against a members existing one

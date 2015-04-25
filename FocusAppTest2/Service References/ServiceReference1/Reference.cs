@@ -15,7 +15,7 @@ namespace FocusAppTest2.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Member", Namespace="http://schemas.datacontract.org/2004/07/FocusWCF")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Member", Namespace="http://schemas.datacontract.org/2004/07/FocusAppService")]
     [System.SerializableAttribute()]
     public partial class Member : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -108,7 +108,7 @@ namespace FocusAppTest2.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Profile", Namespace="http://schemas.datacontract.org/2004/07/FocusWCF")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Profile", Namespace="http://schemas.datacontract.org/2004/07/FocusAppService")]
     [System.SerializableAttribute()]
     public partial class Profile : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -116,7 +116,7 @@ namespace FocusAppTest2.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string adressField;
+        private string addressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> birthdateField;
@@ -153,14 +153,14 @@ namespace FocusAppTest2.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string adress {
+        public string address {
             get {
-                return this.adressField;
+                return this.addressField;
             }
             set {
-                if ((object.ReferenceEquals(this.adressField, value) != true)) {
-                    this.adressField = value;
-                    this.RaisePropertyChanged("adress");
+                if ((object.ReferenceEquals(this.addressField, value) != true)) {
+                    this.addressField = value;
+                    this.RaisePropertyChanged("address");
                 }
             }
         }
@@ -281,7 +281,7 @@ namespace FocusAppTest2.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CourseMember", Namespace="http://schemas.datacontract.org/2004/07/FocusWCF")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CourseMember", Namespace="http://schemas.datacontract.org/2004/07/FocusAppService")]
     [System.SerializableAttribute()]
     public partial class CourseMember : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -342,7 +342,7 @@ namespace FocusAppTest2.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Course", Namespace="http://schemas.datacontract.org/2004/07/FocusWCF")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Course", Namespace="http://schemas.datacontract.org/2004/07/FocusAppService")]
     [System.SerializableAttribute()]
     public partial class Course : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -497,6 +497,99 @@ namespace FocusAppTest2.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AdminModel", Namespace="http://schemas.datacontract.org/2004/07/FocusAppService")]
+    [System.SerializableAttribute()]
+    public partial class AdminModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PhoneField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fname {
+            get {
+                return this.FnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FnameField, value) != true)) {
+                    this.FnameField = value;
+                    this.RaisePropertyChanged("Fname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Lname {
+            get {
+                return this.LnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LnameField, value) != true)) {
+                    this.LnameField = value;
+                    this.RaisePropertyChanged("Lname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Phone {
+            get {
+                return this.PhoneField;
+            }
+            set {
+                if ((this.PhoneField.Equals(value) != true)) {
+                    this.PhoneField = value;
+                    this.RaisePropertyChanged("Phone");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -525,6 +618,36 @@ namespace FocusAppTest2.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCourses", ReplyAction="http://tempuri.org/IService1/GetCoursesResponse")]
         System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Course[]> GetCoursesAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/JoinCourse", ReplyAction="http://tempuri.org/IService1/JoinCourseResponse")]
+        bool JoinCourse(int memberId, int courseId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/JoinCourse", ReplyAction="http://tempuri.org/IService1/JoinCourseResponse")]
+        System.Threading.Tasks.Task<bool> JoinCourseAsync(int memberId, int courseId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CancelCourse", ReplyAction="http://tempuri.org/IService1/CancelCourseResponse")]
+        bool CancelCourse(int memberId, int courseId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CancelCourse", ReplyAction="http://tempuri.org/IService1/CancelCourseResponse")]
+        System.Threading.Tasks.Task<bool> CancelCourseAsync(int memberId, int courseId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetProfile", ReplyAction="http://tempuri.org/IService1/GetProfileResponse")]
+        FocusAppTest2.ServiceReference1.Profile GetProfile(int memberId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetProfile", ReplyAction="http://tempuri.org/IService1/GetProfileResponse")]
+        System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Profile> GetProfileAsync(int memberId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateProfile", ReplyAction="http://tempuri.org/IService1/UpdateProfileResponse")]
+        bool UpdateProfile(int memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateProfile", ReplyAction="http://tempuri.org/IService1/UpdateProfileResponse")]
+        System.Threading.Tasks.Task<bool> UpdateProfileAsync(int memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAdmin", ReplyAction="http://tempuri.org/IService1/GetAdminResponse")]
+        FocusAppTest2.ServiceReference1.AdminModel[] GetAdmin();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAdmin", ReplyAction="http://tempuri.org/IService1/GetAdminResponse")]
+        System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.AdminModel[]> GetAdminAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddMember", ReplyAction="http://tempuri.org/IService1/AddMemberResponse")]
         FocusAppTest2.ServiceReference1.Member AddMember(string email, string passwordhash);
         
@@ -532,22 +655,10 @@ namespace FocusAppTest2.ServiceReference1 {
         System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Member> AddMemberAsync(string email, string passwordhash);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetPasswordForMember", ReplyAction="http://tempuri.org/IService1/SetPasswordForMemberResponse")]
-        void SetPasswordForMember(FocusAppTest2.ServiceReference1.Member m, string passwordhash);
+        void SetPasswordForMember(int memberId, string passwordhash);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetPasswordForMember", ReplyAction="http://tempuri.org/IService1/SetPasswordForMemberResponse")]
-        System.Threading.Tasks.Task SetPasswordForMemberAsync(FocusAppTest2.ServiceReference1.Member m, string passwordhash);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/JoinCourse", ReplyAction="http://tempuri.org/IService1/JoinCourseResponse")]
-        void JoinCourse(int memberId, int courseId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/JoinCourse", ReplyAction="http://tempuri.org/IService1/JoinCourseResponse")]
-        System.Threading.Tasks.Task JoinCourseAsync(int memberId, int courseId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LeaveCourse", ReplyAction="http://tempuri.org/IService1/LeaveCourseResponse")]
-        void LeaveCourse(int memberId, int courseId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LeaveCourse", ReplyAction="http://tempuri.org/IService1/LeaveCourseResponse")]
-        System.Threading.Tasks.Task LeaveCourseAsync(int memberId, int courseId);
+        System.Threading.Tasks.Task SetPasswordForMemberAsync(int memberId, string passwordhash);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -609,6 +720,46 @@ namespace FocusAppTest2.ServiceReference1 {
             return base.Channel.GetCoursesAsync();
         }
         
+        public bool JoinCourse(int memberId, int courseId) {
+            return base.Channel.JoinCourse(memberId, courseId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> JoinCourseAsync(int memberId, int courseId) {
+            return base.Channel.JoinCourseAsync(memberId, courseId);
+        }
+        
+        public bool CancelCourse(int memberId, int courseId) {
+            return base.Channel.CancelCourse(memberId, courseId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CancelCourseAsync(int memberId, int courseId) {
+            return base.Channel.CancelCourseAsync(memberId, courseId);
+        }
+        
+        public FocusAppTest2.ServiceReference1.Profile GetProfile(int memberId) {
+            return base.Channel.GetProfile(memberId);
+        }
+        
+        public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Profile> GetProfileAsync(int memberId) {
+            return base.Channel.GetProfileAsync(memberId);
+        }
+        
+        public bool UpdateProfile(int memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city) {
+            return base.Channel.UpdateProfile(memberId, address, phone, birthdate, fname, lname, zip, city);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateProfileAsync(int memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city) {
+            return base.Channel.UpdateProfileAsync(memberId, address, phone, birthdate, fname, lname, zip, city);
+        }
+        
+        public FocusAppTest2.ServiceReference1.AdminModel[] GetAdmin() {
+            return base.Channel.GetAdmin();
+        }
+        
+        public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.AdminModel[]> GetAdminAsync() {
+            return base.Channel.GetAdminAsync();
+        }
+        
         public FocusAppTest2.ServiceReference1.Member AddMember(string email, string passwordhash) {
             return base.Channel.AddMember(email, passwordhash);
         }
@@ -617,28 +768,12 @@ namespace FocusAppTest2.ServiceReference1 {
             return base.Channel.AddMemberAsync(email, passwordhash);
         }
         
-        public void SetPasswordForMember(FocusAppTest2.ServiceReference1.Member m, string passwordhash) {
-            base.Channel.SetPasswordForMember(m, passwordhash);
+        public void SetPasswordForMember(int memberId, string passwordhash) {
+            base.Channel.SetPasswordForMember(memberId, passwordhash);
         }
         
-        public System.Threading.Tasks.Task SetPasswordForMemberAsync(FocusAppTest2.ServiceReference1.Member m, string passwordhash) {
-            return base.Channel.SetPasswordForMemberAsync(m, passwordhash);
-        }
-        
-        public void JoinCourse(int memberId, int courseId) {
-            base.Channel.JoinCourse(memberId, courseId);
-        }
-        
-        public System.Threading.Tasks.Task JoinCourseAsync(int memberId, int courseId) {
-            return base.Channel.JoinCourseAsync(memberId, courseId);
-        }
-        
-        public void LeaveCourse(int memberId, int courseId) {
-            base.Channel.LeaveCourse(memberId, courseId);
-        }
-        
-        public System.Threading.Tasks.Task LeaveCourseAsync(int memberId, int courseId) {
-            return base.Channel.LeaveCourseAsync(memberId, courseId);
+        public System.Threading.Tasks.Task SetPasswordForMemberAsync(int memberId, string passwordhash) {
+            return base.Channel.SetPasswordForMemberAsync(memberId, passwordhash);
         }
     }
 }
