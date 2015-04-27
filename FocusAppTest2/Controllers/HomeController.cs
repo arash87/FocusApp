@@ -14,7 +14,8 @@ namespace FocusAppTest2.Controllers
         //
         // GET: /Home/
         ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();      //published
-        //ServiceReference2.Service1Client obj = new ServiceReference2.Service1Client();    //localhost
+        //ServiceReference3.Service1Client obj = new ServiceReference3.Service1Client();    //localhost
+
 
         public ActionResult Index()
         {

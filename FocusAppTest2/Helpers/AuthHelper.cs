@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using FocusAppTest2.ServiceReference1;      //published
-//using FocusAppTest2.ServiceReference2;    //localhost
+//using FocusAppTest2.ServiceReference3;    //localhost
 
 namespace FocusAppTest2.Helpers
 {
