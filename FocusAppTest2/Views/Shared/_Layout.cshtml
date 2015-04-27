@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-
+    <meta name="viewport" content="width=device-width" />
     <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/jquery.mobile-1.4.5.css" rel="stylesheet" />
@@ -11,10 +11,7 @@
     <script src="~/Scripts/jquery-1.9.1.js"></script>
     <script src="~/Scripts/jquery.mobile-1.4.5.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
-
-
-
-    <meta name="viewport" content="width=device-width" />
+    
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -23,7 +20,128 @@
 <body>
     @RenderBody()
 
+    
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(function () {
+            $('body').on("click", '.post-bid', function () {
+                var t = $(this);
+                wrapper = t.parents('.collapsible');
+                t.attr('disable', 'disable');
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Main/Join",
+                    cache: false,
+                    data: { id: wrapper.data("id") }
+                })
+                .success(function (data) {
+                    if (typeof data !== "object")
+                        data = JSON.parse(data);
+                    if (data.state) {
+                        wrapper.find('.ui-collapsible-heading-toggle')
+                            .removeClass('ui-icon-minus')
+                            .addClass('ui-icon-check')
+                            .css('background-color', '#B8E6B8');
+                        wrapper.find('.ui-collapsible-content').slideUp();
+                        wrapper.find('h1 a').click(function () {
+                            return false;
+                        });
+                    }
+                    else {
+                        alert(data.error);
+                    }
+                })
+                .error(function () {
+                    alert("Something went wrong!");
+                    t.removeAttr('disable');
+                });
+                return false;
+            })
+            .on("click", '.cancel-bid', function () {
+                var t = $(this);
+                wrapper = t.parents('.collapsible-myCourses');
+                t.attr('disable', 'disable');
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Main/Cancel",
+                    cache: false,
+                    data: { id: wrapper.data("id") }
+                })
+                .success(function (data) {
+                    if (typeof data !== "object")
+                        data = JSON.parse(data);
+                    if (data.state) {
+                        wrapper.find('.ui-collapsible-heading-toggle')
+                            .removeClass('ui-icon-minus')
+                            .addClass('ui-icon-delete')
+                            .css('background-color', '#FF5930');
+                        wrapper.find('.ui-collapsible-content').slideUp();
+                        wrapper.find('h1 a').click(function () {
+                            return false;
+                        });
+                    }
+                    else {
+                        alert(data.error);
+                    }
+                })
+                .error(function () {
+                    alert("Something went wrong!");
+                    t.removeAttr('disable');
+                });
+                return false;
+            })
+            $('body').on("click", '#post-update', function () {
+                var button = $(this);
+                var div = button.parent('div');
+                var address = $("#address").val();
+                var phone = $("#phone").val();
+                var zip = $("#zip").val();
+                var birthdate = $("#birthdate").val();
+                var fname = $("#firstname").val();
+                var lname = $("#lastname").val();
+                var city = $("#city").val();
+                address = (!address) ? "" : $("#address").val();
+                phone = (!phone) ? "0" : $("#phone").val();
+                zip = (!zip) ? "0" : $("#zip").val();
+                birthdate = (!birthdate) ? "2015-04-24" : $("#birthdate").val();
+                fname = (!fname) ? "" : $("#firstname").val();
+                lname = (!lname) ? "" : $("#lastname").val();
+                city = (!city) ? "" : $("#city").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Main/UpdateProfile",
+                    data: {
+                        id: div.data("id"), address: address, phone: phone, birthdate: birthdate, fname: fname,
+                        lname: lname, zip: zip, city: city
+                    }
+                })
+                .success(function () {
+                    button.css('background-color', 'lightgreen', 1000);
+                })
+                .error(function () {
+                    button.css('background-color', 'lightred');
+                })
+                return false;
+            })
+            $('body').on("click", '#toMyCourses', function () {
+                $.ajax({
+                    type: "GET",
+                    url: "/Main/MyCourses",
+                    cache: false
+                })
+                .success(function () {
+                    window.location.href = "/Main/MyCourses";
+                })
+                .error(function () {
+                    alert("error!");
+                });
+                return false;
+            });
+        });
+    </script>
 </body>
 </html>

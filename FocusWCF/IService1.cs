@@ -25,16 +25,25 @@ namespace FocusWCF
         List<Course> GetCourses();
 
         [OperationContract]
+        bool JoinCourse(int memberId, int courseId);
+
+        [OperationContract]
+        bool CancelCourse(int memberId, int courseId);
+
+        [OperationContract]
+        Profile GetProfile(int memberId);
+
+        [OperationContract]
+        bool UpdateProfile(int memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city);
+
+        [OperationContract]
+        List<AdminModel> GetAdmin();
+
+        [OperationContract]
         Member AddMember(string email, string passwordhash);
 
         [OperationContract]
-        void SetPasswordForMember(Member m, string passwordhash);
-
-        [OperationContract]
-        void JoinCourse(int memberId, int courseId);
-
-        [OperationContract]
-        void LeaveCourse(int memberId, int courseId);
+        void SetPasswordForMember(int memberId, string passwordhash);
        
     }
 }

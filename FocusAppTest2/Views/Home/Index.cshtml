@@ -1,17 +1,28 @@
 ﻿@model FocusAppTest2.ViewModels.MemberVM
 
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary()
-    <div>
-        @Html.LabelFor(x => x.Email)
-        @Html.EditorFor(x => x.Email)
-    </div>
-    <div>
-        @Html.LabelFor(x => x.Password)
-        @Html.EditorFor(x => x.Password)
-    </div>
-    <div>
-        <input type="submit" value="Login or Register" class="ui-btn" data-transition="slide"/>
-    </div>
-}
+<section data-role="page">
+    <header data-role="header"></header>
+    <content data-role="content">
+
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { data_ajax = "false" }))
+        {
+            @Html.ValidationSummary()
+            <div>
+                @Html.LabelFor(x => x.Email)
+                @Html.EditorFor(x => x.Email)
+            </div>
+            <div>
+                @Html.LabelFor(x => x.Password)
+                @Html.EditorFor(x => x.Password)
+            </div>
+            <div>
+                <input type="submit" value="Login or Register" class="ui-btn" data-transition="slide" />
+            </div>
+        }
+    </content>
+    <footer data-role="footer">
+
+    </footer>
+
+
+</section>

@@ -8,7 +8,7 @@
         <div id="container" class="col-xs-11">
             @foreach (var item in Model)
             {
-                <div data-role="collapsible">
+                <div data-role="collapsible" class="collapsible-myCourses" data-theme="b" data-iconpos="right" data-collapsed-icon="check" data-expanded-icon="arrow-d" data-id="@item.Id">
                     <h1>@item.Name - @item.Location - @item.Start.ToShortDateString()</h1>
                     <p>
                         @item.Info<br />
@@ -20,35 +20,26 @@
                         }<br />
                         Pris: @item.Price
                     </p>
-                    <form method="post" action="">
-                        <button style="width:100px;" id="@item.Id">Cancel</button>
-                    </form>
-                    
+                    <button type="submit" class="cancel-bid" style="width:100px;">Cancel</button>
                 </div>
             }
         </div>
-        <a href="@Url.Action("Courses", "Main")" class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-notext col-xs-1 "></a>
     </div>
+    @*<form action="@Url.Action("Courses","Main")">
+        <div class="ui-input-btn ui-btn ui-icon-home ui-btn-icon-left ui-btn-inline ui-corner-all">
+            Course
+            <input type="submit" data-enhanced="true" value="Course" />
+        </div>  
+    </form>*@ 
+       
+    <a href="/Main/Courses" id="toCourses">Courses</a>
     <div data-role="footer" data-position="fixed">
         <div data-role="navbar">
             <ul>
-                <li><a href="@Url.Action("Courses","Main")" class="ui-state-persist ui-btn-active">Courses</a></li>
-                <li><a href="@Url.Action("Profile","Main")">Profile</a></li>
-                <li><a href="@Url.Action("Contact","Main")">Contact</a></li>
+                <li><a href="@Url.Action("Courses","Main")" class="ui-btn ui-icon-home ui-btn-icon-left ui-state-persist ui-btn-active" >Courses</a></li>
+                <li><a href="@Url.Action("Profile","Main")" class="ui-btn ui-icon-user ui-btn-icon-left">Profile</a></li>
+                <li><a href="@Url.Action("Contact","Main")" class="ui-btn ui-icon-info ui-btn-icon-left">Contact</a></li>
             </ul>
         </div>
     </div>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-

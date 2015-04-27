@@ -438,6 +438,10 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.color-2.1.2.js" />
+    <Content Include="Scripts\jquery.color-2.1.2.min.js" />
+    <Content Include="Scripts\jquery.color.svg-names-2.1.2.js" />
+    <Content Include="Scripts\jquery.color.svg-names-2.1.2.min.js" />
     <Content Include="Scripts\jquery.mobile-1.4.5.js" />
     <Content Include="Scripts\jquery.mobile-1.4.5.min.js" />
     <Content Include="Scripts\jquery.mobile-1.4.5.min.map" />
@@ -478,25 +482,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Service References\ServiceReference2\FocusAppTest2.ServiceReference2.Course.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ServiceReference2\FocusAppTest2.ServiceReference2.CourseMember.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ServiceReference2\FocusAppTest2.ServiceReference2.Member.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ServiceReference2\FocusAppTest2.ServiceReference2.Profile.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\ServiceReference2\configuration91.svcinfo" />
-    <None Include="Service References\ServiceReference2\configuration.svcinfo" />
-    <None Include="Service References\ServiceReference2\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\ServiceReference2\Service11.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -526,16 +511,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Shared\MainHeader.cshtml" />
-    <None Include="Service References\ServiceReference2\Service11.wsdl" />
-    <None Include="Service References\ServiceReference2\Service13.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference2\Service131.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference2\Service132.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <Content Include="Views\Main\_CurrentStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

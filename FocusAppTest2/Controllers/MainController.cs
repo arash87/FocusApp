@@ -45,14 +45,59 @@ namespace FocusAppTest2.Controllers
             return View(choosenCourses);
         }
 
+        [HttpPost]
+        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
+        public ActionResult Join(int id)
+        {
+            var currentMember = obj.GetMembers().First(x => x.email == User.Identity.Name);
+            bool isSuccessful = obj.JoinCourse(currentMember.id, id);    // Try Catch & If
+            if (!Request.IsAjaxRequest())
+                return RedirectToAction("Course");
+            return PartialView("_CurrentStatus");
+        }
+
+        [HttpPost]
+        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
+        public ActionResult Cancel(int id)
+        {
+            var currentMember = obj.GetMembers().First(x => x.email == User.Identity.Name);
+            bool isDeleted = obj.CancelCourse(currentMember.id, id);     // Try Catch & If
+            if (!Request.IsAjaxRequest())
+                return RedirectToAction("MyCourses");
+            return PartialView("_CurrentStatus");
+        }
+
         public ActionResult Profile()
         {
-            return View();
+            var currentMember = obj.GetMembers().First(x => x.email == User.Identity.Name);
+            Profile profile = obj.GetProfile(currentMember.id);
+            DateTime birthday;
+            string stringDate;
+            if (profile.birthdate != null)
+            {
+                birthday = (DateTime)profile.birthdate;
+                stringDate = birthday.ToString("yyyy-MM-dd");
+            }
+            else
+            {
+                stringDate = "";
+            }
+            ViewBag.Data1 = stringDate;
+            return View(profile);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateProfile(int id, string address, int phone, string birthdate, string fname, string lname, int zip, string city)
+        {
+            bool updated = obj.UpdateProfile(id, address, phone, birthdate, fname, lname, zip, city);
+            Profile profile = obj.GetProfile(id);
+            return View("Profile", profile);
         }
 
         public ActionResult Contact()
         {
-            return View();
+            List<AdminModel> adminList = obj.GetAdmin().ToList();
+            return View(adminList);
         }
 
         [HttpPost]
@@ -70,13 +115,6 @@ namespace FocusAppTest2.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult Join()
-        {
-            if (!Request.IsAjaxRequest())
-                return RedirectToAction("Course");
 
-            return PartialView("_CurrentButton");
-        }
     }
 }
