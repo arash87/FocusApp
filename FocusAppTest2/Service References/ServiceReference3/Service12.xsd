@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/FocusWCF" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/FocusWCF" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfMember">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Member" nillable="true" type="tns:Member" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMember" nillable="true" type="tns:ArrayOfMember" />
+  <xs:complexType name="Member">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="role" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Member" nillable="true" type="tns:Member" />
+  <xs:complexType name="ArrayOfProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Profile" nillable="true" type="tns:Profile" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProfile" nillable="true" type="tns:ArrayOfProfile" />
+  <xs:complexType name="Profile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="birthdate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="firstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="lastname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="memberId" type="xs:long" />
+      <xs:element minOccurs="0" name="phone" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="zip" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Profile" nillable="true" type="tns:Profile" />
+  <xs:complexType name="ArrayOfCourseMember">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CourseMember" nillable="true" type="tns:CourseMember" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCourseMember" nillable="true" type="tns:ArrayOfCourseMember" />
+  <xs:complexType name="CourseMember">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="courseId" type="xs:int" />
+      <xs:element minOccurs="0" name="memberId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CourseMember" nillable="true" type="tns:CourseMember" />
+  <xs:complexType name="ArrayOfCourse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Course" nillable="true" type="tns:Course" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCourse" nillable="true" type="tns:ArrayOfCourse" />
+  <xs:complexType name="Course">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="capacity" type="xs:int" />
+      <xs:element minOccurs="0" name="enddate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="info" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="price" type="xs:int" />
+      <xs:element minOccurs="0" name="startdate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Course" nillable="true" type="tns:Course" />
+  <xs:complexType name="ArrayOfAdminModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AdminModel" nillable="true" type="tns:AdminModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAdminModel" nillable="true" type="tns:ArrayOfAdminModel" />
+  <xs:complexType name="AdminModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdminModel" nillable="true" type="tns:AdminModel" />
+  <xs:complexType name="FacebookMember">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accessToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="facebookid" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FacebookMember" nillable="true" type="tns:FacebookMember" />
+  <xs:complexType name="ArrayOfFacebookMember">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FacebookMember" nillable="true" type="tns:FacebookMember" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFacebookMember" nillable="true" type="tns:ArrayOfFacebookMember" />
+</xs:schema>

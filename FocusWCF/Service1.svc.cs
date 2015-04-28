@@ -34,7 +34,7 @@ namespace FocusWCF
         {
             return dx.Courses.ToList();
         }
-        public bool JoinCourse(int mId, int cId)
+        public bool JoinCourse(long mId, int cId)
         {
             CourseMember cm = new CourseMember { memberId = mId, courseId = cId };
             dx.CourseMembers.InsertOnSubmit(cm);
@@ -43,7 +43,7 @@ namespace FocusWCF
         }
 
 
-        public bool CancelCourse(int mId, int cId)
+        public bool CancelCourse(long mId, int cId)
         {
             CourseMember cm = (from course in dx.CourseMembers
                                where course.memberId == mId && course.courseId == cId
@@ -54,7 +54,7 @@ namespace FocusWCF
         }
 
 
-        public Profile GetProfile(int memberId)
+        public Profile GetProfile(long memberId)
         {
             Profile memberProfile = (from profile in dx.Profiles
                                      where profile.memberId == memberId
@@ -62,7 +62,7 @@ namespace FocusWCF
             return memberProfile;
         }
 
-        public bool UpdateProfile(int memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city)
+        public bool UpdateProfile(long memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city)
         {
             DateTime chosenDate = DateTime.ParseExact(birthdate, "yyyy-MM-dd", CultureInfo.InvariantCulture);
             DateTime initialValue = new DateTime(2015, 04, 24);
@@ -113,6 +113,30 @@ namespace FocusWCF
             Member member = dx.Members.First(x => x.id == memberId);
             member.password = passwordhash;
             dx.SubmitChanges();
+        }
+
+
+        public FacebookMember AddFacebookMember(long facebookid, string accessToken)
+        {
+            FacebookMember fb = new FacebookMember();
+            fb.facebookid = facebookid;
+            fb.accessToken = accessToken;
+            dx.FacebookMembers.InsertOnSubmit(fb);
+            dx.SubmitChanges();
+            return dx.FacebookMembers.First(x => x.facebookid == fb.facebookid);
+        }
+
+        public bool UpdateAccessToken(long facebookid, string accessToken)
+        {
+            FacebookMember fb = dx.FacebookMembers.First(x => x.facebookid == facebookid);
+            fb.accessToken = accessToken;
+            dx.SubmitChanges();
+            return true;
+        }
+
+        public List<FacebookMember> GetFacebookMembers()
+        {
+            return dx.FacebookMembers.ToList();
         }
     }
 }

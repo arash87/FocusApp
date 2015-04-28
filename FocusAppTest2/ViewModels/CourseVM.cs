@@ -1,4 +1,6 @@
-﻿using System;
+﻿//using FocusAppTest2.ServiceReference1;
+using FocusAppTest2.ServiceReference3;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,7 +9,7 @@ namespace FocusAppTest2.ViewModels
 {
     public class CourseVM
     {
-        public CourseVM(ServiceReference1.Course c){
+        public CourseVM(Course c){
             Id = c.id;
             Start = c.startdate;
             End = c.enddate;

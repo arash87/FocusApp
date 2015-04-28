@@ -3,6 +3,7 @@
 <section data-role="page">
     <header data-role="header"></header>
     <content data-role="content">
+        <fb:login-button autologoutlink="true" perms="read_friendlists, create_event, email, publish_stream"></fb:login-button>
 
         @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { data_ajax = "false" }))
         {

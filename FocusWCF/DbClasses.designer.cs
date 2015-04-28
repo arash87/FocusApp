@@ -39,6 +39,9 @@ namespace FocusWCF
     partial void InsertCourseMember(CourseMember instance);
     partial void UpdateCourseMember(CourseMember instance);
     partial void DeleteCourseMember(CourseMember instance);
+    partial void InsertFacebookMember(FacebookMember instance);
+    partial void UpdateFacebookMember(FacebookMember instance);
+    partial void DeleteFacebookMember(FacebookMember instance);
     partial void InsertMember(Member instance);
     partial void UpdateMember(Member instance);
     partial void DeleteMember(Member instance);
@@ -95,6 +98,14 @@ namespace FocusWCF
 			get
 			{
 				return this.GetTable<CourseMember>();
+			}
+		}
+		
+		public System.Data.Linq.Table<FacebookMember> FacebookMembers
+		{
+			get
+			{
+				return this.GetTable<FacebookMember>();
 			}
 		}
 		
@@ -345,7 +356,7 @@ namespace FocusWCF
 		
 		private int _id;
 		
-		private int _memberId;
+		private long _memberId;
 		
 		private string _address;
 		
@@ -367,7 +378,7 @@ namespace FocusWCF
     partial void OnCreated();
     partial void OnidChanging(int value);
     partial void OnidChanged();
-    partial void OnmemberIdChanging(int value);
+    partial void OnmemberIdChanging(long value);
     partial void OnmemberIdChanged();
     partial void OnaddressChanging(string value);
     partial void OnaddressChanged();
@@ -410,8 +421,8 @@ namespace FocusWCF
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_memberId", DbType="Int NOT NULL")]
-		public int memberId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_memberId", DbType="BigInt NOT NULL")]
+		public long memberId
 		{
 			get
 			{
@@ -597,7 +608,7 @@ namespace FocusWCF
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _memberId;
+		private long _memberId;
 		
 		private int _courseId;
 		
@@ -605,7 +616,7 @@ namespace FocusWCF
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnmemberIdChanging(int value);
+    partial void OnmemberIdChanging(long value);
     partial void OnmemberIdChanged();
     partial void OncourseIdChanging(int value);
     partial void OncourseIdChanged();
@@ -616,8 +627,8 @@ namespace FocusWCF
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_memberId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int memberId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_memberId", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long memberId
 		{
 			get
 			{
@@ -652,6 +663,92 @@ namespace FocusWCF
 					this._courseId = value;
 					this.SendPropertyChanged("courseId");
 					this.OncourseIdChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FacebookMember")]
+	public partial class FacebookMember : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _facebookid;
+		
+		private string _accessToken;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnfacebookidChanging(long value);
+    partial void OnfacebookidChanged();
+    partial void OnaccessTokenChanging(string value);
+    partial void OnaccessTokenChanged();
+    #endregion
+		
+		public FacebookMember()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_facebookid", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long facebookid
+		{
+			get
+			{
+				return this._facebookid;
+			}
+			set
+			{
+				if ((this._facebookid != value))
+				{
+					this.OnfacebookidChanging(value);
+					this.SendPropertyChanging();
+					this._facebookid = value;
+					this.SendPropertyChanged("facebookid");
+					this.OnfacebookidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_accessToken", DbType="VarChar(256)")]
+		public string accessToken
+		{
+			get
+			{
+				return this._accessToken;
+			}
+			set
+			{
+				if ((this._accessToken != value))
+				{
+					this.OnaccessTokenChanging(value);
+					this.SendPropertyChanging();
+					this._accessToken = value;
+					this.SendPropertyChanged("accessToken");
+					this.OnaccessTokenChanged();
 				}
 			}
 		}

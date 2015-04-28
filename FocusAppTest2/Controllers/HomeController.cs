@@ -13,13 +13,33 @@ namespace FocusAppTest2.Controllers
     {
         //
         // GET: /Home/
-        ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();      //published
-        //ServiceReference3.Service1Client obj = new ServiceReference3.Service1Client();    //localhost
+        //ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();      //published
+        ServiceReference3.Service1Client obj = new ServiceReference3.Service1Client();    //localhost
 
 
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult FacebookLogin(FacebookLoginVM model)
+        {
+            var fbmember = obj.GetFacebookMembers().FirstOrDefault(x => x.facebookid == model.uid);
+
+            //hvis ikke brukeren har vært i systemet vårt før, lag fbmember 
+            if (fbmember == null)
+            {
+                fbmember = obj.AddFacebookMember(model.uid, model.accessToken);
+            }
+            else
+            {
+                obj.UpdateAccessToken(fbmember.facebookid, model.accessToken);
+            }
+
+            // logg bruker inn i vårt system
+            FormsAuthentication.SetAuthCookie(fbmember.facebookid.ToString(), true);
+            return Json(new { success = true });
         }
 
         [HttpPost]
@@ -43,7 +63,12 @@ namespace FocusAppTest2.Controllers
             //passed authentication
             FormsAuthentication.SetAuthCookie(member.email, true);
             return RedirectToAction("MyCourses", "Main");
+        }
 
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
         }
     }
 }

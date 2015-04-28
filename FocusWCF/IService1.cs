@@ -25,16 +25,16 @@ namespace FocusWCF
         List<Course> GetCourses();
 
         [OperationContract]
-        bool JoinCourse(int memberId, int courseId);
+        bool JoinCourse(long memberId, int courseId);
 
         [OperationContract]
-        bool CancelCourse(int memberId, int courseId);
+        bool CancelCourse(long memberId, int courseId);
 
         [OperationContract]
-        Profile GetProfile(int memberId);
+        Profile GetProfile(long memberId);
 
         [OperationContract]
-        bool UpdateProfile(int memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city);
+        bool UpdateProfile(long memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city);
 
         [OperationContract]
         List<AdminModel> GetAdmin();
@@ -44,6 +44,14 @@ namespace FocusWCF
 
         [OperationContract]
         void SetPasswordForMember(int memberId, string passwordhash);
-       
+
+        [OperationContract]
+        FacebookMember AddFacebookMember(long facebookid, string accessToken);
+
+        [OperationContract]
+        bool UpdateAccessToken(long facebookid, string accessToken);
+
+        [OperationContract]
+        List<FacebookMember> GetFacebookMembers();
     }
 }

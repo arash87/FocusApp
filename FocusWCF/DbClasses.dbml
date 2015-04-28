@@ -15,7 +15,7 @@
   <Table Name="dbo.Profile" Member="Profiles">
     <Type Name="Profile">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="memberId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="memberId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Column Name="address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="city" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="zip" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -27,8 +27,14 @@
   </Table>
   <Table Name="dbo.CourseMembers" Member="CourseMembers">
     <Type Name="CourseMember">
-      <Column Name="memberId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="memberId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="courseId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FacebookMember" Member="FacebookMembers">
+    <Type Name="FacebookMember">
+      <Column Name="facebookid" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="accessToken" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Members" Member="Members">
