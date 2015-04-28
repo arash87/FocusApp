@@ -73,6 +73,60 @@
   <wsdl:message name="IService1_SetPasswordForMember_OutputMessage">
     <wsdl:part name="parameters" element="tns:SetPasswordForMemberResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_AddFacebookMember_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddFacebookMember" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddFacebookMember_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddFacebookMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAccessToken_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAccessToken" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAccessToken_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAccessTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetFacebookMembers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFacebookMembers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetFacebookMembers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFacebookMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateFirstName_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFirstName" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateFirstName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFirstNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateLastName_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateLastName" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateLastName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateLastNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAddress" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateZip_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateZip" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateZip_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateZipResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateCity_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCity" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateCity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdatePhone_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePhone" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdatePhone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePhoneResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetMembers">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMembers" message="tns:IService1_GetMembers_InputMessage" />
@@ -117,6 +171,42 @@
     <wsdl:operation name="SetPasswordForMember">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetPasswordForMember" message="tns:IService1_SetPasswordForMember_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetPasswordForMemberResponse" message="tns:IService1_SetPasswordForMember_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookMember">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddFacebookMember" message="tns:IService1_AddFacebookMember_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddFacebookMemberResponse" message="tns:IService1_AddFacebookMember_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccessToken">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateAccessToken" message="tns:IService1_UpdateAccessToken_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateAccessTokenResponse" message="tns:IService1_UpdateAccessToken_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookMembers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetFacebookMembers" message="tns:IService1_GetFacebookMembers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetFacebookMembersResponse" message="tns:IService1_GetFacebookMembers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFirstName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateFirstName" message="tns:IService1_UpdateFirstName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateFirstNameResponse" message="tns:IService1_UpdateFirstName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLastName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateLastName" message="tns:IService1_UpdateLastName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateLastNameResponse" message="tns:IService1_UpdateLastName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateAddress" message="tns:IService1_UpdateAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateAddressResponse" message="tns:IService1_UpdateAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateZip">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateZip" message="tns:IService1_UpdateZip_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateZipResponse" message="tns:IService1_UpdateZip_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateCity" message="tns:IService1_UpdateCity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateCityResponse" message="tns:IService1_UpdateCity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePhone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdatePhone" message="tns:IService1_UpdatePhone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdatePhoneResponse" message="tns:IService1_UpdatePhone_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -213,6 +303,87 @@
     </wsdl:operation>
     <wsdl:operation name="SetPasswordForMember">
       <soap:operation soapAction="http://tempuri.org/IService1/SetPasswordForMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookMember">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddFacebookMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccessToken">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateAccessToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookMembers">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetFacebookMembers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFirstName">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateFirstName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLastName">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateLastName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAddress">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateZip">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateZip" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCity">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateCity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePhone">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdatePhone" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

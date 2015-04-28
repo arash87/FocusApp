@@ -134,7 +134,7 @@ namespace FocusAppTest2.ServiceReference1 {
         private string lastnameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int memberIdField;
+        private long memberIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> phoneField;
@@ -231,7 +231,7 @@ namespace FocusAppTest2.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int memberId {
+        public long memberId {
             get {
                 return this.memberIdField;
             }
@@ -292,7 +292,7 @@ namespace FocusAppTest2.ServiceReference1 {
         private int courseIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int memberIdField;
+        private long memberIdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -318,7 +318,7 @@ namespace FocusAppTest2.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int memberId {
+        public long memberId {
             get {
                 return this.memberIdField;
             }
@@ -590,6 +590,67 @@ namespace FocusAppTest2.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FacebookMember", Namespace="http://schemas.datacontract.org/2004/07/FocusWCF")]
+    [System.SerializableAttribute()]
+    public partial class FacebookMember : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string accessTokenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long facebookidField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string accessToken {
+            get {
+                return this.accessTokenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.accessTokenField, value) != true)) {
+                    this.accessTokenField = value;
+                    this.RaisePropertyChanged("accessToken");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long facebookid {
+            get {
+                return this.facebookidField;
+            }
+            set {
+                if ((this.facebookidField.Equals(value) != true)) {
+                    this.facebookidField = value;
+                    this.RaisePropertyChanged("facebookid");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -619,28 +680,28 @@ namespace FocusAppTest2.ServiceReference1 {
         System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Course[]> GetCoursesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/JoinCourse", ReplyAction="http://tempuri.org/IService1/JoinCourseResponse")]
-        bool JoinCourse(int memberId, int courseId);
+        bool JoinCourse(long memberId, int courseId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/JoinCourse", ReplyAction="http://tempuri.org/IService1/JoinCourseResponse")]
-        System.Threading.Tasks.Task<bool> JoinCourseAsync(int memberId, int courseId);
+        System.Threading.Tasks.Task<bool> JoinCourseAsync(long memberId, int courseId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CancelCourse", ReplyAction="http://tempuri.org/IService1/CancelCourseResponse")]
-        bool CancelCourse(int memberId, int courseId);
+        bool CancelCourse(long memberId, int courseId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CancelCourse", ReplyAction="http://tempuri.org/IService1/CancelCourseResponse")]
-        System.Threading.Tasks.Task<bool> CancelCourseAsync(int memberId, int courseId);
+        System.Threading.Tasks.Task<bool> CancelCourseAsync(long memberId, int courseId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetProfile", ReplyAction="http://tempuri.org/IService1/GetProfileResponse")]
-        FocusAppTest2.ServiceReference1.Profile GetProfile(int memberId);
+        FocusAppTest2.ServiceReference1.Profile GetProfile(long memberId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetProfile", ReplyAction="http://tempuri.org/IService1/GetProfileResponse")]
-        System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Profile> GetProfileAsync(int memberId);
+        System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Profile> GetProfileAsync(long memberId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateProfile", ReplyAction="http://tempuri.org/IService1/UpdateProfileResponse")]
-        bool UpdateProfile(int memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city);
+        bool UpdateProfile(long memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateProfile", ReplyAction="http://tempuri.org/IService1/UpdateProfileResponse")]
-        System.Threading.Tasks.Task<bool> UpdateProfileAsync(int memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city);
+        System.Threading.Tasks.Task<bool> UpdateProfileAsync(long memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAdmin", ReplyAction="http://tempuri.org/IService1/GetAdminResponse")]
         FocusAppTest2.ServiceReference1.AdminModel[] GetAdmin();
@@ -659,6 +720,60 @@ namespace FocusAppTest2.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetPasswordForMember", ReplyAction="http://tempuri.org/IService1/SetPasswordForMemberResponse")]
         System.Threading.Tasks.Task SetPasswordForMemberAsync(int memberId, string passwordhash);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddFacebookMember", ReplyAction="http://tempuri.org/IService1/AddFacebookMemberResponse")]
+        FocusAppTest2.ServiceReference1.FacebookMember AddFacebookMember(long facebookid, string accessToken);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddFacebookMember", ReplyAction="http://tempuri.org/IService1/AddFacebookMemberResponse")]
+        System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.FacebookMember> AddFacebookMemberAsync(long facebookid, string accessToken);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateAccessToken", ReplyAction="http://tempuri.org/IService1/UpdateAccessTokenResponse")]
+        bool UpdateAccessToken(long facebookid, string accessToken);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateAccessToken", ReplyAction="http://tempuri.org/IService1/UpdateAccessTokenResponse")]
+        System.Threading.Tasks.Task<bool> UpdateAccessTokenAsync(long facebookid, string accessToken);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFacebookMembers", ReplyAction="http://tempuri.org/IService1/GetFacebookMembersResponse")]
+        FocusAppTest2.ServiceReference1.FacebookMember[] GetFacebookMembers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFacebookMembers", ReplyAction="http://tempuri.org/IService1/GetFacebookMembersResponse")]
+        System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.FacebookMember[]> GetFacebookMembersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateFirstName", ReplyAction="http://tempuri.org/IService1/UpdateFirstNameResponse")]
+        bool UpdateFirstName(long memberId, string fname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateFirstName", ReplyAction="http://tempuri.org/IService1/UpdateFirstNameResponse")]
+        System.Threading.Tasks.Task<bool> UpdateFirstNameAsync(long memberId, string fname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateLastName", ReplyAction="http://tempuri.org/IService1/UpdateLastNameResponse")]
+        bool UpdateLastName(long memberId, string lname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateLastName", ReplyAction="http://tempuri.org/IService1/UpdateLastNameResponse")]
+        System.Threading.Tasks.Task<bool> UpdateLastNameAsync(long memberId, string lname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateAddress", ReplyAction="http://tempuri.org/IService1/UpdateAddressResponse")]
+        bool UpdateAddress(long memberId, string address);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateAddress", ReplyAction="http://tempuri.org/IService1/UpdateAddressResponse")]
+        System.Threading.Tasks.Task<bool> UpdateAddressAsync(long memberId, string address);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateZip", ReplyAction="http://tempuri.org/IService1/UpdateZipResponse")]
+        bool UpdateZip(long memberId, int zip);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateZip", ReplyAction="http://tempuri.org/IService1/UpdateZipResponse")]
+        System.Threading.Tasks.Task<bool> UpdateZipAsync(long memberId, int zip);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateCity", ReplyAction="http://tempuri.org/IService1/UpdateCityResponse")]
+        bool UpdateCity(long memberId, string city);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateCity", ReplyAction="http://tempuri.org/IService1/UpdateCityResponse")]
+        System.Threading.Tasks.Task<bool> UpdateCityAsync(long memberId, string city);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdatePhone", ReplyAction="http://tempuri.org/IService1/UpdatePhoneResponse")]
+        bool UpdatePhone(long memberId, int phone);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdatePhone", ReplyAction="http://tempuri.org/IService1/UpdatePhoneResponse")]
+        System.Threading.Tasks.Task<bool> UpdatePhoneAsync(long memberId, int phone);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -720,35 +835,35 @@ namespace FocusAppTest2.ServiceReference1 {
             return base.Channel.GetCoursesAsync();
         }
         
-        public bool JoinCourse(int memberId, int courseId) {
+        public bool JoinCourse(long memberId, int courseId) {
             return base.Channel.JoinCourse(memberId, courseId);
         }
         
-        public System.Threading.Tasks.Task<bool> JoinCourseAsync(int memberId, int courseId) {
+        public System.Threading.Tasks.Task<bool> JoinCourseAsync(long memberId, int courseId) {
             return base.Channel.JoinCourseAsync(memberId, courseId);
         }
         
-        public bool CancelCourse(int memberId, int courseId) {
+        public bool CancelCourse(long memberId, int courseId) {
             return base.Channel.CancelCourse(memberId, courseId);
         }
         
-        public System.Threading.Tasks.Task<bool> CancelCourseAsync(int memberId, int courseId) {
+        public System.Threading.Tasks.Task<bool> CancelCourseAsync(long memberId, int courseId) {
             return base.Channel.CancelCourseAsync(memberId, courseId);
         }
         
-        public FocusAppTest2.ServiceReference1.Profile GetProfile(int memberId) {
+        public FocusAppTest2.ServiceReference1.Profile GetProfile(long memberId) {
             return base.Channel.GetProfile(memberId);
         }
         
-        public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Profile> GetProfileAsync(int memberId) {
+        public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Profile> GetProfileAsync(long memberId) {
             return base.Channel.GetProfileAsync(memberId);
         }
         
-        public bool UpdateProfile(int memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city) {
+        public bool UpdateProfile(long memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city) {
             return base.Channel.UpdateProfile(memberId, address, phone, birthdate, fname, lname, zip, city);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateProfileAsync(int memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city) {
+        public System.Threading.Tasks.Task<bool> UpdateProfileAsync(long memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city) {
             return base.Channel.UpdateProfileAsync(memberId, address, phone, birthdate, fname, lname, zip, city);
         }
         
@@ -774,6 +889,78 @@ namespace FocusAppTest2.ServiceReference1 {
         
         public System.Threading.Tasks.Task SetPasswordForMemberAsync(int memberId, string passwordhash) {
             return base.Channel.SetPasswordForMemberAsync(memberId, passwordhash);
+        }
+        
+        public FocusAppTest2.ServiceReference1.FacebookMember AddFacebookMember(long facebookid, string accessToken) {
+            return base.Channel.AddFacebookMember(facebookid, accessToken);
+        }
+        
+        public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.FacebookMember> AddFacebookMemberAsync(long facebookid, string accessToken) {
+            return base.Channel.AddFacebookMemberAsync(facebookid, accessToken);
+        }
+        
+        public bool UpdateAccessToken(long facebookid, string accessToken) {
+            return base.Channel.UpdateAccessToken(facebookid, accessToken);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateAccessTokenAsync(long facebookid, string accessToken) {
+            return base.Channel.UpdateAccessTokenAsync(facebookid, accessToken);
+        }
+        
+        public FocusAppTest2.ServiceReference1.FacebookMember[] GetFacebookMembers() {
+            return base.Channel.GetFacebookMembers();
+        }
+        
+        public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.FacebookMember[]> GetFacebookMembersAsync() {
+            return base.Channel.GetFacebookMembersAsync();
+        }
+        
+        public bool UpdateFirstName(long memberId, string fname) {
+            return base.Channel.UpdateFirstName(memberId, fname);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateFirstNameAsync(long memberId, string fname) {
+            return base.Channel.UpdateFirstNameAsync(memberId, fname);
+        }
+        
+        public bool UpdateLastName(long memberId, string lname) {
+            return base.Channel.UpdateLastName(memberId, lname);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateLastNameAsync(long memberId, string lname) {
+            return base.Channel.UpdateLastNameAsync(memberId, lname);
+        }
+        
+        public bool UpdateAddress(long memberId, string address) {
+            return base.Channel.UpdateAddress(memberId, address);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateAddressAsync(long memberId, string address) {
+            return base.Channel.UpdateAddressAsync(memberId, address);
+        }
+        
+        public bool UpdateZip(long memberId, int zip) {
+            return base.Channel.UpdateZip(memberId, zip);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateZipAsync(long memberId, int zip) {
+            return base.Channel.UpdateZipAsync(memberId, zip);
+        }
+        
+        public bool UpdateCity(long memberId, string city) {
+            return base.Channel.UpdateCity(memberId, city);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateCityAsync(long memberId, string city) {
+            return base.Channel.UpdateCityAsync(memberId, city);
+        }
+        
+        public bool UpdatePhone(long memberId, int phone) {
+            return base.Channel.UpdatePhone(memberId, phone);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdatePhoneAsync(long memberId, int phone) {
+            return base.Channel.UpdatePhoneAsync(memberId, phone);
         }
     }
 }
