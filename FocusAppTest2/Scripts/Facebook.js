@@ -18,8 +18,7 @@
 
         FB.getLoginStatus(function (response) {
             if (response.status === 'connected') {
-                if (window.location.href === 'http://localhost:55568/') { //vil heller kjøre et script i Index-viewet som gjør dette
-                    alert("hei");
+                if (window.location.href === 'http://simpleblog.duckdns.org/') { //vil heller kjøre et script i Index-viewet som gjør dette
                     var credentials = { uid: response.authResponse.userID, accessToken: response.authResponse.accessToken };
                     SubmitLogin(credentials);
                 }
