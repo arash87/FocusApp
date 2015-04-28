@@ -53,5 +53,23 @@ namespace FocusWCF
 
         [OperationContract]
         List<FacebookMember> GetFacebookMembers();
+
+        [OperationContract]
+        bool UpdateFirstName(long memberId, string fname);
+        
+        [OperationContract]
+        bool UpdateLastName(long memberId, string lname);
+
+        [OperationContract]
+        bool UpdateAddress(long memberId, string address);
+
+        [OperationContract]
+        bool UpdateZip(long memberId, int zip);
+
+        [OperationContract]
+        bool UpdateCity(long memberId, string city);
+
+        [OperationContract]
+        bool UpdatePhone(long memberId, int phone);
     }
 }

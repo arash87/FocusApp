@@ -138,5 +138,54 @@ namespace FocusWCF
         {
             return dx.FacebookMembers.ToList();
         }
+
+
+        public bool UpdateFirstName(long memberId, string fname)
+        {
+            Profile profile = GetProfile(memberId);
+            profile.firstname = fname;
+            dx.SubmitChanges();
+            return true;
+        }
+
+        public bool UpdateLastName(long memberId, string lname)
+        {
+            Profile profile = GetProfile(memberId);
+            profile.lastname = lname;
+            dx.SubmitChanges();
+            return true;
+        }
+
+        public bool UpdateAddress(long memberId, string address)
+        {
+            Profile profile = GetProfile(memberId);
+            profile.address = address;
+            dx.SubmitChanges();
+            return true;
+        }
+
+        public bool UpdateZip(long memberId, int zip)
+        {
+            Profile profile = GetProfile(memberId);
+            profile.zip = zip;
+            dx.SubmitChanges();
+            return true;
+        }
+
+        public bool UpdateCity(long memberId, string city)
+        {
+            Profile profile = GetProfile(memberId);
+            profile.city = city;
+            dx.SubmitChanges();
+            return true;
+        }
+
+        public bool UpdatePhone(long memberId, int phone)
+        {
+            Profile profile = GetProfile(memberId);
+            profile.phone = phone;
+            dx.SubmitChanges();
+            return true;
+        }
     }
 }
