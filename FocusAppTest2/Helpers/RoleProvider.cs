@@ -10,7 +10,17 @@ namespace FocusAppTest2.Helpers
         //SetAuthCookie uses this method, authorize different kinds of users here
         public override string[] GetRolesForUser(string username)
         {
-            return new [] { "member" };
+            ServiceReference1.Service1Client obj = new ServiceReference1.Service1Client();
+            try
+            {
+                var m = obj.GetMembers().First(x => x.email == username);
+                return new[] { "member" }; // makes it possible to get m.role if we wanna use roles from DB
+            }
+            // exception -> user is logged in through facebook
+            catch (InvalidOperationException)
+            {
+                return new[] {"member", "facebookmember" };
+            }
         }
 
 

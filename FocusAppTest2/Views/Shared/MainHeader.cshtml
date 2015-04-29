@@ -1,7 +1,9 @@
 ﻿<div id="headers" data-role="header" data-position="fixed">
     <h1>@ViewBag.Title</h1>
     <div class="pull-right">
-        <fb:login-button autologoutlink="true" perms="read_friendlists, create_event, email, publish_stream"></fb:login-button>
+        @if (!User.IsInRole("facebookmember"))
+        {
+            <a href="@Url.Action("Logout", "Home")" class="btn btn-sm">Logout</a>
+        }
     </div>
-    
 </div>

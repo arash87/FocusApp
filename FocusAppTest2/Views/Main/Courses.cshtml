@@ -19,7 +19,7 @@
                             @item.Info<br />
                             Sted: @item.Location <br />
                             Tid: @item.Start.ToShortTimeString()
-                            @if (item.End != null)
+                            @if (item.End != item.Start)
                             {
                                 <text> - </text>@item.End.ToShortTimeString()<text> </text>@item.End.ToShortDateString()
                             }<br />

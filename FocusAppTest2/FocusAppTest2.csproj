@@ -144,11 +144,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\ServiceReference3\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\CourseVM.cs" />
     <Compile Include="ViewModels\FacebookLoginVM.cs" />
     <Compile Include="ViewModels\MemberVM.cs" />
@@ -492,31 +487,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Service References\ServiceReference3\FocusAppTest2.ServiceReference3.AdminModel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ServiceReference3\FocusAppTest2.ServiceReference3.Course.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ServiceReference3\FocusAppTest2.ServiceReference3.CourseMember.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ServiceReference3\FocusAppTest2.ServiceReference3.Member.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ServiceReference3\FocusAppTest2.ServiceReference3.Profile.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ServiceReference3\FocusAppTest2.ServiceReference3.FacebookMember.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\ServiceReference3\Service1.disco" />
-    <None Include="Service References\ServiceReference3\configuration91.svcinfo" />
-    <None Include="Service References\ServiceReference3\configuration.svcinfo" />
-    <None Include="Service References\ServiceReference3\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -547,16 +517,6 @@
     </None>
     <Content Include="Views\Shared\MainHeader.cshtml" />
     <Content Include="Views\Main\_CurrentStatus.cshtml" />
-    <None Include="Service References\ServiceReference3\Service1.wsdl" />
-    <None Include="Service References\ServiceReference3\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference3\Service11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference3\Service12.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -570,7 +530,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />
-    <WCFMetadataStorage Include="Service References\ServiceReference3\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

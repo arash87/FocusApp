@@ -14,36 +14,33 @@ namespace FocusAppTest2.Controllers
     public class MainController : Controller
     {
         Service1Client obj = new Service1Client();
-        
 
         public ActionResult Courses()
         {
             List<Course> courses = obj.GetCourses().ToList();
             List<CourseMember> courseMember = obj.GetCourseMembers().ToList();
-            List<Course> filter;
+            long currentMember;
 
             // prøve vanlig medlem
             try
             {
-                var currentMember = obj.GetMembers().First(x => x.email == User.Identity.Name);
-                filter = (from course in courses
-                                       join cm in courseMember on course.id equals cm.courseId
-                                       where cm.memberId == currentMember.id
-                                       select course).ToList();
+                currentMember = obj.GetMembers().First(x => x.email == User.Identity.Name).id;
 
             } //exception -> medlem innlogget via facebook
             catch (InvalidOperationException)
-            {
-                var currentMember = obj.GetFacebookMembers().First(x => x.facebookid.ToString() == User.Identity.Name);
-                filter = (from course in courses
-                                       join cm in courseMember on course.id equals cm.courseId
-                                       where cm.memberId == currentMember.facebookid
-                                       select course).ToList();
+            { 
+                currentMember = obj.GetFacebookMembers().First(x => x.facebookid.ToString() == User.Identity.Name).facebookid;
             }
+
+            List<Course> filter = (from course in courses
+                      join cm in courseMember on course.id equals cm.courseId
+                      where cm.memberId == currentMember
+                      select course).ToList();
             var removeDuplicates = courses.Except(filter);
             var choosenCourses = from course in removeDuplicates
                                  select new CourseVM(course);
-            return View(choosenCourses);
+
+            return View(choosenCourses.OrderBy(x => x.Start.Date));
         }
 
         public ActionResult MyCourses()
@@ -71,7 +68,7 @@ namespace FocusAppTest2.Controllers
                          select new CourseVM(course);
             }
 
-            return View(chosenCourses.ToList());
+            return View(chosenCourses.ToList().OrderBy(x => x.Start.Date));
         }
 
         [HttpPost]

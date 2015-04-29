@@ -5,34 +5,41 @@
 <section data-role="page">
     @RenderPage("../Shared/MainHeader.cshtml")
     <div class="ui-content">
-            <form>
-                <fieldset class="ui-field-contain">
-                    <div>
-                        <label for="firstname">First Name:</label>
-                        <input type="text" name="firstname" id="firstname" value="@Model.firstname" />
-                        <label for="lastname">Last Name:</label>
-                        <input type="text" name="lastname" id="lastname" value="@Model.lastname" />
-                        <label for="address">Address:</label>
-                        <input type="text" name="address" id="address" value="@Model.address" />
-                        <label for="zip">Zip:</label>
-                        <input type="number" name="zip" id="zip" value="@Model.zip" />
-                        <label for="city">City:</label>
-                        <input type="text" name="city" id="city" value="@Model.city" />
-                        <label for="phone">Phone:</label>
-                        <input type="number" name="phone" id="phone" value="@Model.phone" />
-                        <label for="birthdate">Birthdate:</label>
-                        <input type="date" name="birthdate" id="birthdate" value="@ViewBag.Data1" />
-                    </div>
-                </fieldset>
-                <div class="formContainer" data-id="@Model.memberId">
-                    <a href="#" data-role="button" data-theme="b" data-icon="check" data-inline="true" data-corners="true"
-                       data-shadow="true" data-iconshadow="true" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-button-icon-left" id="post-update">
-                        <span class="ui-btn-inner ui-btn-corner-all">
-                            <span class="ui-btn-text">Update</span>
-                        </span>
-                    </a>
+        <form>
+            <fieldset class="ui-field-contain">
+                <div>
+                    <label for="firstname">First Name:</label>
+                    <input type="text" name="firstname" id="firstname" value="@Model.firstname" />
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" name="lastname" id="lastname" value="@Model.lastname" />
+                    <label for="address">Address:</label>
+                    <input type="text" name="address" id="address" value="@Model.address" />
+                    <label for="zip">Zip:</label>
+                    <input type="number" name="zip" id="zip" value="@Model.zip" />
+                    <label for="city">City:</label>
+                    <input type="text" name="city" id="city" value="@Model.city" />
+                    <label for="phone">Phone:</label>
+                    <input type="number" name="phone" id="phone" value="@Model.phone" />
+                    <label for="birthdate">Birthdate:</label>
+                    <input type="date" name="birthdate" id="birthdate" value="@ViewBag.Data1" />
                 </div>
-            </form>
+            </fieldset>
+            <div class="formContainer" data-id="@Model.memberId">
+                <a href="#" data-role="button" data-theme="b" data-icon="check" data-inline="true" data-corners="true"
+                   data-shadow="true" data-iconshadow="true" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-button-icon-left" id="post-update">
+                    Update
+                </a>
+            </div>
+        </form>
+        @if (User.IsInRole("facebookmember"))
+        {
+            <fb:login-button autologoutlink="true" perms="read_friendlists, create_event, email, publish_stream"></fb:login-button>
+        }
+        @using (Html.BeginForm("DeleteUser", "Home", @Model))
+        {
+            <input type="submit" class="btn btn-danger" value="Delete account" />
+        }
+
     </div>
     <div data-role="footer" data-position="fixed">
         <div data-role="navbar">
@@ -44,3 +51,6 @@
         </div>
     </div>
 </section>
+
+
+
