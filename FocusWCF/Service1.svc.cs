@@ -187,5 +187,16 @@ namespace FocusWCF
             dx.SubmitChanges();
             return true;
         }
+
+
+        public bool UpdateBirthday(int memberId, string birthdate)
+        {
+            DateTime chosenDate = DateTime.ParseExact(birthdate, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            DateTime initialValue = new DateTime(2015, 04, 24);
+            Profile profile = GetProfile(memberId);
+            profile.birthdate = (chosenDate.Date == initialValue.Date) ? (DateTime?)null : chosenDate.Date;
+            dx.SubmitChanges();
+            return true;
+        }
     }
 }
