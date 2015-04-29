@@ -153,5 +153,89 @@ namespace FocusAppTest2.Controllers
             List<AdminModel> adminList = obj.GetAdmin().ToList();
             return View(adminList);
         }
+
+        [HttpPost]
+        public ActionResult UpdateFName(long memberId, string firstName)
+        {
+            bool isUpdated = obj.UpdateFirstName(memberId, firstName);
+            if (!Request.IsAjaxRequest())
+            {
+                Profile profile = obj.GetProfile(memberId);
+                return RedirectToAction("Profile", profile);
+            }
+            return PartialView("_CurrentStatus");
+        }
+
+        [HttpPost]
+        public ActionResult UpdateLName(long memberId, string lastname)
+        {
+            bool isUpdated = obj.UpdateLastName(memberId, lastname);
+            if (!Request.IsAjaxRequest())
+            {
+                Profile profile = obj.GetProfile(memberId);
+                return RedirectToAction("Profile", profile);
+            }
+            return PartialView("_CurrentStatus");
+        }
+
+        [HttpPost]
+        public ActionResult UpdateAddress(long memberId, string address)
+        {
+            bool isUpdated = obj.UpdateAddress(memberId, address);
+            if (!Request.IsAjaxRequest())
+            {
+                Profile profile = obj.GetProfile(memberId);
+                return RedirectToAction("Profile", profile);
+            }
+            return PartialView("_CurrentStatus");
+        }
+
+        [HttpPost]
+        public ActionResult UpdateZip(long memberId, int zip)
+        {
+            bool isUpdated = obj.UpdateZip(memberId, zip);
+            if (!Request.IsAjaxRequest())
+            {
+                Profile profile = obj.GetProfile(memberId);
+                return RedirectToAction("Profile", profile);
+            }
+            return PartialView("_CurrentStatus");
+        }
+
+        [HttpPost]
+        public ActionResult UpdateCity(long memberId, string city)
+        {
+            bool isUpdated = obj.UpdateCity(memberId, city);
+            if (!Request.IsAjaxRequest())
+            {
+                Profile profile = obj.GetProfile(memberId);
+                return RedirectToAction("Profile", profile);
+            }
+            return PartialView("_CurrentStatus");
+        }
+
+        [HttpPost]
+        public ActionResult UpdatePhone(long memberId, int phone)
+        {
+            bool isUpdated = obj.UpdatePhone(memberId, phone);
+            if (!Request.IsAjaxRequest())
+            {
+                Profile profile = obj.GetProfile(memberId);
+                return RedirectToAction("Profile", profile);
+            }
+            return PartialView("_CurrentStatus");
+        }
+
+        //[HttpPost]
+        //public ActionResult UpdateBirthdate(int memberId, string birthdate)
+        //{
+        //    bool isUpdated = obj.UpdateBirthday(memberId, birthdate);
+        //    if (!Request.IsAjaxRequest())
+        //    {
+        //        Profile profile = obj.GetProfile(memberId);
+        //        return RedirectToAction("Profile", profile);
+        //    }
+        //    return PartialView("_CurrentStatus");
+        //}
     }
 }

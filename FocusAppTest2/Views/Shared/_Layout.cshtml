@@ -4,40 +4,48 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/jquery.mobile-1.4.5.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
 
-    
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery.mobile-1.4.5.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
     
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
-
-    <script src="~/Scripts/jquery-1.9.1.js"></script>
-    <script src="~/Scripts/jquery.mobile-1.4.5.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
 </head>
 
 <body>
-    @RenderBody()
-
-    <div id="fb-toor"></div>
-    <script src="@Url.Content("~/Scripts/Facebook.js")" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(function () {
-            InitialiseFacebook(@System.Configuration.ConfigurationManager.AppSettings["FacebookAppId"]);
-        });
-    </script>
-    
-
-   
-
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
-
-    
+    <div data-role="page" class="thePage">
+        <div data-role="header" data-position="fixed">
+            @RenderPage("../Shared/MainHeader.cshtml")
+        </div>
+        <div data-role="content">
+            @RenderBody()
+            @Scripts.Render("~/bundles/jquery")
+            @RenderSection("scripts", required: false)
+            <div id="fb-toor"></div>
+            <script src="@Url.Content("~/Scripts/Facebook.js")" type="text/javascript"></script>
+            <script type="text/javascript">
+                $(function () {
+                    InitialiseFacebook(@System.Configuration.ConfigurationManager.AppSettings["FacebookAppId"]);
+                });
+            </script>
+        </div>
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            @*@RenderPage("../Shared/MainFooter.cshtml")*@
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="@Url.Action("Courses","Main")" data-transition="slide">Courses</a></li>
+                    <li><a href="@Url.Action("Profile","Main")" class="ui-btn ui-icon-user ui-btn-icon-left" data-transition="slide">Profile</a></li>
+                    <li><a href="@Url.Action("Contact","Main")" class="ui-btn ui-icon-info ui-btn-icon-left" data-transition="slide">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript">
         $(function () {
             $('body').on("click", '.post-bid', function () {
@@ -108,54 +116,114 @@
                 });
                 return false;
             })
-            $('body').on("click", '#post-update', function () {
-                var button = $(this);
-                var div = button.parent('div');
-                var address = $("#address").val();
-                var phone = $("#phone").val();
-                var zip = $("#zip").val();
-                var birthdate = $("#birthdate").val();
-                var fname = $("#firstname").val();
-                var lname = $("#lastname").val();
-                var city = $("#city").val();
-                address = (!address) ? "" : $("#address").val();
-                phone = (!phone) ? "0" : $("#phone").val();
-                zip = (!zip) ? "0" : $("#zip").val();
-                birthdate = (!birthdate) ? "2015-04-24" : $("#birthdate").val();
-                fname = (!fname) ? "" : $("#firstname").val();
-                lname = (!lname) ? "" : $("#lastname").val();
-                city = (!city) ? "" : $("#city").val();
+           .on("click", '#post-update', function () {
+               var button = $(this);
+               var div = button.parent('div');
+               var address = $("#address").val();
+               var phone = $("#phone").val();
+               var zip = $("#zip").val();
+               var birthdate = $("#birthdate").val();
+               var fname = $("#firstname").val();
+               var lname = $("#lastname").val();
+               var city = $("#city").val();
+               address = (!address) ? "" : $("#address").val();
+               phone = (!phone) ? "0" : $("#phone").val();
+               zip = (!zip) ? "0" : $("#zip").val();
+               birthdate = (!birthdate) ? "2015-04-24" : $("#birthdate").val();
+               fname = (!fname) ? "" : $("#firstname").val();
+               lname = (!lname) ? "" : $("#lastname").val();
+               city = (!city) ? "" : $("#city").val();
 
+               $.ajax({
+                   type: "POST",
+                   url: "/Main/UpdateProfile",
+                   data: {
+                       id: div.data("id"), address: address, phone: phone, birthdate: birthdate, fname: fname,
+                       lname: lname, zip: zip, city: city
+                   }
+               })
+               .success(function () {
+                   button.css('background-color', 'lightgreen', 1000);
+               })
+               .error(function () {
+                   button.css('background-color', 'lightred');
+               })
+               return false;
+           })
+           .on("click", '#toMyCourses', function (e) {
+               window.location.href = "/Main/MyCourses";
+           })
+           .on("focus", '.input', function () {
+               var inputField = $(this);
+               inputField.css("background-color", "white");
+               var wrapper = inputField.parents('.form-group');
+               wrapper.find('.editButton').removeClass('hidden');
+           })
+           .on("focusout", '.input', function () {
+                var inputField = $(this);
+                inputField.css("background-color", "white");
+           })
+           .on("click", '.editButton', function () {
+               var editButton = $(this);
+               var wrapper = editButton.parents('.form-group');
+               switch (editButton.attr("id")) {
+                   case "changeFname":
+                       var inputValue = $("#firstname").val();
+                       editButton.addClass('hidden');
+                       ajaxFunc("/Main/UpdateFName", { memberId: wrapper.data("id"), firstname: inputValue }, "#firstname");
+                       break;
+                   case "changeLname":
+                       var inputValue = $("#lastname").val();
+                       editButton.addClass('hidden');
+                       ajaxFunc("/Main/UpdateLName", { memberId: wrapper.data("id"), lastname: inputValue }, "#lastname");
+                       break;
+                   case "changeAddress":
+                       var inputValue = $("#address").val();
+                       editButton.addClass('hidden');
+                       ajaxFunc("/Main/UpdateAddress", { memberId: wrapper.data("id"), address: inputValue }, "#address");
+                       break;
+                   case "changeZip":
+                       var inputValue = $("#zip").val();
+                       editButton.addClass('hidden');
+                       ajaxFunc("/Main/UpdateZip", { memberId: wrapper.data("id"), zip: inputValue }, "#zip");
+                       break;
+                   case "changeCity":
+                       var inputValue = $("#city").val();
+                       editButton.addClass('hidden');
+                       ajaxFunc("/Main/UpdateCity", { memberId: wrapper.data("id"), city: inputValue }, "#city");
+                       break;
+                   case "changePhone":
+                       var inputValue = $("#phone").val();
+                       editButton.addClass('hidden');
+                       ajaxFunc("/Main/UpdatePhone", { memberId: wrapper.data("id"), phone: inputValue }, "#phone");
+                       break;
+                   case "changeBirthdate":
+                       var inputValue = ($("#birthdate").val() == '') ? "2015-04-24" : $("#birthdate").val();
+                       editButton.addClass('hidden');
+                       ajaxFunc("/Main/UpdateBirthdate", { memberId: wrapper.data("id"), birthdate: inputValue }, "#birthdate");
+                       break;
+                   default:
+                       break;
+               }
+               return false;
+           })
+            function ajaxFunc(url, theObject, inputId) {
                 $.ajax({
                     type: "POST",
-                    url: "/Main/UpdateProfile",
-                    data: {
-                        id: div.data("id"), address: address, phone: phone, birthdate: birthdate, fname: fname,
-                        lname: lname, zip: zip, city: city
+                    url: url,
+                    data: theObject
+                })
+                .success(function (data) {
+                    if (typeof data !== "object")
+                        data = JSON.parse(data);
+                    if (data.state) {
+                        $(inputId).css("background-color", "lightgreen");
                     }
                 })
-                .success(function () {
-                    button.css('background-color', 'lightgreen', 1000);
+                .error(function (data) {
+                    alert("Error!");
                 })
-                .error(function () {
-                    button.css('background-color', 'lightred');
-                })
-                return false;
-            })
-            $('body').on("click", '#toMyCourses', function () {
-                $.ajax({
-                    type: "GET",
-                    url: "/Main/MyCourses",
-                    cache: false
-                })
-                .success(function () {
-                    window.location.href = "/Main/MyCourses";
-                })
-                .error(function () {
-                    alert("error!");
-                });
-                return false;
-            });
+            }
         });
     </script>
 </body>

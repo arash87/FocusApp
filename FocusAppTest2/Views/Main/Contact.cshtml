@@ -2,28 +2,16 @@
 @{
     ViewBag.Title = "Contact";
 }
+<div class="ui-content">
+    <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+        @foreach (var item in Model)
+        {
+            <li class="ui-li ui-li-static ui-btn-up-c ui-corner-top">
+                <h3 class="ui-li-heading">@item.Fname @item.Lname</h3>
+                <p class="ui-li-desc">@item.Phone</p>
+                <p class="ui-li-desc">@item.Email</p>
+            </li>
+        }
+    </ul>
+</div>
 
-<section data-role="page">
-    @RenderPage("../Shared/MainHeader.cshtml")
-    <div class="ui-content">
-        <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
-            @foreach (var item in Model)
-            {
-                <li class="ui-li ui-li-static ui-btn-up-c ui-corner-top ui-btn">
-                    <h3 class="ui-li-heading">@item.Fname @item.Lname</h3>
-                    <p class="ui-li-desc">@item.Phone</p>
-                    <p class="ui-li-desc">@item.Email</p>
-                </li>
-            }
-        </ul>
-    </div>
-    <div data-role="footer" data-position="fixed">
-        <div data-role="navbar">
-            <ul>
-                <li><a href="@Url.Action("Courses","Main")">Courses</a></li>
-                <li><a href="@Url.Action("Profile","Main")">Profile</a></li>
-                <li><a href="@Url.Action("Contact","Main")" class= "ui-btn ui-icon-info ui-btn-icon-left ui-state-persist ui-btn-active">Contact</a></li>
-            </ul>
-        </div>
-    </div>
-</section>

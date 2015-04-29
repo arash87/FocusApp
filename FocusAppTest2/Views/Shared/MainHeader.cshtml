@@ -1,9 +1,18 @@
-﻿<div id="headers" data-role="header" data-position="fixed">
+﻿<header id="headers" data-role="header" style="height:45px">
+
+    @*<div class="pull-right">
+            <fb:login-button autologoutlink="true" perms="read_friendlists, create_event, email, publish_stream"></fb:login-button>
+        </div>*@
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink(User.Identity.Name, "Profile", "Main", routeValues: null, htmlAttributes: new { data_icon = "user" })
+    }
+
+    @if (ViewBag.Title == "Courses")
+    { <form action="@Url.Action("MyCourses","Main")">
+        <div class="ui-input-btn ui-btn ui-btn-right ui-icon-home ui-btn-icon-right ui-btn-inline ui-corner-all">
+            My Courses<input class="col-xs-3" type="submit" />
+        </div>
+    </form>}
     <h1>@ViewBag.Title</h1>
-    <div class="pull-right">
-        @if (!User.IsInRole("facebookmember"))
-        {
-            <a href="@Url.Action("Logout", "Home")" class="btn btn-sm">Logout</a>
-        }
-    </div>
-</div>
+</header>
