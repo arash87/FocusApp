@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Courses";
 }
-<div id="container" class="col-xs-8">
+<div id="container" class="col-xs-12">
     <form class="ui-filterable">
         <input id="filterBasic-input" data-type="search" />
     </form>
@@ -10,7 +10,8 @@
          data-input="#filterBasic-input">
         @foreach (var item in Model)
         {
-            <div data-role="collapsible" class="collapsible" id="collapsible-@item.Id" data-id="@item.Id">
+            <div data-role="collapsible" class="collapsible-courses" id="collapsible-@item.Id" data-id="@item.Id"
+                 data-collapsed-icon="plus" data-expanded-icon="minus" data-dom-cache="false">
                 <h1>@item.Name - @item.Location - @item.Start.ToShortDateString()</h1>
                 <p>
                     @item.Info<br />
@@ -20,11 +21,20 @@
                     {
                         <text> - </text>@item.End.ToShortTimeString()<text> </text>@item.End.ToShortDateString()
 
-                            }<<br />
-                            Pris: @item.Price
-                        </p>
-                        <button type="submit" class="post-bid" style="width:100px;">Join</button>
-                    </div>
+                    }<br />
+                    Pris: @item.Price
+                </p>
+                <button type="submit" class="post-bid" style="width:100px;">Join</button>
+            </div>
         }
     </div>
 </div>
+@section scripts{
+    <script>
+        $(function () {
+            
+            $('.courseBar').addClass('ui-btn-active')
+                        .addClass('ui-state-persist');
+        }); 
+    </script>
+}

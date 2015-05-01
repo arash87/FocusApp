@@ -775,6 +775,12 @@ namespace FocusAppTest2.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdatePhone", ReplyAction="http://tempuri.org/IService1/UpdatePhoneResponse")]
         System.Threading.Tasks.Task<bool> UpdatePhoneAsync(long memberId, int phone);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateBirthday", ReplyAction="http://tempuri.org/IService1/UpdateBirthdayResponse")]
+        bool UpdateBirthday(int memberId, string birthdate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateBirthday", ReplyAction="http://tempuri.org/IService1/UpdateBirthdayResponse")]
+        System.Threading.Tasks.Task<bool> UpdateBirthdayAsync(int memberId, string birthdate);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteMember", ReplyAction="http://tempuri.org/IService1/DeleteMemberResponse")]
         bool DeleteMember(long memberId);
         
@@ -967,6 +973,14 @@ namespace FocusAppTest2.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> UpdatePhoneAsync(long memberId, int phone) {
             return base.Channel.UpdatePhoneAsync(memberId, phone);
+        }
+        
+        public bool UpdateBirthday(int memberId, string birthdate) {
+            return base.Channel.UpdateBirthday(memberId, birthdate);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateBirthdayAsync(int memberId, string birthdate) {
+            return base.Channel.UpdateBirthdayAsync(memberId, birthdate);
         }
         
         public bool DeleteMember(long memberId) {

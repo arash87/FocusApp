@@ -34,6 +34,13 @@ namespace FocusWCF
         {
             return dx.Courses.ToList();
         }
+
+        public bool IsUserRegistered(string email)
+        {
+            bool isRegistered = dx.Members.Any(x => x.email == email);
+            return isRegistered;
+        }
+
         public bool JoinCourse(long mId, int cId)
         {
             CourseMember cm = new CourseMember { memberId = mId, courseId = cId };
@@ -198,5 +205,8 @@ namespace FocusWCF
             dx.SubmitChanges();
             return true;
         }
+
+
+
     }
 }

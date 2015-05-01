@@ -25,6 +25,9 @@ namespace FocusWCF
         List<Course> GetCourses();
 
         [OperationContract]
+        bool IsUserRegistered(string email);
+
+        [OperationContract]
         bool JoinCourse(long memberId, int courseId);
 
         [OperationContract]
