@@ -49,6 +49,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="IsUserRegistered">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsUserRegisteredResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsUserRegisteredResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="JoinCourse">
     <xs:complexType>
       <xs:sequence>

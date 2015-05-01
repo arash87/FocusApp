@@ -679,6 +679,12 @@ namespace FocusAppTest2.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCourses", ReplyAction="http://tempuri.org/IService1/GetCoursesResponse")]
         System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Course[]> GetCoursesAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/IsUserRegistered", ReplyAction="http://tempuri.org/IService1/IsUserRegisteredResponse")]
+        bool IsUserRegistered(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/IsUserRegistered", ReplyAction="http://tempuri.org/IService1/IsUserRegisteredResponse")]
+        System.Threading.Tasks.Task<bool> IsUserRegisteredAsync(string email);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/JoinCourse", ReplyAction="http://tempuri.org/IService1/JoinCourseResponse")]
         bool JoinCourse(long memberId, int courseId);
         
@@ -845,6 +851,14 @@ namespace FocusAppTest2.ServiceReference1 {
         
         public System.Threading.Tasks.Task<FocusAppTest2.ServiceReference1.Course[]> GetCoursesAsync() {
             return base.Channel.GetCoursesAsync();
+        }
+        
+        public bool IsUserRegistered(string email) {
+            return base.Channel.IsUserRegistered(email);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsUserRegisteredAsync(string email) {
+            return base.Channel.IsUserRegisteredAsync(email);
         }
         
         public bool JoinCourse(long memberId, int courseId) {

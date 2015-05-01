@@ -31,6 +31,12 @@
   <wsdl:message name="IService1_GetCourses_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCoursesResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_IsUserRegistered_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsUserRegistered" />
+  </wsdl:message>
+  <wsdl:message name="IService1_IsUserRegistered_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsUserRegisteredResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_JoinCourse_InputMessage">
     <wsdl:part name="parameters" element="tns:JoinCourse" />
   </wsdl:message>
@@ -156,6 +162,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCourses" message="tns:IService1_GetCourses_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCoursesResponse" message="tns:IService1_GetCourses_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="IsUserRegistered">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/IsUserRegistered" message="tns:IService1_IsUserRegistered_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/IsUserRegisteredResponse" message="tns:IService1_IsUserRegistered_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="JoinCourse">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/JoinCourse" message="tns:IService1_JoinCourse_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/JoinCourseResponse" message="tns:IService1_JoinCourse_OutputMessage" />
@@ -260,6 +270,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetCourses">
       <soap:operation soapAction="http://tempuri.org/IService1/GetCourses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsUserRegistered">
+      <soap:operation soapAction="http://tempuri.org/IService1/IsUserRegistered" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
