@@ -56,12 +56,12 @@
                 <a id="changeBirthdate" href="#" class="editButton ui-btn ui-corner-all ui-icon-check ui-btn-icon-notext col-xs-2 hidden">Edit Icon</a>
             </div>
         </fieldset>
-        <div class="formContainer" data-id="@Model.memberId">
+        @*<div class="formContainer" data-id="@Model.memberId">
             <a href="#" data-role="button" data-theme="b" data-icon="check" data-inline="true" data-corners="true"
                data-shadow="true" data-iconshadow="true" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-button-icon-left" id="post-update">
                 Update
             </a>
-        </div>
+        </div>*@
     </form>
 
     @if (User.IsInRole("facebookmember"))
@@ -79,4 +79,11 @@
         <input type="submit" value="Delete user" class="ui-btn" />
     }
 </div>
-
+@section scripts{
+    <script>
+        $(function () {
+            $('.profileBar').addClass('ui-btn-active')
+                        .addClass('ui-state-persist');
+        });
+    </script>
+}

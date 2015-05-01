@@ -63,6 +63,13 @@ namespace FocusWCF
             return memberProfile;
         }
 
+        public bool IsUserRegistered(string email)
+        {
+            bool isRegistered = dx.Members.Any(x => x.email == email);
+            return isRegistered;
+        }
+
+
         public bool UpdateProfile(long memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city)
         {
             DateTime chosenDate = DateTime.ParseExact(birthdate, "yyyy-MM-dd", CultureInfo.InvariantCulture);

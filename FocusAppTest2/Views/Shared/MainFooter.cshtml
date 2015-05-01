@@ -1,45 +1,21 @@
 ﻿<div data-role="footer">
-@if (ViewBag.Title == "Courses")
-{
-    <div data-role="navbar">
-        <ul>
-            <li><a href="@Url.Action("Courses","Main")" class="ui-btn ui-icon-home ui-btn-icon-left ui-state-persist ui-btn-active">Courses</a></li>
-            <li><a href="@Url.Action("Profile","Main")" class="ui-btn ui-icon-user ui-btn-icon-left">Profile</a></li>
-            <li><a href="@Url.Action("Contact","Main")" class="ui-btn ui-icon-info ui-btn-icon-left">Contact</a></li>
-        </ul>
-    </div>
-}
-@if (ViewBag.Title == "My Courses")
-{
-    <div data-role="navbar">
-        <ul>
-            <li><a href="@Url.Action("Courses","Main")" data-transition="slide">Courses</a></li>
-            <li><a href="@Url.Action("Profile","Main")" class="ui-btn ui-icon-user ui-btn-icon-left" data-transition="slide">Profile</a></li>
-            <li><a href="@Url.Action("Contact","Main")" class="ui-btn ui-icon-info ui-btn-icon-left">Contact</a></li>
-        </ul>
-    </div>
-}
-@if (ViewBag.Title == "Profile")
-{
-    <div data-role="navbar">
-        <ul>
-            <li><a href="@Url.Action("Courses","Main")" class="ui-btn ui-icon-home ui-btn-icon-left">Courses</a></li>
-            <li><a href="@Url.Action("Profile","Main")" class="ui-btn ui-icon-user ui-btn-icon-left ui-state-persist ui-btn-active">Profile</a></li>
-            <li><a href="@Url.Action("Contact","Main")" class="ui-btn ui-icon-info ui-btn-icon-left">Contact</a></li>
-        </ul>
-    </div>
-}
-
-@if (ViewBag.Title == "Contact")
-{
-    <div data-role="navbar">
-        <ul>
-            <li><a href="@Url.Action("Courses","Main")">Courses</a></li>
-            <li><a href="@Url.Action("Profile","Main")">Profile</a></li>
-            <li><a href="@Url.Action("Contact","Main")" class="ui-btn ui-icon-info ui-btn-icon-left ui-state-persist ui-btn-active">Contact</a></li>
-        </ul>
-    </div>
-}
-
+    @if (Request.IsAuthenticated)
+    {
+        <div data-role="navbar">
+            <ul>
+                <li>
+                    <a href="@Url.Action("Courses","Main")" class="courseBar ui-btn ui-icon-home ui-btn-icon-top"
+                       data-ajax="false" @*data-transition="slide"*@>Courses</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("ProfileMenu","Main")" class="profileBar ui-btn ui-icon-user ui-btn-icon-top"
+                       data-ajax="false" @*data-transition="slide"*@>Profile</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Contact","Main")" class="contactBar ui-btn ui-icon-info ui-btn-icon-top"
+                       data-ajax="false" @*data-transition="slide"*@>Contact</a>
+                </li>
+            </ul>
+        </div>
+    }
 </div>
-

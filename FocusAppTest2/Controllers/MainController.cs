@@ -11,10 +11,12 @@ using FocusAppTest2.ViewModels;
 namespace FocusAppTest2.Controllers
 {
     [Authorize(Roles="member")]
+    [OutputCacheAttribute(VaryByParam = "*", Duration = 0, NoStore = true)]
     public class MainController : Controller
     {
         Service1Client obj = new Service1Client();
 
+        [OutputCacheAttribute(VaryByParam = "*", Duration = 0, NoStore = true)]
         public ActionResult Courses()
         {
             List<Course> courses = obj.GetCourses().ToList();
@@ -139,6 +141,13 @@ namespace FocusAppTest2.Controllers
             ViewBag.Data1 = stringDate;
             return View(profile);
         }
+
+        public ActionResult ProfileMenu()
+        {
+            return View();
+        }
+
+
 
         [HttpPost]
         public ActionResult UpdateProfile(long id, string address, int phone, string birthdate, string fname, string lname, int zip, string city)

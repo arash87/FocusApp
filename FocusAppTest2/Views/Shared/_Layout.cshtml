@@ -20,7 +20,7 @@
 
 <body>
     <div data-role="page" class="thePage">
-        <div data-role="header" data-position="fixed">
+        <div data-role="header" data-position="fixed" class="head">
             @RenderPage("../Shared/MainHeader.cshtml")
         </div>
         <div data-role="content">
@@ -36,21 +36,14 @@
             </script>
         </div>
         <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-            @*@RenderPage("../Shared/MainFooter.cshtml")*@
-            <div data-role="navbar">
-                <ul>
-                    <li><a href="@Url.Action("Courses","Main")" data-transition="slide">Courses</a></li>
-                    <li><a href="@Url.Action("Profile","Main")" class="ui-btn ui-icon-user ui-btn-icon-left" data-transition="slide">Profile</a></li>
-                    <li><a href="@Url.Action("Contact","Main")" class="ui-btn ui-icon-info ui-btn-icon-left" data-transition="slide">Contact</a></li>
-                </ul>
-            </div>
+            @RenderPage("../Shared/MainFooter.cshtml")
         </div>
     </div>
     <script type="text/javascript">
         $(function () {
             $('body').on("click", '.post-bid', function () {
                 var t = $(this);
-                wrapper = t.parents('.collapsible');
+                wrapper = t.parents('.collapsible-courses');
                 t.attr('disable', 'disable');
 
                 $.ajax({
@@ -64,8 +57,9 @@
                         data = JSON.parse(data);
                     if (data.state) {
                         wrapper.find('.ui-collapsible-heading-toggle')
-                            .removeClass('ui-icon-minus')
                             .addClass('ui-icon-check')
+                            .removeClass('ui-icon-minus')                   
+                            .removeClass('ui-icon-plus')
                             .css('background-color', '#B8E6B8');
                         wrapper.find('.ui-collapsible-content').slideUp();
                         wrapper.find('h1 a').click(function () {

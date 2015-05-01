@@ -19,7 +19,15 @@ namespace FocusAppTest2.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            if (Request.IsAuthenticated)
+            {
+                return RedirectToAction("MyCourses", "Main");
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
         [HttpPost]

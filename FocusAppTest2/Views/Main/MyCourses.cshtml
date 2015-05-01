@@ -4,7 +4,7 @@
 }
 
 <div class="mycourses ui-content">
-    <div id="container" class="col-xs-8">
+    <div id="container" class="col-xs-12">
         @foreach (var item in Model)
         {
             <div data-role="collapsible" class="collapsible-myCourses" data-theme="b" data-iconpos="right" data-collapsed-icon="check" data-expanded-icon="arrow-d" data-id="@item.Id">
@@ -23,11 +23,5 @@
             </div>
         }
     </div>
-    <form action="@Url.Action("Courses","Main")">
-        <div class="ui-input-btn ui-btn ui-icon-home ui-btn-icon-left ui-btn-inline ui-corner-all">
-            Courses
-            <input class="col-xs-3" type="submit" data-enhanced="true" value="Course" />
-        </div>
-    </form>
 </div>
 
