@@ -77,5 +77,8 @@ namespace FocusWCF
 
         [OperationContract]
         bool UpdateBirthday(int memberId, string birthdate);
+
+        [OperationContract]
+        bool DeleteMember(long memberId);
     }
 }

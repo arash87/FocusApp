@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Facebook;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -34,13 +35,6 @@ namespace FocusWCF
         {
             return dx.Courses.ToList();
         }
-
-        public bool IsUserRegistered(string email)
-        {
-            bool isRegistered = dx.Members.Any(x => x.email == email);
-            return isRegistered;
-        }
-
         public bool JoinCourse(long mId, int cId)
         {
             CourseMember cm = new CourseMember { memberId = mId, courseId = cId };
@@ -68,6 +62,13 @@ namespace FocusWCF
                                      select profile).First();
             return memberProfile;
         }
+
+        public bool IsUserRegistered(string email)
+        {
+            bool isRegistered = dx.Members.Any(x => x.email == email);
+            return isRegistered;
+        }
+
 
         public bool UpdateProfile(long memberId, string address, int phone, string birthdate, string fname, string lname, int zip, string city)
         {
@@ -112,7 +113,14 @@ namespace FocusWCF
             newMember.password = passwordhash;
             dx.Members.InsertOnSubmit(newMember);
             dx.SubmitChanges();
-            return dx.Members.First(x => x.email == newMember.email);
+
+            newMember = dx.Members.First(x => x.email == newMember.email);
+            Profile newProfile = new Profile();
+            newProfile.memberId = newMember.id;
+            dx.Profiles.InsertOnSubmit(newProfile);
+            dx.SubmitChanges();
+            
+            return newMember;
         }
 
         public void SetPasswordForMember(int memberId, string passwordhash)
@@ -125,12 +133,27 @@ namespace FocusWCF
 
         public FacebookMember AddFacebookMember(long facebookid, string accessToken)
         {
-            FacebookMember fb = new FacebookMember();
-            fb.facebookid = facebookid;
-            fb.accessToken = accessToken;
-            dx.FacebookMembers.InsertOnSubmit(fb);
+            FacebookMember newFb = new FacebookMember();
+            newFb.facebookid = facebookid;
+            newFb.accessToken = accessToken;
+            dx.FacebookMembers.InsertOnSubmit(newFb);
             dx.SubmitChanges();
-            return dx.FacebookMembers.First(x => x.facebookid == fb.facebookid);
+
+            newFb = dx.FacebookMembers.First(x => x.facebookid == newFb.facebookid);
+            Profile newProfile = new Profile();
+            newProfile.memberId = newFb.facebookid;
+
+            // set up connection to FB, retrieve and store selected fields
+            FacebookClient client = new FacebookClient(newFb.accessToken);
+            dynamic fbresult = client.Get("me?fields=first_name,last_name");
+            FacebookUserModel user = Newtonsoft.Json.JsonConvert.DeserializeObject<FacebookUserModel>(fbresult.ToString());
+
+            newProfile.firstname = user.first_name;
+            newProfile.lastname = user.last_name;
+            dx.Profiles.InsertOnSubmit(newProfile);
+            dx.SubmitChanges();
+
+            return newFb;
         }
 
         public bool UpdateAccessToken(long facebookid, string accessToken)
@@ -195,7 +218,6 @@ namespace FocusWCF
             return true;
         }
 
-
         public bool UpdateBirthday(int memberId, string birthdate)
         {
             DateTime chosenDate = DateTime.ParseExact(birthdate, "yyyy-MM-dd", CultureInfo.InvariantCulture);
@@ -206,7 +228,35 @@ namespace FocusWCF
             return true;
         }
 
+        public bool DeleteMember(long memberId)
+        {
+            
+            var member = dx.Members.FirstOrDefault(x => x.id == memberId);
+            if (member != null)
+                dx.Members.DeleteOnSubmit(member);
+            else
+            {
+                var fbmember = dx.FacebookMembers.First(x => x.facebookid == memberId);
+                dx.FacebookMembers.DeleteOnSubmit(fbmember);
+            }
+            Profile profile = dx.Profiles.First(x => x.memberId == memberId);
+            dx.Profiles.DeleteOnSubmit(profile);
+
+            dx.SubmitChanges();
+            return true;
+        }
 
 
+
+
+
+
+        private class FacebookUserModel
+        {
+            public string first_name { get; set; }
+            public string last_name { get; set; }
+        }
     }
+
+    
 }

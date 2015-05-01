@@ -53,17 +53,22 @@ namespace FocusAppTest2.Controllers
         [HttpPost]
         public ActionResult Index(MemberVM form)
         {
-            var member = obj.GetMembers().FirstOrDefault(u => u.email == form.Email);
+            var member = obj.GetMembers().FirstOrDefault(x => x.email == form.Email);
 
-            //member doesn't exist -> we create and return a new 
+            //if email or password is not provided properly, return right away
+            if (!ModelState.IsValid)
+                return View(form);
+
+            //member doesn't exist -> we create and return a new
             if (member == null) {
-                //TODO: serverside checks to validate formdata
                 member = AuthHelper.AddNewMember(form);
             }
+
             //member exists -> add error if password doesn't match
             else if (!AuthHelper.CheckPassword(member, form.Password))
-                ModelState.AddModelError("Password", "Password is incorrect");
+                ModelState.AddModelError("Password", "There's an account using that email with a different password");
 
+            //last check to see if the form is still valid
             if (!ModelState.IsValid)
                 return View(form);
 
@@ -77,6 +82,13 @@ namespace FocusAppTest2.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteUser(FocusAppTest2.ServiceReference1.Profile profile)
+        {
+            obj.DeleteMember(profile.memberId);
+            return RedirectToAction("Logout");
         }
     }
 }
