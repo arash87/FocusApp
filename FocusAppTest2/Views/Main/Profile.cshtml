@@ -59,11 +59,24 @@
         <div class="formContainer" data-id="@Model.memberId">
             <a href="#" data-role="button" data-theme="b" data-icon="check" data-inline="true" data-corners="true"
                data-shadow="true" data-iconshadow="true" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-button-icon-left" id="post-update">
-                <span class="ui-btn-inner ui-btn-corner-all">
-                    <span class="ui-btn-text">Update</span>
-                </span>
+                Update
             </a>
         </div>
     </form>
+
+    @if (User.IsInRole("facebookmember"))
+    {
+        <input type="button" class="ui-btn" value="Logout" onclick="fb_logout();" />
+    }
+    else
+    {
+        <a href="@Url.Action("Logout", "Home")" class="ui-btn">Logout</a>
+    }
+    
+    @using (@Html.BeginForm("DeleteUser", "Home"))
+    {
+        @Html.HiddenFor(x => x.memberId)
+        <input type="submit" value="Delete user" class="ui-btn" />
+    }
 </div>
 

@@ -1,4 +1,12 @@
-﻿function InitialiseFacebook(appId) {
+﻿function fb_login() {
+    FB.login();
+};
+
+function fb_logout() {
+    FB.logout();
+};
+
+function InitialiseFacebook(appId) {
     window.fbAsyncInit = function () {
         FB.init({
             appId: appId,
@@ -18,28 +26,16 @@
 
         FB.getLoginStatus(function (response) {
             if (response.status === 'connected') {
-                if (window.location.href === 'http://simpleblog.duckdns.org/') { //vil heller kjøre et script i Index-viewet som gjør dette
+                if (window.location.href === 'http://localhost:55568/') { //vil kanskje heller kjøre et script i Index-viewet som ordner dette
                     var credentials = { uid: response.authResponse.userID, accessToken: response.authResponse.accessToken };
                     SubmitLogin(credentials);
                 }
             }
-                //window.location.replace("home/inside");
-                //alert("user is logged into fb");
-            else if (response.status === 'not_authorized') { alert("user is not authorized"); }
+
+            else if (response.status === 'not_authorized') { }
             else {
             }
         });
-
-        //function RedirectLogin(credentials) {
-        //    $.ajax({
-        //        url: "account/facebookredirect",
-        //        type: "POST",
-        //        data: credentials,
-        //        success: function () {
-        //            window.location.replace("home/inside");
-        //        }
-        //    });
-        //}
 
         function SubmitLogin(credentials) {
             $.ajax({
@@ -47,10 +43,10 @@
                 type: "POST",
                 data: credentials,
                 error: function () {
-                    alert("error logging in to your facebook account.");
+                    alert("could not log you into the application through facebook");
                 },
                 success: function () {
-                    window.location.replace("main/mycourses");
+                    window.location.reload();
                 }
             });
         }

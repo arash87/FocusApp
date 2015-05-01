@@ -226,16 +226,16 @@ namespace FocusAppTest2.Controllers
             return PartialView("_CurrentStatus");
         }
 
-        //[HttpPost]
-        //public ActionResult UpdateBirthdate(int memberId, string birthdate)
-        //{
-        //    bool isUpdated = obj.UpdateBirthday(memberId, birthdate);
-        //    if (!Request.IsAjaxRequest())
-        //    {
-        //        Profile profile = obj.GetProfile(memberId);
-        //        return RedirectToAction("Profile", profile);
-        //    }
-        //    return PartialView("_CurrentStatus");
-        //}
+        [HttpPost]
+        public ActionResult UpdateBirthdate(int memberId, string birthdate)
+        {
+            bool isUpdated = obj.UpdateBirthday(memberId, birthdate);
+            if (!Request.IsAjaxRequest())
+            {
+                Profile profile = obj.GetProfile(memberId);
+                return RedirectToAction("Profile", profile);
+            }
+            return PartialView("_CurrentStatus");
+        }
     }
 }

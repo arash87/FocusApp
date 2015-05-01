@@ -67,20 +67,27 @@ namespace FocusAppTest2.Controllers
 
             //passed authentication
             FormsAuthentication.SetAuthCookie(member.email, true);
-            return RedirectToAction("MyCourses", "Main");
+            return RedirectToAction("Profile", "Main");
         }
 
+        [Authorize(Roles="member")]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "member")]
         [HttpPost]
         public ActionResult DeleteUser(FocusAppTest2.ServiceReference1.Profile profile)
         {
             obj.DeleteMember(profile.memberId);
             return RedirectToAction("Logout");
+        }
+
+        public ActionResult DeleteUser()
+        {
+            return RedirectToAction("Index");
         }
     }
 }
