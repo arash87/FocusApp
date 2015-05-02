@@ -1,6 +1,6 @@
 ﻿@model FocusAppTest2.ViewModels.MemberVM
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Index | FocusApp";
 }
 
 
@@ -94,7 +94,7 @@
                     if (typeof data !== "object")
                         data = JSON.parse(data);
                     if (data.state === "true") {
-                        window.location.href = "/Main/MyCourses";
+                        window.location.href = "/Main/ProfileMenu";
                     } else {
                         $('.errorMessage').removeAttr('hidden');
                         $('#password').val("");

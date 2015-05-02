@@ -21,7 +21,7 @@ namespace FocusAppTest2.Controllers
         {
             if (Request.IsAuthenticated)
             {
-                return RedirectToAction("Profile", "Main");
+                return RedirectToAction("ProfileMenu", "Main");
             }
             else
             {
@@ -105,7 +105,7 @@ namespace FocusAppTest2.Controllers
 
             //passed authentication
             FormsAuthentication.SetAuthCookie(member.email, true);
-            return RedirectToAction("Profile", "Main");
+            return RedirectToAction("ProfileMenu", "Main");
         }
 
         [Authorize(Roles="member")]

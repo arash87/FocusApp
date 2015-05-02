@@ -1,27 +1,39 @@
-﻿<header id="headers" data-role="header" style="height:45px">
+﻿@if (Request.IsAuthenticated)
+{
+    <header id="headers" data-role="header" style="height:45px">
 
-    @*<div class="pull-right">
-            <fb:login-button autologoutlink="true" perms="read_friendlists, create_event, email, publish_stream"></fb:login-button>
-        </div>*@
+        @*<div class="pull-right">
+                <fb:login-button autologoutlink="true" perms="read_friendlists, create_event, email, publish_stream"></fb:login-button>
+            </div>*@
 
-    @if (Request.IsAuthenticated)
-    {
-        if (User.IsInRole("facebookmember"))
+
+        @if (ViewBag.Title == "Courses")
         {
-            @Html.ActionLink("Logged in with fb", "Profile", "Main", routeValues: null, htmlAttributes: new { data_icon = "user" })
+            <form action="@Url.Action("MyCourses","Main")">
+                <div class="ui-input-btn ui-btn ui-btn-right ui-icon-home ui-btn-icon-right ui-btn-inline ui-corner-all">
+                    My Courses<input class="col-xs-3" type="submit" />
+                </div>
+            </form>
+        }
+        else if (ViewBag.Title == "My Courses")
+        {
+            <form action="@Url.Action("Courses","Main")">
+                <div class="ui-input-btn ui-btn ui-btn-right ui-icon-home ui-btn-icon-right ui-btn-inline ui-corner-all">
+                    Courses<input class="col-xs-3" type="submit" />
+                </div>
+            </form>
+        }
+
+        @if (User.IsInRole("facebookmember"))
+        {
+            @Html.ActionLink("Logged in with fb", "ProfileMenu", "Main", routeValues: null, htmlAttributes: new { data_icon = "user" });
         }
         else
         {
-            @Html.ActionLink(User.Identity.Name, "Profile", "Main", routeValues: null, htmlAttributes: new { data_icon = "user" })
-            
+            @Html.ActionLink(User.Identity.Name, "ProfileMenu", "Main", routeValues: null, htmlAttributes: new { data_icon = "user" });
         }
-    }
-    
-    @if (ViewBag.Title == "Courses")
-    { <form action="@Url.Action("MyCourses","Main")">
-        <div class="ui-input-btn ui-btn ui-btn-right ui-icon-home ui-btn-icon-right ui-btn-inline ui-corner-all">
-            My Courses<input class="col-xs-3" type="submit" />
-        </div>
-    </form>}
-    <h1>@ViewBag.Title</h1>
-</header>
+
+        <h1>@ViewBag.Title</h1>
+
+    </header>
+}

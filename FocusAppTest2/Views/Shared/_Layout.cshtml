@@ -21,10 +21,7 @@
 <body>
     <div data-role="page" class="thePage">
         <div data-role="header" data-position="fixed" class="head">
-            @if (Request.IsAuthenticated)
-            {
-                RenderPage("../Shared/MainHeader.cshtml");
-            }
+            @RenderPage("../Shared/MainHeader.cshtml")
         </div>
         <div data-role="content">
             @RenderBody()
