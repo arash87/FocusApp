@@ -1,5 +1,7 @@
 ﻿@model FocusAppTest2.ViewModels.MemberVM
-
+@{
+    ViewBag.Title = "Index";
+}
 
 
 @*------1-1-1-1-11-1-1-1-1-1--1-1-1-1-1-1-1-11-1-1-1-1-1-1-*@
@@ -22,8 +24,8 @@
             </div><!---form-group-->
         </fieldset>
         <div>
-            <a href="#" data-role="button" class="loginButton ui-disabled col-xs-5 col-sm-5" id="loginButton" data-inline="true" data-theme="b">Login</a>
-            <a href="#" data-role="button" class="col-xs-5 col-sm-5" onclick="fb_login();">Login with facebook</a>
+            <a href="#" data-role="button" class="loginButton ui-disabled col-xs-9 col-sm-9" id="loginButton" data-inline="true" data-theme="b">Login or register</a>
+            <a href="#" data-role="button" class="col-xs-9 col-sm-9" style="background-color:#3b5998; color:white;" onclick="fb_login();">Login with facebook</a>
         </div>
     </form>
 </div>

@@ -43,7 +43,7 @@ function InitialiseFacebook(appId) {
                 type: "POST",
                 data: credentials,
                 error: function () {
-                    alert("could not log you into the application through facebook");
+                    alert("could not auto-log you into the application through facebook, please try refreshing the page");
                 },
                 success: function () {
                     window.location.reload();

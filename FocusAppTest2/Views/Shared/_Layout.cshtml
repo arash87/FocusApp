@@ -21,7 +21,10 @@
 <body>
     <div data-role="page" class="thePage">
         <div data-role="header" data-position="fixed" class="head">
-            @RenderPage("../Shared/MainHeader.cshtml")
+            @if (Request.IsAuthenticated)
+            {
+                RenderPage("../Shared/MainHeader.cshtml");
+            }
         </div>
         <div data-role="content">
             @RenderBody()
@@ -58,7 +61,7 @@
                     if (data.state) {
                         wrapper.find('.ui-collapsible-heading-toggle')
                             .addClass('ui-icon-check')
-                            .removeClass('ui-icon-minus')                   
+                            .removeClass('ui-icon-minus')
                             .removeClass('ui-icon-plus')
                             .css('background-color', '#B8E6B8');
                         wrapper.find('.ui-collapsible-content').slideUp();
@@ -154,8 +157,8 @@
                wrapper.find('.editButton').removeClass('hidden');
            })
            .on("focusout", '.input', function () {
-                var inputField = $(this);
-                inputField.css("background-color", "white");
+               var inputField = $(this);
+               inputField.css("background-color", "white");
            })
            .on("click", '.editButton', function () {
                var editButton = $(this);
@@ -221,4 +224,5 @@
         });
     </script>
 </body>
+
 </html>
