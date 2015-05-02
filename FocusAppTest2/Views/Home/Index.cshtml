@@ -1,6 +1,6 @@
 ﻿@model FocusAppTest2.ViewModels.MemberVM
 
-<fb:login-button autologoutlink="true" perms="read_friendlists, create_event, email, publish_stream"></fb:login-button>
+
 
 @*------1-1-1-1-11-1-1-1-1-1--1-1-1-1-1-1-1-11-1-1-1-1-1-1-*@
 <div class="ui-content">
@@ -23,6 +23,7 @@
         </fieldset>
         <div>
             <a href="#" data-role="button" class="loginButton ui-disabled col-xs-5 col-sm-5" id="loginButton" data-inline="true" data-theme="b">Login</a>
+            <a href="#" data-role="button" class="col-xs-5 col-sm-5" onclick="fb_login();">Login with facebook</a>
         </div>
     </form>
 </div>
