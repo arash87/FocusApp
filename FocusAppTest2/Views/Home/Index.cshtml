@@ -1,28 +1,119 @@
 ﻿@model FocusAppTest2.ViewModels.MemberVM
-@{
-    ViewBag.Title = "Login";
-}
 
-@if (Request.IsAuthenticated)
-{
-    Response.Redirect("~/Main/Profile");
-}
+<fb:login-button autologoutlink="true" perms="read_friendlists, create_event, email, publish_stream"></fb:login-button>
 
-
-@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { data_ajax = "false" }))
-{
-    @Html.ValidationSummary()
-    <div>
-        @Html.LabelFor(x => x.Email)
-        @Html.EditorFor(x => x.Email)
-    </div>
-    <div>
-        @Html.LabelFor(x => x.Password)
-        @Html.EditorFor(x => x.Password)
-    </div>
-    <div>
-        <input type="submit" value="Login or Register" class="ui-btn" data-transition="slide" />
-    </div>
+@*------1-1-1-1-11-1-1-1-1-1--1-1-1-1-1-1-1-11-1-1-1-1-1-1-*@
+<div class="ui-content">
+    <img src="~/Content/images/logo-small.png" class="col-xs-10 col-sm-5" />
+    <form class="form-inline col-xs-10 col-sm-5" role="form">
+        <fieldset class="ui-field-contain">
+            <div class="form-group">
+                <div>
+                    <input type="email" name="email" class="loginInput" id="email" placeholder="Email" />
+                    <p class="invalidEmail" hidden="hidden">Invalid Email!</p>
+                </div>
+                <div class="confirmEmail hidden">
+                    <input type="email" name="confirmEmail" class="loginInput" placeholder="Confirm Email" id="confirmEmail" />
+                </div>
+                <div>
+                    <input type="password" name="password" id="password" placeholder="Password" />
+                    <p class="errorMessage" hidden="hidden">Wrong password!</p>
+                </div>
+            </div><!---form-group-->
+        </fieldset>
+        <div>
+            <a href="#" data-role="button" class="loginButton ui-disabled col-xs-5 col-sm-5" id="loginButton" data-inline="true" data-theme="b">Login</a>
+        </div>
+    </form>
+</div>
+@section scripts{
+    <script>
+        $(function () {
+            $('body').on("focusout", '#email', function () {
+                var email = $('#email').val();
+                if ($('#email').val() == "" || !validateEmail(email)) {
+                    $('.invalidEmail').removeAttr('hidden');
+                } else {
+                    $('.invalidEmail').attr('hidden', 'hidden');
+                    $.ajax({
+                        type: "POST",
+                        url: "/Home/CheckForExistingMember",
+                        data: { email: $('#email').val() }
+                    })
+                .success(function (data) {
+                    if (typeof data !== "object")
+                        data = JSON.parse(data);
+                    if (data.status == "true") {
+                        $('#email').css('background-color', '#B8E6B8');
+                        $('.confirmEmail').addClass('hidden');
+                        $('.loginButton').removeClass('ui-disabled');
+                    }
+                    if (data.status == "false") {
+                        $('.confirmEmail').removeClass('hidden');
+                    }
+                })
+                .error(function () {
+                    alert("didnt work!");
+                })
+                }
+            })
+            .on("focusout", '#confirmEmail', function () {
+                var email = $("#email").val();
+                var confirmEmail = $("#confirmEmail").val();
+                if (email === confirmEmail) {
+                    $('#email').css('background-color', '#B8E6B8');
+                    $('#confirmEmail').css('background-color', '#B8E6B8');
+                    $('.loginButton').removeClass('ui-disabled');
+                } else {
+                    $('#confirmEmail').css('background-color', '#FF977D');
+                    $('.loginButton').addClass('ui-disabled');
+                }
+            })
+            .on("click", '#loginButton', function () {
+                var confirmEmail = $('#confirmEmail').val();
+                var email = $('#email').val();
+                if ($('#password').val() === "") {
+                    $('#password').css('background-color', '#FF977D');
+                }
+                else if ((!$('.confirmEmail').hasClass('hidden')) && confirmEmail !== email) {
+                    $('#confirmEmail').css('background-color', '#FF977D');
+                }
+                else if (!validateEmail(email)) {
+                    $('#invalidEmail').removeAttr('hidden');
+                }
+                else {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Home/AuthenticateMember",
+                        data: { email: $('#email').val(), password: $('#password').val() }
+                    })
+                .success(function (data) {
+                    if (typeof data !== "object")
+                        data = JSON.parse(data);
+                    if (data.state === "true") {
+                        window.location.href = "/Main/MyCourses";
+                    } else {
+                        $('.errorMessage').removeAttr('hidden');
+                        $('#password').val("");
+                        $('#password').css('background-color', '#FF977D');
+                    }
+                })
+                .error(function (data) {
+                    alert("Something went wrong!");
+                })
+                }
+            })
+            .on("click", '.loginInput', function () {
+                $('.loginInput').css('background-color', 'white');
+            })
+            .on("click", '#password', function () {
+                $('#password').css('background-color', 'white');
+                $('.loginButton').removeClass('ui-disabled');
+            })
+            function validateEmail(email) {
+                var pattern = /^[a-zA-Z0-9_.-]+@@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{0,4}$/;
+                return pattern.test(email);
+            }
+        })
+    </script>
 }
-<input type="button" onclick="fb_login();" class="ui-btn" value="Login with facebook"/>
-<footer data-role="footer"></footer>
