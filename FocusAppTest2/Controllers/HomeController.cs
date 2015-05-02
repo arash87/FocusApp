@@ -21,7 +21,7 @@ namespace FocusAppTest2.Controllers
         {
             if (Request.IsAuthenticated)
             {
-                return RedirectToAction("MyCourses", "Main");
+                return RedirectToAction("Profile", "Main");
             }
             else
             {

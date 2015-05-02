@@ -26,7 +26,7 @@ function InitialiseFacebook(appId) {
 
         FB.getLoginStatus(function (response) {
             if (response.status === 'connected') {
-                if (window.location.href === 'http://localhost:55568/') { //vil kanskje heller kjøre et script i Index-viewet som ordner dette
+                if (window.location.href === 'http://simpleblog.duckdns.org/') { //vil kanskje heller kjøre et script i Index-viewet som ordner dette
                     var credentials = { uid: response.authResponse.userID, accessToken: response.authResponse.accessToken };
                     SubmitLogin(credentials);
                 }
