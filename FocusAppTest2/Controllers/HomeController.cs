@@ -51,6 +51,36 @@ namespace FocusAppTest2.Controllers
         }
 
         [HttpPost]
+        public ActionResult CheckForExistingMember(string email)
+        {
+            var member = obj.GetMembers().FirstOrDefault(u => u.email == email);
+            if (member != null)
+            {
+                return Json(new { status = "true" });
+            }
+            return Json(new { status = "false" });
+        }
+
+        [HttpPost]
+        public ActionResult AuthenticateMember(string email, string password)
+        {
+            var member = obj.GetMembers().FirstOrDefault(u => u.email == email);
+            if (member == null)
+            {
+                MemberVM m = new MemberVM();
+                m.Email = email;
+                m.Password = password;
+                member = AuthHelper.AddNewMember(m);
+            }
+            else if (!AuthHelper.CheckPassword(member, password))
+            {
+                return Json(new { state = "false" });
+            }
+            FormsAuthentication.SetAuthCookie(member.email, true);
+            return Json(new { state = "true" });
+        }
+
+        [HttpPost]
         public ActionResult Index(MemberVM form)
         {
             var member = obj.GetMembers().FirstOrDefault(x => x.email == form.Email);

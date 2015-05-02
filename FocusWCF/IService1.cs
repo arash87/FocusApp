@@ -48,8 +48,8 @@ namespace FocusWCF
         [OperationContract]
         void SetPasswordForMember(int memberId, string passwordhash);
 
-        [OperationContract]
-        FacebookMember AddFacebookMember(long facebookid, string accessToken);
+        //[OperationContract]
+        //FacebookMember AddFacebookMember(long facebookid, string accessToken);
 
         [OperationContract]
         bool UpdateAccessToken(long facebookid, string accessToken);
