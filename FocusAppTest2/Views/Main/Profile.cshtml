@@ -63,21 +63,6 @@
             </a>
         </div>*@
     </form>
-
-    @if (User.IsInRole("facebookmember"))
-    {
-        <input type="button" class="ui-btn" value="Logout" onclick="fb_logout();" />
-    }
-    else
-    {
-        <a href="@Url.Action("Logout", "Home")" class="ui-btn">Logout</a>
-    }
-    
-    @using (@Html.BeginForm("DeleteUser", "Home"))
-    {
-        @Html.HiddenFor(x => x.memberId)
-        <input type="submit" value="Delete user" class="ui-btn" />
-    }
 </div>
 @section scripts{
     <script>

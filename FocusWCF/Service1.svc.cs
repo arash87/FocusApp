@@ -242,6 +242,13 @@ namespace FocusWCF
             Profile profile = dx.Profiles.First(x => x.memberId == memberId);
             dx.Profiles.DeleteOnSubmit(profile);
 
+            foreach (var cm in dx.CourseMembers)
+            {
+                if (cm.memberId == memberId)
+                    dx.CourseMembers.DeleteOnSubmit(cm);
+            }
+
+
             dx.SubmitChanges();
             return true;
         }

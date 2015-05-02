@@ -144,7 +144,17 @@ namespace FocusAppTest2.Controllers
 
         public ActionResult ProfileMenu()
         {
-            return View();
+            FacebookMember fbmember;
+            Profile profile;
+            Member currentMember = obj.GetMembers().FirstOrDefault(x => x.email == User.Identity.Name);
+            
+            if (currentMember != null)
+                profile = obj.GetProfiles().First(x => x.memberId == currentMember.id);
+            else { 
+                fbmember = obj.GetFacebookMembers().First(x => x.facebookid.ToString() == User.Identity.Name);
+                profile = obj.GetProfiles().First(x => x.memberId == fbmember.facebookid);
+            }
+            return View(profile); // sørg for å returnere profile til viewet for logout/delete
         }
 
 
