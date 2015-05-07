@@ -14,7 +14,12 @@ namespace FocusAppTest2.Helpers
             try
             {
                 var m = obj.GetMembers().First(x => x.email == username);
+                
+                if (m.role == "admin")
+                    return new[] {"member", "admin"};
+
                 return new[] { "member" }; // makes it possible to get m.role if we wanna use roles from DB
+                //return new[] { "member", m.role };
             }
             // exception -> user is logged in through facebook
             catch (InvalidOperationException)
