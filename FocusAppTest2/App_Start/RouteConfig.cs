@@ -18,7 +18,10 @@ namespace FocusAppTest2
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-
+            /*
+            routes.MapRoute("Error500", "errors/500", new { controller = "Errors", action = "Error" });
+            routes.MapRoute("Error404", "errors/404", new { controller = "Errors", action = "NotFound" });
+            */
         }
     }
 }
