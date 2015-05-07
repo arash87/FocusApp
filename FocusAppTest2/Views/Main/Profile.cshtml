@@ -4,65 +4,67 @@
 }
 
 <div class="ui-content">
-    <form class="form-inline" role="form">
-        <fieldset class="ui-field-contain">
-            <div class="form-group" data-id="@Model.memberId">
-                <label class="col-xs-10" for="firstname">First Name:</label>
-                <div class="col-xs-10">
-                    <input type="text" name="firstname" class="input" id="firstname" value="@Model.firstname" />
+    <div id="container">
+        <form class="form-inline" role="form">
+            <fieldset class="ui-field-contain">
+                <div class="form-group col-xs-12 col-sm-12" data-id="@Model.memberId">
+                    <label class="col-xs-10 col-sm-4" for="firstname">First Name:</label>
+                    <div class="col-xs-10 col-sm-6">
+                        <input type="text" name="firstname" class="input" id="firstname" value="@Model.firstname" />
+                    </div>
+                    <a id="changeFname" href="#" class="editButton ui-btn ui-corner-all ui-icon-recycle ui-btn-icon-notext col-xs-2 col-sm-2 hidden">Edit Icon</a>
                 </div>
-                <a id="changeFname" href="#" class="editButton ui-btn ui-corner-all ui-icon-check ui-btn-icon-notext col-xs-2 hidden">Edit Icon</a>
-            </div>
-            <div class="form-group" data-id="@Model.memberId">
-                <label class="col-xs-10" for="lastname">Last Name:</label>
-                <div class="col-xs-10">
-                    <input type="text" name="lastname" class="input" id="lastname" value="@Model.lastname" />
+                <div class="form-group col-xs-12 col-sm-12" data-id="@Model.memberId">
+                    <label class="col-xs-10 col-sm-4" for="lastname">Last Name:</label>
+                    <div class="col-xs-10 col-sm-6">
+                        <input type="text" name="lastname" class="input" id="lastname" value="@Model.lastname" />
+                    </div>
+                    <a id="changeLname" href="#" class="editButton ui-btn ui-corner-all ui-icon-recycle ui-btn-icon-notext col-xs-2 col-sm-2 hidden">Edit Icon</a>
                 </div>
-                <a id="changeLname" href="#" class="editButton ui-btn ui-corner-all ui-icon-check ui-btn-icon-notext col-xs-2 hidden">Edit Icon</a>
-            </div>
-            <div class="form-group" data-id="@Model.memberId">
-                <label class="col-xs-10" for="address">Address:</label>
-                <div class="col-xs-10">
-                    <input type="text" name="address" class="input" id="address" value="@Model.address" />
+                <div class="form-group col-xs-12 col-sm-12" data-id="@Model.memberId">
+                    <label class="col-xs-10 col-sm-4" for="address">Address:</label>
+                    <div class="col-xs-10 col-sm-6">
+                        <input type="text" name="address" class="input" id="address" value="@Model.address" />
+                    </div>
+                    <a id="changeAddress" href="#" class="editButton ui-btn ui-corner-all ui-icon-recycle ui-btn-icon-notext col-xs-2 col-sm-2 hidden">Edit Icon</a>
                 </div>
-                <a id="changeAddress" href="#" class="editButton ui-btn ui-corner-all ui-icon-check ui-btn-icon-notext col-xs-2 hidden">Edit Icon</a>
-            </div>
-            <div class="form-group" data-id="@Model.memberId">
-                <label class="col-xs-10" for="zip">Zip:</label>
-                <div class="col-xs-10">
-                    <input type="number" name="zip" class="input" id="zip" value="@Model.zip" />
+                <div class="form-group col-xs-12 col-sm-12" data-id="@Model.memberId">
+                    <label class="col-xs-10 col-sm-4" for="zip">Zip:</label>
+                    <div class="col-xs-10 col-sm-6">
+                        <input type="number" name="zip" class="input" id="zip" value="@Model.zip" />
+                    </div>
+                    <a id="changeZip" href="#" class="editButton ui-btn ui-corner-all ui-icon-recycle ui-btn-icon-notext col-xs-2 col-sm-2 hidden">Edit Icon</a>
                 </div>
-                <a id="changeZip" href="#" class="editButton ui-btn ui-corner-all ui-icon-check ui-btn-icon-notext col-xs-2 hidden">Edit Icon</a>
-            </div>
-            <div class="form-group" data-id="@Model.memberId">
-                <label class="col-xs-10" for="city">City:</label>
-                <div class="col-xs-10">
-                    <input type="text" name="city" class="input" id="city" value="@Model.city" />
+                <div class="form-group col-xs-12 col-sm-12" data-id="@Model.memberId">
+                    <label class="col-xs-10 col-sm-4" for="city">City:</label>
+                    <div class="col-xs-10 col-sm-6">
+                        <input type="text" name="city" class="input" id="city" value="@Model.city" />
+                    </div>
+                    <a id="changeCity" href="#" class="editButton ui-btn ui-corner-all ui-icon-recycle ui-btn-icon-notext col-xs-2 col-sm-2 hidden">Edit Icon</a>
                 </div>
-                <a id="changeCity" href="#" class="editButton ui-btn ui-corner-all ui-icon-check ui-btn-icon-notext col-xs-2 hidden">Edit Icon</a>
-            </div>
-            <div class="form-group" data-id="@Model.memberId">
-                <label class="col-xs-10" for="phone">Phone:</label>
-                <div class="col-xs-10">
-                    <input type="number" name="phone" class="input" id="phone" value="@Model.phone" />
+                <div class="form-group col-xs-12 col-sm-12" data-id="@Model.memberId">
+                    <label class="col-xs-10 col-sm-4" for="phone">Phone:</label>
+                    <div class="col-xs-10 col-sm-6">
+                        <input type="number" name="phone" class="input" id="phone" value="@Model.phone" />
+                    </div>
+                    <a id="changePhone" href="#" class="editButton ui-btn ui-corner-all ui-icon-recycle ui-btn-icon-notext col-xs-2 col-sm-2 hidden">Edit Icon</a>
                 </div>
-                <a id="changePhone" href="#" class="editButton ui-btn ui-corner-all ui-icon-check ui-btn-icon-notext col-xs-2 hidden">Edit Icon</a>
-            </div>
-            <div class="form-group" data-id="@Model.memberId">
-                <label class="col-xs-10" for="birthdate">Birthdate:</label>
-                <div class="col-xs-10">
-                    <input type="date" name="birthdate" class="input" id="birthdate" value="@ViewBag.Data1" />
+                <div class="form-group col-xs-12 col-sm-12" data-id="@Model.memberId">
+                    <label class="col-xs-10 col-sm-4" for="birthdate">Birthdate:</label>
+                    <div class="col-xs-10 col-sm-6">
+                        <input type="date" name="birthdate" class="input" id="birthdate" value="@ViewBag.Data1" />
+                    </div>
+                    <a id="changeBirthdate" href="#" class="editButton ui-btn ui-corner-all ui-icon-recycle ui-btn-icon-notext col-xs-2 col-sm-2 hidden">Edit Icon</a>
                 </div>
-                <a id="changeBirthdate" href="#" class="editButton ui-btn ui-corner-all ui-icon-check ui-btn-icon-notext col-xs-2 hidden">Edit Icon</a>
-            </div>
-        </fieldset>
-        @*<div class="formContainer" data-id="@Model.memberId">
-            <a href="#" data-role="button" data-theme="b" data-icon="check" data-inline="true" data-corners="true"
-               data-shadow="true" data-iconshadow="true" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-button-icon-left" id="post-update">
-                Update
-            </a>
-        </div>*@
-    </form>
+            </fieldset>
+            @*<div class="formContainer" data-id="@Model.memberId">
+                    <a href="#" data-role="button" data-theme="b" data-icon="check" data-inline="true" data-corners="true"
+                       data-shadow="true" data-iconshadow="true" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-button-icon-left" id="post-update">
+                        Update
+                    </a>
+                </div>*@
+        </form>
+    </div>
 </div>
 @section scripts{
     <script>

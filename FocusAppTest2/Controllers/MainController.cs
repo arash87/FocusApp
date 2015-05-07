@@ -10,15 +10,20 @@ using FocusAppTest2.ViewModels;
 
 namespace FocusAppTest2.Controllers
 {
-    [Authorize(Roles="member")]
+    [Authorize(Roles = "member")]
     [OutputCacheAttribute(VaryByParam = "*", Duration = 0, NoStore = true)]
     public class MainController : Controller
     {
         Service1Client obj = new Service1Client();
 
         [OutputCacheAttribute(VaryByParam = "*", Duration = 0, NoStore = true)]
-        public ActionResult Courses()
+        public ActionResult Courses(string city = null)
         {
+            if (city == null)
+            {
+                city = "";
+            }
+
             List<Course> courses = obj.GetCourses().ToList();
             List<CourseMember> courseMember = obj.GetCourseMembers().ToList();
             long currentMember;
@@ -30,21 +35,26 @@ namespace FocusAppTest2.Controllers
 
             } //exception -> medlem innlogget via facebook
             catch (InvalidOperationException)
-            { 
+            {
                 currentMember = obj.GetFacebookMembers().First(x => x.facebookid.ToString() == User.Identity.Name).facebookid;
             }
 
             List<Course> filter = (from course in courses
-                      join cm in courseMember on course.id equals cm.courseId
-                      where cm.memberId == currentMember
-                      select course).ToList();
+                                   join cm in courseMember on course.id equals cm.courseId
+                                   where cm.memberId == currentMember
+                                   select course).ToList();
             var removeDuplicates = courses.Except(filter);
             var choosenCourses = from course in removeDuplicates
                                  select new CourseVM(course);
-
+            if (!city.Equals(""))
+            {
+                choosenCourses = from course in removeDuplicates
+                                 where course.location == city
+                                 select new CourseVM(course);
+                ViewBag.Title = city;
+            }
             return View(choosenCourses.OrderBy(x => x.Start.Date));
         }
-
         public ActionResult MyCourses()
         {
             List<Course> courses = obj.GetCourses().ToList();
@@ -56,21 +66,26 @@ namespace FocusAppTest2.Controllers
             {
                 var currentMember = obj.GetMembers().First(x => x.email == User.Identity.Name);
                 chosenCourses = from course in courses
-                         join cm in courseMember on course.id equals cm.courseId
-                         where cm.memberId == currentMember.id
-                         select new CourseVM(course);
+                                join cm in courseMember on course.id equals cm.courseId
+                                where cm.memberId == currentMember.id
+                                select new CourseVM(course);
 
             } // exception -> medlem innlogget via facebook
             catch (InvalidOperationException)
             {
                 var currentMember = obj.GetFacebookMembers().First(x => x.facebookid.ToString() == User.Identity.Name);
                 chosenCourses = from course in courses
-                         join cm in courseMember on course.id equals cm.courseId
-                         where cm.memberId == currentMember.facebookid
-                         select new CourseVM(course);
+                                join cm in courseMember on course.id equals cm.courseId
+                                where cm.memberId == currentMember.facebookid
+                                select new CourseVM(course);
             }
 
             return View(chosenCourses.ToList().OrderBy(x => x.Start.Date));
+        }
+
+        public ActionResult Category()
+        {
+            return View();
         }
 
         [HttpPost]
@@ -82,12 +97,12 @@ namespace FocusAppTest2.Controllers
                 var currentMember = obj.GetMembers().First(x => x.email == User.Identity.Name);
                 bool isSuccessful = obj.JoinCourse(currentMember.id, id);
             }
-            catch(InvalidOperationException)
+            catch (InvalidOperationException)
             {
                 var currentMember = obj.GetFacebookMembers().First(x => x.facebookid.ToString() == User.Identity.Name);
                 bool isSuccessful = obj.JoinCourse(currentMember.facebookid, id);
             }
-                // Try Catch & If
+            // Try Catch & If
             if (!Request.IsAjaxRequest())
                 return RedirectToAction("Course");
             return PartialView("_CurrentStatus");
@@ -107,7 +122,7 @@ namespace FocusAppTest2.Controllers
                 var currentMember = obj.GetFacebookMembers().First(x => x.facebookid.ToString() == User.Identity.Name);
                 bool isDeleted = obj.CancelCourse(currentMember.facebookid, id);
             }
-            
+
             if (!Request.IsAjaxRequest())
                 return RedirectToAction("MyCourses");
             return PartialView("_CurrentStatus");
@@ -126,7 +141,7 @@ namespace FocusAppTest2.Controllers
                 var currentMember = obj.GetFacebookMembers().First(x => x.facebookid.ToString() == User.Identity.Name);
                 profile = obj.GetProfile(currentMember.facebookid);
             }
-            
+
             DateTime birthday;
             string stringDate;
             if (profile.birthdate != null)
@@ -147,10 +162,11 @@ namespace FocusAppTest2.Controllers
             FacebookMember fbmember;
             Profile profile;
             Member currentMember = obj.GetMembers().FirstOrDefault(x => x.email == User.Identity.Name);
-            
+
             if (currentMember != null)
                 profile = obj.GetProfiles().First(x => x.memberId == currentMember.id);
-            else { 
+            else
+            {
                 fbmember = obj.GetFacebookMembers().First(x => x.facebookid.ToString() == User.Identity.Name);
                 profile = obj.GetProfiles().First(x => x.memberId == fbmember.facebookid);
             }

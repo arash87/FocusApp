@@ -2,17 +2,17 @@
     @if (Request.IsAuthenticated)
     {
         <div data-role="navbar">
-            <ul>
+            <ul class="footerbar">
                 <li>
-                    <a href="@Url.Action("Courses","Main")" class="courseBar ui-btn ui-icon-home ui-btn-icon-top"
+                    <a href="@Url.Action("Category","Main")" class="courseBar footerlink ui-btn ui-icon-home ui-btn-icon-top"
                        data-ajax="false" @*data-transition="slide"*@>Courses</a>
                 </li>
                 <li>
-                    <a href="@Url.Action("ProfileMenu","Main")" class="profileBar ui-btn ui-icon-user ui-btn-icon-top"
+                    <a href="@Url.Action("Profile","Main")" class="profileBar footerlink ui-btn ui-icon-user ui-btn-icon-top"
                        data-ajax="false" @*data-transition="slide"*@>Profile</a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Contact","Main")" class="contactBar ui-btn ui-icon-info ui-btn-icon-top"
+                    <a href="@Url.Action("Contact","Main")" class="contactBar footerlink ui-btn ui-icon-info ui-btn-icon-top"
                        data-ajax="false" @*data-transition="slide"*@>Contact</a>
                 </li>
             </ul>

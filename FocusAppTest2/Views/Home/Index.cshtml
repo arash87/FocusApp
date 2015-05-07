@@ -5,13 +5,17 @@
 
 
 @*------1-1-1-1-11-1-1-1-1-1--1-1-1-1-1-1-1-11-1-1-1-1-1-1-*@
-<div class="ui-content">
-    <img src="~/Content/images/logo-small.png" class="col-xs-10 col-sm-5" />
-    <form class="form-inline col-xs-10 col-sm-5" role="form">
+<div class="ui-content indexContent col-xs-12 col-sm-12">
+    <img src="~/Content/images/logo-small.png" class="logo red-logo col-xs-12 col-sm-12 col-sm-offset-4 img-responsive" />
+    <img src="~/Content/images/logo-small-green.png" class="hidden logo green-logo col-xs-12 col-sm-12 col-sm-offset-4 img-responsive" />
+    <img src="~/Content/images/logo-small-orange.png" class="hidden logo orange-logo col-xs-12 col-sm-12 col-sm-offset-4 img-responsive" />
+
+
+    <form class="form-inline col-xs-12 c col-sm-12 col-sm-offset-4" role="form">
         <fieldset class="ui-field-contain">
             <div class="form-group">
                 <div>
-                    <input type="email" name="email" class="loginInput" id="email" placeholder="Email" />
+                    <input type="email" name="email" class="loginInput " id="email" placeholder="Email" />
                     <p class="invalidEmail" hidden="hidden">Invalid Email!</p>
                 </div>
                 <div class="confirmEmail hidden">
@@ -23,9 +27,10 @@
                 </div>
             </div><!---form-group-->
         </fieldset>
-        <div>
-            <a href="#" data-role="button" class="loginButton ui-disabled col-xs-9 col-sm-9" id="loginButton" data-inline="true" data-theme="b">Login or register</a>
-            <a href="#" data-role="button" class="col-xs-9 col-sm-9" style="background-color:#3b5998; color:white;" onclick="fb_login();">Login with facebook</a>
+        <div class="loginButtons">
+            <a href="#" data-role="button" class="loginButton ui-disabled col-xs-12 col-sm-12 ui-link ui-btn ui-btn-b ui-btn-inline ui-shadow ui-corner-all" id="loginButton" data-inline="true" data-theme="b" role="button">Login or register</a>
+            
+            <a href="#" data-role="button" class="col-xs-12 col-sm-12 ui-link ui-btn ui-shadow ui-corner-all" style="background-color:#3b5998; color:white;" onclick="fb_login();" role="button">Login with facebook</a>
         </div>
     </form>
 </div>
@@ -50,9 +55,14 @@
                         $('#email').css('background-color', '#B8E6B8');
                         $('.confirmEmail').addClass('hidden');
                         $('.loginButton').removeClass('ui-disabled');
+
+                        $('.red-logo').addClass('hidden');
+                        $('.green-logo').removeClass('hidden');
+                        $('.orange-logo').addClass('hidden');
                     }
                     if (data.status == "false") {
                         $('.confirmEmail').removeClass('hidden');
+                        showOrangeLogo();
                     }
                 })
                 .error(function () {
@@ -71,6 +81,8 @@
                     $('#confirmEmail').css('background-color', '#FF977D');
                     $('.loginButton').addClass('ui-disabled');
                 }
+                showOrangeLogo();
+                
             })
             .on("click", '#loginButton', function () {
                 var confirmEmail = $('#confirmEmail').val();
@@ -109,6 +121,13 @@
             .on("click", '.loginInput', function () {
                 $('.loginInput').css('background-color', 'white');
             })
+            .on("click", '#email', function () {
+                $('.confirmEmail').addClass('hidden');
+            })
+    
+            .on("click", '#confirmEmail', function () {
+                showOrangeLogo();
+            })
             .on("click", '#password', function () {
                 $('#password').css('background-color', 'white');
                 $('.loginButton').removeClass('ui-disabled');
@@ -116,6 +135,11 @@
             function validateEmail(email) {
                 var pattern = /^[a-zA-Z0-9_.-]+@@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{0,4}$/;
                 return pattern.test(email);
+            }
+            function showOrangeLogo() {
+                $('.red-logo').addClass('hidden');
+                $('.green-logo').addClass('hidden');
+                $('.orange-logo').removeClass('hidden');
             }
         })
     </script>

@@ -7,7 +7,7 @@
     <div id="container" class="col-xs-12">
         @foreach (var item in Model)
         {
-            <div data-role="collapsible" class="collapsible-myCourses" data-theme="b" data-iconpos="right" data-collapsed-icon="check" data-expanded-icon="arrow-d" data-id="@item.Id">
+            <div data-role="collapsible" class="collapsible-myCourses" data-iconpos="right" data-collapsed-icon="check" data-expanded-icon="arrow-d" data-id="@item.Id">
                 <h1>@item.Name - @item.Location - @item.Start.ToShortDateString()</h1>
                 <p>
                     @item.Info<br />

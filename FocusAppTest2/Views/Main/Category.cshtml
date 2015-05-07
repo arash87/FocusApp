@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Category";
+}
+
+<div class="ui-content">
+    <div id="container">
+        <div class="col-xs-6 col-sm-3 top-row">
+            <a href="@Url.Action("Courses", "Main", new { city = "Bergen" })" data-ajax="false"><img src="~/Content/images/logo-small.png" class="category img-responsive" /></a>
+        </div>
+        <div class="col-xs-6 col-sm-3 top-row">
+            <a href="@Url.Action("Courses","Main",new{ city = "Oslo" })" data-ajax="false"><img src="~/Content/images/logo-small.png" class="category img-responsive" /></a>
+        </div>
+
+        <div class="col-xs-6 col-sm-3">
+            <a href="@Url.Action("Courses", "Main", new { city = "London" })" data-ajax="false"><img src="~/Content/images/logo-small.png" class="category img-responsive" /></a>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+            <a href="@Url.Action("Courses", "Main", new { city = "Trondheim" })" data-ajax="false"><img src="~/Content/images/logo-small.png" class="category img-responsive" /></a>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(function () {
+
+            $('.courseBar').addClass('ui-btn-active')
+                        .addClass('ui-state-persist');
+        });
+    </script>
+}

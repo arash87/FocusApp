@@ -20,7 +20,7 @@
 
 <body>
     <div data-role="page" class="thePage">
-        <div data-role="header" data-position="fixed" class="head">
+        <div data-role="header" data-position="fixed" data-fullscreen="true" class="head">
             @RenderPage("../Shared/MainHeader.cshtml")
         </div>
         <div data-role="content">
@@ -35,7 +35,7 @@
                 });
             </script>
         </div>
-        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+        <div data-role="footer" data-position="fixed" @*data-tap-toggle="false"*@ data-fullscreen="true">
             @RenderPage("../Shared/MainFooter.cshtml")
         </div>
     </div>

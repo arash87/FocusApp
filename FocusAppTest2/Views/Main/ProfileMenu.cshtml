@@ -3,20 +3,29 @@
     ViewBag.Title = "ProfileMenu";
 }
 
-<div data-role="controlgroup">
-    <a href="@Url.Action("Profile","Main")" class="ui-btn ui-icon-user ui-btn-icon-left ui-corner-all">Change/View Profile</a>
-    @if (User.IsInRole("facebookmember"))
-    {
-        <a href="#" onclick="fb_logout();" class="ui-btn ui-icon-lock ui-btn-icon-left ui-corner-all">Logout</a>
-    }
-    else
-    {
-        <a href="@Url.Action("Logout", "Home")" class="ui-btn ui-icon-lock ui-btn-icon-left ui-corner-all">Logout</a>
-    }
-    @using (@Html.BeginForm("DeleteUser", "Home"))
-    {
-        @Html.HiddenFor(x => x.memberId)
-        <a href="#" onclick="$(this).closest('form').submit(); return fb_logout();" class="ui-btn ui-icon-delete ui-btn-icon-left ui-corner-all">Delete user</a>
-        
-    }
+<div class="ui-content col-xs-12 col-xs-offset-2 col-sm-12 col-sm-offset-1">
+    <div id="container">
+        <div data-role="controlgroup">
+            <div class="col-xs-7 col-sm-3">
+                <a href="@Url.Action("Profile","Main")"><img src="~/Content/images/logo-small.png" class="profileCategory img-responsive" /></a>
+            </div>
+            <div class="col-xs-7 col-sm-3">
+                @if (User.IsInRole("facebookmember"))
+                {
+                    <a href="#" onclick="fb_logout();"><img src="~/Content/images/logo-small.png" class="profileCategory img-responsive" /></a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Logout", "Home")"><img src="~/Content/images/logo-small.png" class="profileCategory img-responsive" /></a>
+                }
+            </div>
+            <div class="col-xs-7 col-sm-3">
+                @using (@Html.BeginForm("DeleteUser", "Home"))
+                {
+                    @Html.HiddenFor(x => x.memberId)
+                    <a href="#" onclick="$(this).closest('form').submit(); return fb_logout();"><img src="~/Content/images/logo-small.png" class="profileCategory img-responsive" /></a>
+                }
+            </div>
+        </div>
+    </div>
 </div>

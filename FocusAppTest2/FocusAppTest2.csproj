@@ -157,6 +157,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\images\facebook-logo.png" />
     <Content Include="Content\images\icons-png\action-black.png" />
     <Content Include="Content\images\icons-png\action-white.png" />
     <Content Include="Content\images\icons-png\alert-black.png" />
@@ -357,6 +358,8 @@
     <Content Include="Content\images\icons-svg\user-white.svg" />
     <Content Include="Content\images\icons-svg\video-black.svg" />
     <Content Include="Content\images\icons-svg\video-white.svg" />
+    <Content Include="Content\images\logo-small-orange.png" />
+    <Content Include="Content\images\logo-small-green.png" />
     <Content Include="Content\images\logo-small.png" />
     <Content Include="Content\jquery.mobile-1.4.5.css" />
     <Content Include="Content\jquery.mobile-1.4.5.min.css" />
@@ -523,6 +526,7 @@
     <Content Include="Views\Main\_CurrentStatus.cshtml" />
     <Content Include="Views\Shared\MainFooter.cshtml" />
     <Content Include="Views\Main\ProfileMenu.cshtml" />
+    <Content Include="Views\Main\Category.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
