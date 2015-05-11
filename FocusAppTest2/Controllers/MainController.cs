@@ -173,16 +173,6 @@ namespace FocusAppTest2.Controllers
             return View(profile); // sørg for å returnere profile til viewet for logout/delete
         }
 
-
-
-        [HttpPost]
-        public ActionResult UpdateProfile(long id, string address, int phone, string birthdate, string fname, string lname, int zip, string city)
-        {
-            bool updated = obj.UpdateProfile(id, address, phone, birthdate, fname, lname, zip, city);
-            Profile profile = obj.GetProfile(id);
-            return View("Profile", profile);
-        }
-
         public ActionResult Contact()
         {
             List<AdminModel> adminList = obj.GetAdmin().ToList();

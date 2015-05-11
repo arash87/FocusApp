@@ -8,12 +8,35 @@
                        data-ajax="false" @*data-transition="slide"*@>Courses</a>
                 </li>
                 <li>
+                    <a href="@Url.Action("MyCourses", "Main")" class="favBar footerlink ui-btn ui-icon-heart ui-btn-icon-top"
+                       data-ajax="false" @*data-transition="slide"*@>Fav</a>
+                </li>
+                <li>
                     <a href="@Url.Action("Profile","Main")" class="profileBar footerlink ui-btn ui-icon-user ui-btn-icon-top"
                        data-ajax="false" @*data-transition="slide"*@>Profile</a>
                 </li>
                 <li>
                     <a href="@Url.Action("Contact","Main")" class="contactBar footerlink ui-btn ui-icon-info ui-btn-icon-top"
                        data-ajax="false" @*data-transition="slide"*@>Contact</a>
+                </li>
+            </ul>
+        </div>
+    }
+    @if (ViewBag.Title == "Profile")
+    {
+        <div data-role="navbar" class="profileFootbar">
+            <ul class="footerbar">
+                <li>
+                    <a href="#" class="changeInput footerlink ui-btn" id="user"><span class="glyphicon glyphicon-user"></span></a>
+                </li>
+                <li>
+                    <a href="#" class="changeInput footerlink ui-btn" id="home"><span class="glyphicon glyphicon-home"></span></a>
+                </li>
+                <li>
+                    <a href="#" class="changeInput footerlink ui-btn" id="calendar"><span class="glyphicon glyphicon-calendar"></span></a>
+                </li>
+                <li>
+                    <a href="#" class="changeInput footerlink ui-btn" id="phone"><span class="glyphicon glyphicon-phone"></span></a>
                 </li>
             </ul>
         </div>

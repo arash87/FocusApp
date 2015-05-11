@@ -5,10 +5,10 @@
     background-color: #fff;
 }
 
-.thePage img{
+/*.thePage img{
     position: relative;
     max-width:400px;
-}
+}*/
 
 header, footer, nav, section {
     display: block;
@@ -16,98 +16,221 @@ header, footer, nav, section {
 
 /* Custom Styles for page
 -----------------------------------------------------------*/
-.ui-mobile-viewport{    /*Bottom of the page*/
-    background-color:beige;
+.ui-mobile-viewport { /*Bottom of the page*/
+    background-color: beige;
 }
-.ui-page{
-    background-color:beige;
+
+.ui-page {
+    background-image: url('images/background.jpg');
 }
-.ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
-    border:none;
-    background:beige;
+
+.ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle {
+    /*border: none;
+    background: beige;*/
+}
+
+.inputProfile {
+    max-width: 10em;
+    float: left;
+}
+
+.editProfile {
+    margin: auto;
 }
 
 .collapsible-myCourses .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle {
-    background:#B8E6B8;
+    background: #B8E6B8;
 }
 
-.ui-footer{
-    border:none;
-}
-.footerbar{ 
-    background-color:beige;
-}
-a.footerlink.ui-btn.ui-btn-icon-top{
-    border:none;
-    border-radius:20px;
-    background-color:#5CA29D;
-    color:white;
-    font-family:Corbel;
-    font-stretch:wider;
+.confirm.ui-btn {
+    background-color: black;
 }
 
-a.footerlink.ui-btn-active.ui-state-persist{
-    background-color:black;
+.confirm.ui-btn {
+    background-color: black;
 }
 
 
-@media screen and (max-width: 765px){
-    .logo{
-        /*margin-left:2em;*/
-        width:100%;
-        min-width:100px;
-        max-width:300px;
-    }
-    .category{
-        width:100%;
-        min-width:80px;
-        max-width:100px;
-    }
-
-    .profileCategory{
-        width:100%;
-        min-width:100px;
-        max-width:100px;
-    }
-
-    #container{
-        margin-top:3em;
-    }
-    .loginButtons{
-        max-width:20em;
-    }
-    .ui-input-text{
-        max-width:35em;
-    }
+.deleteUser .ui-collapsible-heading-toggle {
+    text-align: center;
 }
 
-@media screen and (min-width: 766px){
-    .logo{
-        width:100%;
-        min-width:100px;
-        max-width:400px;
-    }
-    .loginButtons{
-        max-width:20em;
-    }
-    .category{
-        width:100%;
-        margin-top:5em;
-        min-width:150px;
-        max-width:200px;
-    }
-    .profileCategory{
-        margin-top:5em;
-        margin-left:2em;
-        width:100%;
-        max-width:100px;
-    }
-    .ui-input-text{
-        min-width:27em;
-    }
+.ui-footer {
+    border: none;
 }
 
+.footerbar {
+    background-color: beige;
+}
 
+a.footerlink.ui-btn.ui-btn-icon-top {
+    border: none;
+    /*border-radius: 20px;*/
+    background-color: #5CA29D;
+    color: white;
+    font-family: Corbel;
+    font-stretch: wider;
+}
+
+a.footerlink.ui-btn-active.ui-state-persist {
+    background-color: black;
+}
+
+label {
+    color: white;
+}
+
+b {
+    color: black;
+    font-family: 'Century Gothic';
+    font-size: 1em;
+}
+
+.boldText{
+    padding-top:10px;
+    max-width:100px;
+    margin: 0 auto;
+    display:block;
+
+}
+
+.row {
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 765px) {
+
+    .logo {
+        margin: 0 auto;
+        width: 100%;
+        min-width: 150px;
+        max-width: 250px;
+    }
+
+    .loginForm {
+        margin: 0 auto;
+        max-width: 30em;
+    }
+
+    .category {
+        width: 100%;
+        min-width: 50px;
+        max-width: 150px;
+    }
+
+    .profileCategory {
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+        max-width: 300px;
+    }
+
+    .profileFootbar {
+        width: 100%;
+        position: absolute;
+        bottom: 55px;
+    }
+
+    .slideElement {
+        margin-top: 1em;
+    }
+
+    #container {
+        margin-top: 3em;
+        margin-bottom: 3em;
+    }
+
+    .loginButtons {
+        max-width: 30em;
+    }
+
+    .myCourses {
+        background: #98bf21;
+        height: 100px;
+        width: 50px;
+        margin-top: 6em;
+    }
+
+    .toppForm {
+        margin-top: 3em;
+    }
+
+    .glyphicon {
+        font-size: 2em;   
+    }
+    .mainProfile{
+        font-size:9em;
+        max-width:130px;
+        margin: 0 auto;
+        display:block;
+    }
+
+    .fadeElement{
+        border-bottom-style:solid;
+        border-radius:3em;
+    }
+
+}
+
+@media screen and (min-width: 766px) {
+    .logo {
+        margin: 0 auto;
+        width: 100%;
+        min-width: 100px;
+        max-width: 300px;
+    }
+
+    .loginForm {
+        margin: 0 auto;
+        max-width: 27em;
+    }
+
+    .loginButtons {
+        max-width: 30em;
+    }
+
+    #container {
+        margin-top: 3em;
+    }
+
+    .category {
+        margin-top: 6em;
+        min-width: 150px;
+        max-width: 200px;
+    }
+
+    .profileCategory {
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+        max-width: 500px;
+    }
+
+    .profileFootbar {
+        width: 100%;
+        position: absolute;
+        bottom: 55px;
+    }
+
+    .slideElement {
+        margin-top: 1em;
+    }
+
+    .glyphicon {
+        font-size: 3em;
+    }
+
+    .mainProfile{
+        font-size:10em;
+        max-width:130px;
+        margin: 0 auto;
+        display:block;
+    }
+
+    .ui-input-text {
+        min-width: 27em;
+    }
+}
 
 /* Styles for basic forms
 -----------------------------------------------------------*/

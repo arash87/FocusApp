@@ -6,30 +6,32 @@
 
 @*------1-1-1-1-11-1-1-1-1-1--1-1-1-1-1-1-1-11-1-1-1-1-1-1-*@
 <div class="ui-content indexContent col-xs-12 col-sm-12">
-    <img src="~/Content/images/logo-small.png" class="logo red-logo col-xs-12 col-sm-12 col-sm-offset-4 img-responsive" />
-    <img src="~/Content/images/logo-small-green.png" class="hidden logo green-logo col-xs-12 col-sm-12 col-sm-offset-4 img-responsive" />
-    <img src="~/Content/images/logo-small-orange.png" class="hidden logo orange-logo col-xs-12 col-sm-12 col-sm-offset-4 img-responsive" />
+    <img src="~/Content/images/logo-small.png" class="logo red-logo img-responsive" />
+    <img src="~/Content/images/logo-small-green.png" class="hidden logo green-logo img-responsive" />
+    <img src="~/Content/images/logo-small-orange.png" class="hidden logo orange-logo img-responsive" />
 
 
-    <form class="form-inline col-xs-12 c col-sm-12 col-sm-offset-4" role="form">
+    <form class="form-inline loginForm" role="form">
         <fieldset class="ui-field-contain">
-            <div class="form-group">
-                <div>
-                    <input type="email" name="email" class="loginInput " id="email" placeholder="Email" />
+            <div>
+                <div class="form-group has-feedback">
+                    <input type="email" name="email" class="loginInput" id="email" placeholder="Email" />
+                    <i class="glyphicon glyphicon-user form-control-feedback"></i>
                     <p class="invalidEmail" hidden="hidden">Invalid Email!</p>
                 </div>
-                <div class="confirmEmail hidden">
-                    <input type="email" name="confirmEmail" class="loginInput" placeholder="Confirm Email" id="confirmEmail" />
-                </div>
-                <div>
+                <div class="form-group has-feedback">
                     <input type="password" name="password" id="password" placeholder="Password" />
+                    <i class="glyphicon glyphicon-lock form-control-feedback"></i>
                     <p class="errorMessage" hidden="hidden">Wrong password!</p>
+                </div>
+                <div class="confirmPassword hidden">
+                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" />
+                    <p class="errorPassword" hidden="hidden">Passwords dont match!</p>
                 </div>
             </div><!---form-group-->
         </fieldset>
         <div class="loginButtons">
             <a href="#" data-role="button" class="loginButton ui-disabled col-xs-12 col-sm-12 ui-link ui-btn ui-btn-b ui-btn-inline ui-shadow ui-corner-all" id="loginButton" data-inline="true" data-theme="b" role="button">Login or register</a>
-            
             <a href="#" data-role="button" class="col-xs-12 col-sm-12 ui-link ui-btn ui-shadow ui-corner-all" style="background-color:#3b5998; color:white;" onclick="fb_login();" role="button">Login with facebook</a>
         </div>
     </form>
@@ -39,7 +41,7 @@
         $(function () {
             $('body').on("focusout", '#email', function () {
                 var email = $('#email').val();
-                if ($('#email').val() == "" || !validateEmail(email)) {
+                if (!validateEmail(email)) {
                     $('.invalidEmail').removeAttr('hidden');
                 } else {
                     $('.invalidEmail').attr('hidden', 'hidden');
@@ -61,7 +63,8 @@
                         $('.orange-logo').addClass('hidden');
                     }
                     if (data.status == "false") {
-                        $('.confirmEmail').removeClass('hidden');
+                        //$('.confirmEmail').removeClass('hidden');
+                        $('.confirmPassword').removeClass('hidden');
                         showOrangeLogo();
                     }
                 })
@@ -70,15 +73,16 @@
                 })
                 }
             })
-            .on("focusout", '#confirmEmail', function () {
-                var email = $("#email").val();
-                var confirmEmail = $("#confirmEmail").val();
-                if (email === confirmEmail) {
-                    $('#email').css('background-color', '#B8E6B8');
-                    $('#confirmEmail').css('background-color', '#B8E6B8');
+            .on("focusout", '#confirmPassword', function () {
+                var password = $("#password").val();
+                var confirmPassword = $("#confirmPassword").val();
+                if (password === confirmPassword) {
+                    $('#password').css('background-color', '#B8E6B8');
+                    $('#confirmPassword').css('background-color', '#B8E6B8');
                     $('.loginButton').removeClass('ui-disabled');
                 } else {
-                    $('#confirmEmail').css('background-color', '#FF977D');
+                    $('#password').css('background-color', '#FF977D');
+                    $('.errorPassword').removeAttr('hidden');
                     $('.loginButton').addClass('ui-disabled');
                 }
                 showOrangeLogo();
@@ -89,9 +93,6 @@
                 var email = $('#email').val();
                 if ($('#password').val() === "") {
                     $('#password').css('background-color', '#FF977D');
-                }
-                else if ((!$('.confirmEmail').hasClass('hidden')) && confirmEmail !== email) {
-                    $('#confirmEmail').css('background-color', '#FF977D');
                 }
                 else if (!validateEmail(email)) {
                     $('#invalidEmail').removeAttr('hidden');
@@ -122,7 +123,12 @@
                 $('.loginInput').css('background-color', 'white');
             })
             .on("click", '#email', function () {
-                $('.confirmEmail').addClass('hidden');
+                $('.confirmPassword').addClass('hidden');
+                $('#password').css('background-color', 'white')
+                    .val("");
+                $('#confirmPassword').css('background-color', 'white')
+                    .val("");
+                
             })
     
             .on("click", '#confirmEmail', function () {
@@ -130,6 +136,7 @@
             })
             .on("click", '#password', function () {
                 $('#password').css('background-color', 'white');
+                $('.errorPassword').attr('hidden','hidden');
                 $('.loginButton').removeClass('ui-disabled');
             })
             function validateEmail(email) {
