@@ -1,4 +1,4 @@
-﻿//using Facebook;
+﻿using Facebook;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -131,30 +131,30 @@ namespace FocusWCF
         }
 
 
-        //public FacebookMember AddFacebookMember(long facebookid, string accessToken)
-        //{
-        //    FacebookMember newFb = new FacebookMember();
-        //    newFb.facebookid = facebookid;
-        //    newFb.accessToken = accessToken;
-        //    dx.FacebookMembers.InsertOnSubmit(newFb);
-        //    dx.SubmitChanges();
+        public FacebookMember AddFacebookMember(long facebookid, string accessToken)
+        {
+            FacebookMember newFb = new FacebookMember();
+            newFb.facebookid = facebookid;
+            newFb.accessToken = accessToken;
+            dx.FacebookMembers.InsertOnSubmit(newFb);
+            dx.SubmitChanges();
 
-        //    newFb = dx.FacebookMembers.First(x => x.facebookid == newFb.facebookid);
-        //    Profile newProfile = new Profile();
-        //    newProfile.memberId = newFb.facebookid;
+            newFb = dx.FacebookMembers.First(x => x.facebookid == newFb.facebookid);
+            Profile newProfile = new Profile();
+            newProfile.memberId = newFb.facebookid;
 
-        //    // set up connection to FB, retrieve and store selected fields
-        //    FacebookClient client = new FacebookClient(newFb.accessToken);
-        //    dynamic fbresult = client.Get("me?fields=first_name,last_name");
-        //    FacebookUserModel user = Newtonsoft.Json.JsonConvert.DeserializeObject<FacebookUserModel>(fbresult.ToString());
+            // set up connection to FB, retrieve and store selected fields
+            FacebookClient client = new FacebookClient(newFb.accessToken);
+            dynamic fbresult = client.Get("me?fields=first_name,last_name");
+            FacebookUserModel user = Newtonsoft.Json.JsonConvert.DeserializeObject<FacebookUserModel>(fbresult.ToString());
 
-        //    newProfile.firstname = user.first_name;
-        //    newProfile.lastname = user.last_name;
-        //    dx.Profiles.InsertOnSubmit(newProfile);
-        //    dx.SubmitChanges();
+            newProfile.firstname = user.first_name;
+            newProfile.lastname = user.last_name;
+            dx.Profiles.InsertOnSubmit(newProfile);
+            dx.SubmitChanges();
 
-        //    return newFb;
-        //}
+            return newFb;
+        }
 
         public bool UpdateAccessToken(long facebookid, string accessToken)
         {

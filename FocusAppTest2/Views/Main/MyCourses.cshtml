@@ -5,23 +5,49 @@
 
 <div class="mycourses ui-content">
     <div id="container" class="col-xs-12">
-        @foreach (var item in Model)
+        @if (@Model.Count() <= 0)
         {
-            <div data-role="collapsible" class="collapsible-myCourses" data-iconpos="right" data-collapsed-icon="check" data-expanded-icon="arrow-d" data-id="@item.Id">
-                <h1>@item.Name - @item.Location - @item.Start.ToShortDateString()</h1>
-                <p>
-                    @item.Info<br />
-                    Sted: @item.Location <br />
-                    Tid: @item.Start.ToShortTimeString()
-                    @if (item.End != null)
-                    {
-                        <text> - </text>@item.End.ToShortTimeString()<text> </text>@item.End.ToShortDateString()
-                    }<br />
-                    Pris: @item.Price
-                </p>
-                <button type="submit" class="cancel-bid" style="width:100px;">Cancel</button>
-            </div>
+            <h4>
+                Du er for øyeblikket ikke påmeldt noen kurs.
+            </h4>
+                <a href="/Main/Category" class="ui-btn ui-btn-corner-all ui-btn-icon-left ui-icon-bullets">Finn kurs</a>
         }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <div data-role="collapsible" class="collapsible-myCourses" data-iconpos="right" data-collapsed-icon="check" data-expanded-icon="arrow-d" data-id="@item.Id">
+                    <h1>@item.Name - @item.Start.ToLongDateString()</h1>
+                    <p>
+                        <strong>Tid: </strong> @item.Start.ToShortTimeString()
+                        @* Displays end-time if it differs from start-time, and end-date in parenthesis if it differs from start-date *@
+                        @if (item.Start.CompareTo(item.End) < 0)
+                        {
+                            @:- @item.End.ToShortTimeString()
+                        if (item.Start.Date.CompareTo(item.End.Date) < 0)
+                        {
+                            @:(@item.End.ToLongDateString())
+                        }
+                        }
+                        <br />
+                        <strong>Adresse: </strong> @item.Address <br />
+                        @if (item.Price == 0 || item.Price == null)
+                        {
+                            <strong>Gratis inngang!</strong>
+                        }
+                        else
+                        {
+                            @:<strong>Pris: </strong>@item.Price kr
+                    }
+                        <br />
+                        <strong>Totalt antall plasser:</strong> @item.Capacity <br />
+                        <em>@item.Info</em>
+                    </p>
+                    <button type="submit" class="cancel-bid" style="width:100px;">Cancel</button>
+                </div>
+            }
+        }
+        
     </div>
 </div>
 @section scripts{

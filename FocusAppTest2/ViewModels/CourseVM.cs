@@ -18,6 +18,7 @@ namespace FocusAppTest2.ViewModels
             Info = c.info;
             Capacity = c.capacity;
             Name = c.name;
+            Address = c.address;
         }
         public int Id { get; set; }
         public DateTime Start { get; set; }
@@ -27,5 +28,6 @@ namespace FocusAppTest2.ViewModels
         public string Info { get; set; }
         public int Capacity { get; set; }
         public string Name { get; set; }
+        public string Address { get; set; }
     }
 }
