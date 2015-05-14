@@ -56,6 +56,7 @@
   <xs:element name="ArrayOfCourse" nillable="true" type="tns:ArrayOfCourse" />
   <xs:complexType name="Course">
     <xs:sequence>
+      <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="capacity" type="xs:int" />
       <xs:element minOccurs="0" name="enddate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="id" type="xs:int" />

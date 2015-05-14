@@ -1,22 +1,8 @@
 ﻿@if (Request.IsAuthenticated)
 {
     <header id="headers" data-role="header" style="height:45px">
-
-        @*<div class="pull-right">
-                <fb:login-button autologoutlink="true" perms="read_friendlists, create_event, email, publish_stream"></fb:login-button>
-            </div>*@
-        
-        @if (User.IsInRole("facebookmember"))
-        {
-            @Html.ActionLink("Logged in with fb", "ProfileMenu", "Main", routeValues: null, htmlAttributes: new { data_icon = "user" });
-        }
-        else
-        {
-            @*@Html.ActionLink(User.Identity.Name, "ProfileMenu", "Main", routeValues: null, htmlAttributes: new { data_icon = "user" });*@
-
-    <a href="@Url.Action("ProfileMenu","Main")" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-icon-user ui-btn-icon-notext"></a>
-    <a href="@Url.Action("MyCourses","Main")" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-icon-heart ui-btn-icon ui-btn-icon-notext"></a>
-        }
+        <a href="@Url.Action("ProfileMenu","Main")" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-icon-user ui-btn-icon-notext"></a>
+        <a href="@Url.Action("MyCourses","Main")" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-icon-heart ui-btn-icon ui-btn-icon-notext"></a>
         <h1>@ViewBag.Title</h1>
     </header>
 }
