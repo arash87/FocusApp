@@ -1,27 +1,24 @@
 ﻿body {
     font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    font-family: 'Century Gothic';
     color: #232323;
     background-color: #fff;
 }
-
-/*.thePage img{
-    position: relative;
-    max-width:400px;
-}*/
 
 header, footer, nav, section {
     display: block;
 }
 
+
 /* Custom Styles for page
 -----------------------------------------------------------*/
-.ui-mobile-viewport { /*Bottom of the page*/
-    background-color: beige;
+.ui-mobile { /*Bottom of the page*/
+    /*background-color: lightyellow;*/
 }
 
 .ui-page {
-    background-image: url('images/background.jpg');
+    /*background-image: url('images/background.jpg');*/
+    background-color: #FFB591;
 }
 
 .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle {
@@ -42,13 +39,43 @@ header, footer, nav, section {
     background: #B8E6B8;
 }
 
-.confirm.ui-btn {
-    background-color: black;
+#deleteButton{
+    width:70%;
+    margin:0 auto;
+    display:block;
+    background-color:chocolate;
 }
 
-.confirm.ui-btn {
-    background-color: black;
+.post-bid{
+    margin:0 auto;
+    display:block;
+    background-color:lightgreen;
 }
+
+.ui-page-theme-a .confirm {
+    position: absolute;
+    right: 21px;
+    z-index: 9;
+    margin-top: 11px;
+}
+
+    .ui-page-theme-a .confirm::after {
+        transition: background-color .25s, transform 1s;
+        -webkit-transition: background-color .25s, -webkit-transform 1s;
+    }
+
+    .ui-page-theme-a .confirm.active::after {
+        background-color: black !important;
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+    }
+
+    .ui-page-theme-a .confirm.ui-icon-check::after {
+        background-color: lightgreen !important;
+    }
 
 
 .deleteUser .ui-collapsible-heading-toggle {
@@ -65,7 +92,6 @@ header, footer, nav, section {
 
 a.footerlink.ui-btn.ui-btn-icon-top {
     border: none;
-    /*border-radius: 20px;*/
     background-color: #5CA29D;
     color: white;
     font-family: Corbel;
@@ -86,17 +112,47 @@ b {
     font-size: 1em;
 }
 
-.boldText{
-    padding-top:10px;
-    max-width:100px;
-    margin: 0 auto;
-    display:block;
+.mainProfile {
+    font-size: 5em;
+    width: 100%;
+    text-align: center;
+}
 
+.boldText {
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: center;
 }
 
 .row {
-    margin-top: 5px;
+    margin-top: -5px;
 }
+
+.ui-controlgroup {
+    width: 80%;
+    margin: 5em auto;
+    max-width: 300px;
+}
+
+a.arrowButton {
+    text-decoration: none;
+}
+
+.theFieldsset {
+    overflow: hidden !important;
+}
+
+    .theFieldsset .form-group {
+        margin-bottom: 6px;
+        position: relative;
+        margin-left:0;
+    }
+
+        .theFieldsset .form-group:last-child {
+            margin-bottom: 0;
+        }
 
 @media screen and (max-width: 765px) {
 
@@ -118,13 +174,6 @@ b {
         max-width: 150px;
     }
 
-    .profileCategory {
-        width: 100%;
-        margin: 0 auto;
-        display: block;
-        max-width: 300px;
-    }
-
     .profileFootbar {
         width: 100%;
         position: absolute;
@@ -132,12 +181,14 @@ b {
     }
 
     .slideElement {
-        margin-top: 1em;
+        margin-top: 15px;
+        margin: 0 auto;
+        max-width:400px;
     }
 
     #container {
-        margin-top: 3em;
-        margin-bottom: 3em;
+        margin-top: 5px;
+        margin-bottom: 1em;
     }
 
     .loginButtons {
@@ -155,21 +206,16 @@ b {
         margin-top: 3em;
     }
 
-    .glyphicon {
-        font-size: 2em;   
-    }
-    .mainProfile{
-        font-size:9em;
-        max-width:130px;
-        margin: 0 auto;
-        display:block;
+    .footerbar .glyphicon {
+        font-size: 2em;
     }
 
-    .fadeElement{
-        border-bottom-style:solid;
-        border-radius:3em;
-    }
 
+    .editIcon {
+        font-size: 4em;
+        width: 100%;
+        text-align: center;
+    }
 }
 
 @media screen and (min-width: 766px) {
@@ -190,20 +236,14 @@ b {
     }
 
     #container {
-        margin-top: 3em;
+        margin-top: 0.5em;
+        margin-bottom: 1em;
     }
 
     .category {
         margin-top: 6em;
         min-width: 150px;
-        max-width: 200px;
-    }
-
-    .profileCategory {
-        width: 100%;
-        margin: 0 auto;
-        display: block;
-        max-width: 500px;
+        max-width: 180px;
     }
 
     .profileFootbar {
@@ -213,22 +253,40 @@ b {
     }
 
     .slideElement {
-        margin-top: 1em;
+        margin-top: 15px;
+        max-width: 400px;
+        margin: 0 auto !important;
     }
 
-    .glyphicon {
-        font-size: 3em;
+    .footerbar .glyphicon {
+        font-size: 1.5em;
+        padding-top: 5px;
     }
 
-    .mainProfile{
-        font-size:10em;
-        max-width:130px;
-        margin: 0 auto;
-        display:block;
+    .editIcon {
+        font-size: 4em;
+        width: 100%;
+        text-align: center;
     }
 
     .ui-input-text {
         min-width: 27em;
+    }
+
+    .confirm {
+        margin-left: 2em;
+    }
+    .ui-collapsible-set{
+        width:70%;
+        margin:0 auto;
+    }
+    .ui-input-search{
+        width:70%;
+        margin:0 auto;
+    }
+    .collapsible-myCourses{
+        width:70%;
+        margin:0 auto;
     }
 }
 

@@ -163,8 +163,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\background.jpg" />
-    <Content Include="Content\images\logo-power-on.png" />
-    <Content Include="Content\images\facebook-logo.png" />
     <Content Include="Content\images\icons-png\action-black.png" />
     <Content Include="Content\images\icons-png\action-white.png" />
     <Content Include="Content\images\icons-png\alert-black.png" />
@@ -368,13 +366,13 @@
     <Content Include="Content\images\logo-bergen-current.png" />
     <Content Include="Content\images\logo-bergen.png" />
     <Content Include="Content\images\logo-kristiansand.png" />
+    <Content Include="Content\images\logo-oslo-current.png" />
     <Content Include="Content\images\logo-oslo.png" />
     <Content Include="Content\images\logo-small-orange.png" />
     <Content Include="Content\images\logo-small-green.png" />
     <Content Include="Content\images\logo-small.png" />
     <Content Include="Content\images\logo-stockholm.png" />
     <Content Include="Content\images\logo-trondheim.png" />
-    <Content Include="Content\images\logo-person.png" />
     <Content Include="Content\jquery.mobile-1.4.5.css" />
     <Content Include="Content\jquery.mobile-1.4.5.min.css" />
     <Content Include="Content\jquery.mobile.external-png-1.4.5.css" />

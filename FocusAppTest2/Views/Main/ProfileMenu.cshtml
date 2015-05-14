@@ -5,8 +5,8 @@
 
 <div class="ui-content col-xs-offset-1 col-sm-offset-1">
     <div id="container">
-        <div data-role="controlgroup" class="profileCategory">
-            <a href="@Url.Action("Profile","Main")" class="ui-btn ui-icon-user ui-btn-icon-left ui-corner-all">Change/View Profile</a>
+        <div data-role="controlgroup" data-theme="b" class="profileCategory">
+            <a href="@Url.Action("Profile","Main")" class="ui-btn ui-icon-edit ui-btn-icon-left ui-corner-all">Edit Profile</a>
             @if (User.IsInRole("facebookmember"))
             {
                 <a href="#" onclick="fb_logout();" class="ui-btn ui-icon-power ui-btn-icon-left ui-corner-all">
@@ -23,31 +23,17 @@
                 {
                     @Html.HiddenFor(x => x.memberId)
 
-                    <a href="#" data-role="button" data-inline="true" onclick="$(this).closest('form').submit(); return fb_logout();">Confirm</a>
+                    <a href="#" id="deleteButton" data-role="button" data-inline="true" onclick="$(this).closest('form').submit(); return fb_logout();">Confirm</a>
                 }
             </div>
-
-            
-            @*<div class="col-xs-5 col-xs-offset-2 col-sm-3 col-sm-offset-0">
-                    <a href="@Url.Action("Profile","Main")"><img src="~/Content/images/logo-person.png" class="profileCategory img-responsive" /></a>
-                </div>
-                <div class="col-xs-5 col-xs-offset-2 col-sm-3 col-sm-offset-0">
-                    @if (User.IsInRole("facebookmember"))
-                    {
-                        <a href="#" onclick="fb_logout();"><img src="~/Content/images/logo-power-on.png" class="profileCategory img-responsive"/></a>
-                    }
-                    else
-                    {
-                        <a href="@Url.Action("Logout", "Home")"><img src="~/Content/images/logo-power-on.png" class="profileCategory img-responsive" /></a>
-                    }
-                </div>
-                <div class="col-xs-5 col-xs-offset-2 col-sm-3 col-sm-offset-0">
-                    @using (@Html.BeginForm("DeleteUser", "Home"))
-                    {
-                        @Html.HiddenFor(x => x.memberId)
-                        <a href="#" onclick="$(this).closest('form').submit(); return fb_logout();"><img src="~/Content/images/logo-small.png" class="profileCategory img-responsive" /></a>
-                    }
-                </div>*@
         </div> <!--end Control Group-->
     </div>
 </div>
+@section scripts{
+    <script>
+        $(function () {
+            $('.profileBar').addClass('ui-btn-active')
+                        .addClass('ui-state-persist');
+        })
+    </script>
+}

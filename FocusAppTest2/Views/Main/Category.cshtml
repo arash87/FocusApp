@@ -8,7 +8,7 @@
             <a href="@Url.Action("Courses", "Main", new { city = "Bergen" })" data-ajax="false"><img src="~/Content/images/logo-bergen.png" class="category img-responsive" id="bergen" /></a>
         </div>
         <div class="col-xs-6 col-sm-3 top-row">
-            <a href="@Url.Action("Courses","Main",new{ city = "Oslo" })" data-ajax="false"><img src="~/Content/images/logo-oslo.png" class="category img-responsive" /></a>
+            <a href="@Url.Action("Courses","Main",new{ city = "Oslo" })" data-ajax="false"><img src="~/Content/images/logo-oslo.png" class="category img-responsive" id="oslo" /></a>
         </div>
         <div class="col-xs-6 col-sm-3">
             <a href="@Url.Action("Courses", "Main", new { city = "London" })" data-ajax="false"><img src="~/Content/images/logo-kristiansand.png" class="category img-responsive" /></a>
@@ -21,45 +21,27 @@
 @section scripts{
     <script>
         $(function () {
-
             $('.courseBar').addClass('ui-btn-active')
                         .addClass('ui-state-persist');
-            
-            $.ajax({
-                type: "POST",
-                url: '//freegeoip.net/json/',
-                dataType: 'jsonp'
-            })
-            .success(function (location) {
-                var city;
-                switch (location.city) {
+            $.getJSON('https://freegeoip.net/json/', function (location) {
+                var country = location.country_name;
+                switch (country) {
                     case "Bergen":
-                        city = "bergen";
+                        $('#bergen').fadeOut('fast', function () {
+                            $('#bergen').attr('src', '/Content/images/logo-bergen-current.png');
+                            $('#bergen').fadeIn('slow');
+                        })
                         break;
                     case "Oslo":
-                        city = "oslo";
-                        break;
-                    case "Stockholm":
-                        city = "stockholm";
-                        break;
-                    case "Kristiansand":
-                        city = "kristiansand";
+                        $('#oslo').fadeOut('fast', function () {
+                            $('#oslo').attr('src', '/Content/images/logo-oslo-current.png');
+                            $('#oslo').fadeIn('slow');
+                        })
                         break;
                     default:
                         break;
                 }
-                setTimeout(function () {
-                    $('#bergen').fadeOut('fast', function () {
-                        $('#bergen').attr('src', '/Content/images/logo-bergen-current.png');
-                        $('#bergen').fadeIn('slow');
-                    })
-                }, 2000);
-                
             })
-            .error(function () {
-                alert("didnt work!");
-            })
-
         });
     </script>
 }
