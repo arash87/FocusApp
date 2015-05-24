@@ -17,13 +17,44 @@ header, footer, nav, section {
 }
 
 .ui-page {
-    /*background-image: url('images/background.jpg');*/
     background-color: #FFB591;
 }
 
-.ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle {
-    /*border: none;
-    background: beige;*/
+.jan > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
+    background: #FFFFC6;
+}
+.feb > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
+    background: #C1D4C1;
+}
+.mar > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
+    background: #D6EBD6;
+}
+.apr > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
+    background: #AD855C;
+}
+.mai > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
+    background: #FFFFCC;
+}
+.jun > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
+    background: #E9D494;
+}
+.jul > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
+    background: #FFDE9D;
+}
+.aug > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
+    background: #CEE6FF;
+}
+.sep > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
+    background: #BFD4FF;
+}
+.oct > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
+    background: #BCBCA7;
+}
+.nov > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
+    background: #E6B88A;
+}
+.dec > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
+    background: #F0D466;
 }
 
 .inputProfile {
@@ -49,7 +80,7 @@ header, footer, nav, section {
 .post-bid{
     margin:0 auto;
     display:block;
-    background-color:lightgreen;
+    /*background-color:lightgreen;*/
 }
 
 .ui-page-theme-a .confirm {
@@ -134,10 +165,6 @@ b {
     width: 80%;
     margin: 5em auto;
     max-width: 300px;
-}
-
-a.arrowButton {
-    text-decoration: none;
 }
 
 .theFieldsset {
@@ -235,6 +262,11 @@ a.arrowButton {
         max-width: 30em;
     }
 
+    .mainProfile{
+        font-size:7em;
+    }
+
+
     #container {
         margin-top: 0.5em;
         margin-bottom: 1em;
@@ -259,7 +291,7 @@ a.arrowButton {
     }
 
     .footerbar .glyphicon {
-        font-size: 1.5em;
+        font-size: 2.5em;
         padding-top: 5px;
     }
 

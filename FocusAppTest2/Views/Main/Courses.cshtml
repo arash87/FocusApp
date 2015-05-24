@@ -2,19 +2,39 @@
 @*@{
         ViewBag.Title = "Courses";
     }*@
+
+@{
+    var season = "white";
+}
+
 <div id="container" class="col-xs-12">
     <form class="ui-filterable">
-        <input id="filterBasic-input" data-type="search" />
+        <input id="filterBasic-input" data-type="search" placeholder="Lookup by price|address|name|date" />
     </form>
     <div data-role="collapsible-set" data-filter="true" id="collapsiblesetForFilter"
          data-input="#filterBasic-input">
         @foreach (var item in Model)
         {
-            <div data-role="collapsible" class="collapsible-courses" id="collapsible-@item.Id" data-id="@item.Id"
-                 data-collapsed-icon="plus" data-expanded-icon="minus" data-dom-cache="false">
-                <h1>@item.Name - @item.Start.ToLongDateString()</h1>
+            int month = item.Start.Month;
+            switch(month){
+                case 1: season = "jan"; break;
+                case 2: season = "feb"; break;
+                case 3: season = "mar"; break;
+                case 4: season = "apr"; break;
+                case 5: season = "mai"; break;
+                case 6: season = "jun"; break;
+                case 7: season = "jul"; break;
+                case 8: season = "aug"; break;
+                case 9: season = "sep"; break;
+                case 10: season = "oct"; break;
+                case 11: season = "nov"; break;
+                case 12: season = "dec"; break;
+                default: break;                    
+            }
+            <div data-role="collapsible" class="collapsible-courses @season" id="collapsible-@item.Id" data-id="@item.Id" data-collapsed-icon="plus" data-expanded-icon="minus" data-dom-cache="false">
+                <h1>@item.Name</h1>
                 <p>
-                    <strong>Tid: </strong> @item.Start.ToShortTimeString()
+                    <strong>Tid: </strong> @item.Start.ToShortTimeString() (@item.Start.ToLongDateString())
                     @* Displays end-time if it differs from start-time, and end-date in parenthesis if it differs from start-date *@
                     @if (item.Start.CompareTo(item.End) < 0)
                     {
@@ -24,6 +44,7 @@
                             @:(@item.End.ToLongDateString())
                         }
                     }
+                    
                     <br />
                     <strong>Adresse: </strong> @item.Address <br />
                     @if (item.Price == 0 || item.Price == null)
@@ -39,7 +60,7 @@
                     <em>@item.Info</em>
                 </p>
                 <button type="submit" class="post-bid" style="width:100px;">Join</button>
-            </div>
+            </div><!--End of collapsible item-->
         }
-    </div>
+    </div><!--End of collapsible set-->
 </div>

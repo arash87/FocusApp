@@ -62,10 +62,13 @@
                             .removeClass('ui-icon-minus')
                             .removeClass('ui-icon-plus')
                             .css('background-color', '#B8E6B8');
-                        wrapper.find('.ui-collapsible-content').slideUp();
+                        wrapper.find('.ui-collapsible-content').slideUp();                       
                         wrapper.find('h1 a').click(function () {
                             return false;
                         });
+                        setTimeout(function () {
+                            wrapper.find('.ui-collapsible-heading-toggle').fadeOut();
+                        }, 1500);
                     }
                     else {
                         alert(data.error);
@@ -100,6 +103,9 @@
                         wrapper.find('h1 a').click(function () {
                             return false;
                         });
+                        setTimeout(function () {
+                            wrapper.find('.ui-collapsible-heading-toggle').slideUp();
+                        }, 1000);
                     }
                     else {
                         alert(data.error);

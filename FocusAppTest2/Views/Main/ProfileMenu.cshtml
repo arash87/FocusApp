@@ -3,9 +3,9 @@
     ViewBag.Title = "ProfileMenu";
 }
 
-<div class="ui-content col-xs-offset-1 col-sm-offset-1">
+<div @*class="ui-content"*@ id="profileMenu">
     <div id="container">
-        <div data-role="controlgroup" data-theme="b" class="profileCategory">
+        <div data-role="controlgroup" data-theme="b">
             <a href="@Url.Action("Profile","Main")" class="ui-btn ui-icon-edit ui-btn-icon-left ui-corner-all">Edit Profile</a>
             @if (User.IsInRole("facebookmember"))
             {

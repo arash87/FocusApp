@@ -3,14 +3,14 @@
     ViewBag.Title = "My Courses";
 }
 
-<div class="mycourses ui-content">
-    <div id="container" class="col-xs-12">
+<div class="mycourses col-xs-12">
+    <div id="container">
         @if (@Model.Count() <= 0)
         {
             <h4>
                 Du er for øyeblikket ikke påmeldt noen kurs.
             </h4>
-                <a href="/Main/Category" class="ui-btn ui-btn-corner-all ui-btn-icon-left ui-icon-bullets">Finn kurs</a>
+            <a href="/Main/Category" class="ui-btn ui-btn-corner-all ui-btn-icon-left ui-icon-bullets">Finn kurs</a>
         }
         else
         {
@@ -47,7 +47,7 @@
                 </div>
             }
         }
-        
+
     </div>
 </div>
 @section scripts{

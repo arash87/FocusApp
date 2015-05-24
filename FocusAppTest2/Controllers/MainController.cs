@@ -147,6 +147,7 @@ namespace FocusAppTest2.Controllers
             if (profile.birthdate != null)
             {
                 birthday = (DateTime)profile.birthdate;
+                //stringDate = birthday.ToString("yyyy-MM-dd");
                 stringDate = birthday.ToString("yyyy-MM-dd");
             }
             else

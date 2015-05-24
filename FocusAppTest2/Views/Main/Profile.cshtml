@@ -3,9 +3,9 @@
     ViewBag.Title = "Profile";
 }
 
-<div class="ui-content">
+<div class="ui-content profilePage">
     <div id="container">
-        <div class="profileInformation">
+        <div>
             <div class="row userProfileSlide fadeElement">
                 <span class="glyphicon mainProfile glyphicon-user"></span>
                 <div class="boldText">
@@ -14,10 +14,10 @@
                 </div>
             </div>
             <div class="row homeProfileSlide fadeElement" style="display:none;">
-                <span class="glyphicon mainProfile glyphicon-home">
+                <span class="glyphicon mainProfile glyphicon-envelope">
                 </span>
-                <div class="boldText boldAddress">
-                    <span id="boldAddress">@Model.address ,</span>
+                <div class="boldText">
+                    <span id="boldAddress">@Model.address</span>
                     <span id="boldZip">@Model.zip</span>
                     <span id="boldCity">@Model.city</span>
                 </div>
@@ -25,7 +25,7 @@
             <div class="row phoneProfileSlide fadeElement" style="display:none;">
                 <span class="glyphicon mainProfile glyphicon-phone">
                 </span>
-                <div class="boldText boldPhone">
+                <div class="boldText">
                     <span id="boldPhone">@Model.phone</span>
                 </div>
             </div>
@@ -37,55 +37,61 @@
                 </div>
             </div>
         </div>
-        <form class="form-inline" role="form">
+        <form role="form">
             <fieldset class="ui-field-contain theFieldsset">
-                <div class="userInfo slideElement" style="display:none;">
-                    <div class="form-group row col-sm-offset-3" data-id="@Model.memberId">
+                <div class="userInfo slideElement">
+                    <div class="form-group row" data-id="@Model.memberId">
                         <div class="col-xs-12 col-sm-12">
-                            <input class="profileInput" type="text" placeholder="Firstname" id="firstname" />
+                            <label for="firstname" class="ui-hidden-accessible">Fistname:</label>
+                            <input class="profileInput" name="firstname" type="text" placeholder="Firstname" id="firstname" value="@Model.firstname" />
                         </div>
                         <a href="#" class="confirm ui-btn-icon-notext ui-icon-recycle"></a>
                     </div>
-
-                    <div class="form-group row col-sm-offset-3" data-id="@Model.memberId">
+                    <div class="form-group row" data-id="@Model.memberId">
                         <div class="col-xs-12 col-sm-12">
-                            <input class="profileInput" type="text" placeholder="Lastname" id="lastname" />
+                            <label for="lastname" class="ui-hidden-accessible">Fistname:</label>
+                            <input class="profileInput" name="lastname" type="text" placeholder="Lastname" id="lastname" value="@Model.lastname" />
                         </div>
                         <a href="#" class="confirm ui-btn-icon-notext ui-icon-recycle"></a>
                     </div>
                 </div>
                 <div class="homeInfo slideElement" style="display:none;">
-                    <div class="form-group row col-sm-offset-3" data-id="@Model.memberId">
+                    <div class="form-group row" data-id="@Model.memberId">
                         <div class="col-xs-12 col-sm-12">
-                            <input class="profileInput" type="text" placeholder="Address" id="address" />
+                            <label for="address" class="ui-hidden-accessible">Fistname:</label>
+                            <input class="profileInput" name="address" type="text" placeholder="Address" id="address" value="@Model.address" />
                         </div>
                         <a href="#" class="confirm ui-btn-icon-notext ui-icon-recycle"></a>
                     </div>
-                    <div class="form-group row col-sm-offset-3" data-id="@Model.memberId">
+                    <div class="form-group row" data-id="@Model.memberId">
                         <div class="col-xs-12 col-sm-12">
-                            <input class="profileInput" type="number" placeholder="Zip" id="zip" />
+                            <label for="zip" class="ui-hidden-accessible">Fistname:</label>
+                            <input class="profileInput" name="zip" type="number" placeholder="Zip" id="zip" value="@Model.zip" />
                         </div>
                         <a href="#" class="confirm ui-btn-icon-notext ui-icon-recycle"></a>
                     </div>
-                    <div class="form-group row col-sm-offset-3" data-id="@Model.memberId">
+                    <div class="form-group row" data-id="@Model.memberId">
                         <div class="col-xs-12 col-sm-12">
-                            <input class="profileInput" type="text" placeholder="City" id="city" />
+                            <label for="city" class="ui-hidden-accessible">Fistname:</label>
+                            <input class="profileInput" name="city" type="text" placeholder="City" id="city" value="@Model.city" />
                         </div>
                         <a href="#" class="confirm ui-btn-icon-notext ui-icon-recycle"></a>
                     </div>
                 </div>
                 <div class="calendarInfo slideElement" style="display:none;">
-                    <div class="form-group row col-sm-offset-3" data-id="@Model.memberId">
+                    <div class="form-group row" data-id="@Model.memberId">
                         <div class="col-xs-12 col-sm-12">
-                            <input class="profileInput" type="date" placeholder="Birthdate" id="birthdate" />
+                            <label for="birthdate" class="ui-hidden-accessible">Fistname:</label>
+                            <input class="profileInput" name="birthdate" type="date" placeholder="Birthdate" id="birthdate" value="@ViewBag.Data1" />
                         </div>
                         <a href="#" class="confirm ui-btn-icon-notext ui-icon-recycle"></a>
                     </div>
                 </div>
                 <div class="phoneInfo slideElement" style="display:none;">
-                    <div class="form-group row col-sm-offset-3" data-id="@Model.memberId">
+                    <div class="form-group row" data-id="@Model.memberId">
                         <div class="col-xs-12 col-sm-12">
-                            <input class="profileInput" type="number" placeholder="Phone" id="phone" />
+                            <label for="phone" class="ui-hidden-accessible">Fistname:</label>
+                            <input class="profileInput" name="phone" type="number" placeholder="Phone" id="phone" value="@Model.phone" />
                         </div>
                         <a href="#" class="confirm ui-btn-icon-notext ui-icon-recycle"></a>
                     </div>
@@ -94,74 +100,69 @@
         </form>
 
     </div>
-    <a href="#" class="arrowButton"><span class="glyphicon editIcon glyphicon-arrow-down"></span></a>
 </div>
 @section scripts{
     <script>
         $(function () {
             $('#user').addClass('ui-btn-active');
 
-            $('body').on("click", '.arrowButton', function () {
-                if ($('.slideElement').is(":visible")) {
-                    $('.slideElement').slideUp();
-                    $('.editIcon').removeClass('glyphicon-arrow-up');
-                    $('.editIcon').addClass('glyphicon-arrow-down');
-                } else {
-                    if ($('.userProfileSlide').is(":visible")) {
-                        $('.userInfo').slideDown();
-                        arrowUP();
-                    }
-                    if ($('.homeProfileSlide').is(":visible")) {
-                        $('.homeInfo').slideDown();
-                        arrowUP();
-                    }
-                    if ($('.phoneProfileSlide').is(":visible")) {
-                        $('.phoneInfo').slideDown();
-                        arrowUP();
-                    }
-                    if ($('.birthdateProfileSlide').is(":visible")) {
-                        $('.calendarInfo').slideDown();
-                        arrowUP();
-                    }
+            $('body').on("swipeleft", '.thePage', function () {
+                $('.changeInput').removeClass('ui-btn-active');
+                if ($('.userProfileSlide').is(":visible")) {
+                    showHomeProfile();
+                    $('#home').addClass('ui-btn-active');
+                }
+                else if ($('.homeProfileSlide').is(":visible")) {
+                    showBirthdayProfile();
+                    $('#calendar').addClass('ui-btn-active');
+                }
+                else if ($('.birthdateProfileSlide').is(":visible")) {
+                    showPhoneProfile();
+                    $('#phoneButton').addClass('ui-btn-active');
+                }
+                else if ($('.phoneProfileSlide').is(":visible")) {
+                    showUserProfile();
+                    $('#user').addClass('ui-btn-active');
+                }
+            })
+            .on("swiperight", '.thePage', function () {
+                $('.changeInput').removeClass('ui-btn-active');
+                if ($('.userProfileSlide').is(":visible")) {
+                    showPhoneProfile();
+                    $('#phoneButton').addClass('ui-btn-active');
+                }
+                else if ($('.homeProfileSlide').is(":visible")) {
+                    showUserProfile();
+                    $('#user').addClass('ui-btn-active');
+                }
+                else if ($('.birthdateProfileSlide').is(":visible")) {
+                    showHomeProfile();
+                    $('#home').addClass('ui-btn-active');
+                }
+                else if ($('.phoneProfileSlide').is(":visible")) {
+                    showBirthdayProfile();
+                    $('#calendar').addClass('ui-btn-active');
                 }
             })
             $('body').on("click", '.changeInput', function () {
                 var buttonId = $(this).attr("id");
                 $('.changeInput').removeClass('ui-btn-active');
-                $(this).addClass()
                 switch (buttonId) {
                     case "user":
-                        changeProfileView();
-                        $('.userProfileSlide').slideDown();
-                        arrowDOWN();
+                        showUserProfile();
                         break;
                     case "home":
-                        changeProfileView();
-                        $('.homeProfileSlide').slideDown();
-                        arrowDOWN();
+                        showHomeProfile();
                         break;
                     case "calendar":
-                        changeProfileView();
-                        $('.birthdateProfileSlide').slideDown();
-                        arrowDOWN();
+                        showBirthdayProfile();
                         break;
-                    case "phone":
-                        changeProfileView();
-                        $('.phoneProfileSlide').slideDown();
-                        arrowDOWN();
+                    case "phoneButton":
+                        showPhoneProfile();
                         break;
                     default:
                         break;
                 }
-            })
-            $('body').on("click", '.edit', function () {
-                var editButton = $(this);
-                editButton.addClass('hidden');
-                var wrapper = editButton.parents('.form-group');
-                wrapper.find('.confirm').removeClass('hidden');
-                var input = wrapper.find('div');
-                input.removeClass('ui-disabled');
-                input.focus();
             })
         .on("focus", '.profileInput', function () {
             var input = $(this);
@@ -172,14 +173,6 @@
             var input = $(this);
             var wrapper = input.parents('.form-group');
             wrapper.find('.confirm').removeClass('active');
-        })
-
-
-        .on("click", '.confirm', function () {
-            var confirmButton = $(this);
-            var wrapper = confirmButton.parents('.form-group');
-            var input = wrapper.find('input');
-
             switch (input.attr("id")) {
                 case "firstname":
                     var inputValue = $("#firstname").val();
@@ -232,7 +225,7 @@
                         wrapper.find('.confirm').addClass('ui-icon-check');
                         setTimeout(function () {
                             wrapper.find('.confirm').removeClass('ui-icon-check').addClass('ui-icon-recycle');
-                        }, 1500);
+                        }, 3000);
                     }
                 })
                 .error(function (data) {
@@ -250,6 +243,26 @@
             function changeProfileView() {
                 $('.slideElement').slideUp();
                 $('.fadeElement').slideUp();
+            }
+            function showHomeProfile() {
+                changeProfileView();
+                $('.homeProfileSlide').slideDown();
+                $('.homeInfo').slideDown();
+            }
+            function showBirthdayProfile() {
+                changeProfileView();
+                $('.birthdateProfileSlide').slideDown();
+                $('.calendarInfo').slideDown();
+            }
+            function showPhoneProfile() {
+                changeProfileView();
+                $('.phoneProfileSlide').slideDown();
+                $('.phoneInfo').slideDown();
+            }
+            function showUserProfile() {
+                changeProfileView();
+                $('.userProfileSlide').slideDown();
+                $('.userInfo').slideDown();
             }
         });
     </script>
