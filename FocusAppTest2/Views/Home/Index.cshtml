@@ -16,23 +16,23 @@
                     <input type="email" name="email" class="loginInput" id="email" placeholder="Email" />
                     <i class="glyphicon glyphicon-user form-control-feedback"></i>
                     <label for="email" class="ui-hidden-accessible">Email:</label>
-                    <p class="invalidEmail" hidden="hidden">Invalid Email!</p>
+                    <p class="invalidEmail whiteColor" hidden="hidden">Invalid Email!</p>
                 </div>
                 <div class="form-group has-feedback">
                     <input type="password" name="password" id="password" placeholder="Password" />
                     <i class="glyphicon glyphicon-lock form-control-feedback"></i>
                     <label for="password" class="ui-hidden-accessible">Password:</label>
-                    <p class="errorMessage" hidden="hidden">Wrong password!</p>
+                    <p class="errorMessage whiteColor" hidden="hidden">Wrong password!</p>
                 </div>
                 <div class="confirmPassword hidden">
                     <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" />
-                    <p class="errorPassword" hidden="hidden">Passwords dont match!</p>
+                    <p class="errorPassword whiteColor" hidden="hidden">Passwords dont match!</p>
                 </div>
-            </div><!---form-group-->
+            </div>
         </fieldset>
         <div class="loginButtons">
-            <a href="#" data-role="button" class="loginButton col-xs-12 col-sm-12" id="loginButton" data-theme="b" @*role="button"*@>Go</a>
-            <a href="#" data-role="button" class="col-xs-12 col-sm-12" style="background-color:#3b5998; color:white;" onclick="fb_login();" @*role="button"*@>Login with facebook</a>
+            <a href="#" data-role="button" class="loginButton col-xs-12 col-sm-12" id="loginButton" data-theme="b">Go</a>
+            <a href="#" data-role="button" class="col-xs-12 col-sm-12" style="background-color:#3b5998; color:white;" onclick="fb_login();">Login with facebook</a>
         </div>
     </form>
 </div>
@@ -42,7 +42,6 @@
             $('body').on("focusout", '#email', function () {
                 var email = $('#email').val();
                 if (email === '') {
-                    $('#email').css('background-color', '#FFCC66');
                 }
                 else if (!validateEmail(email)) {
                     $('.invalidEmail').removeAttr('hidden');
@@ -57,13 +56,14 @@
                     if (typeof data !== "object")
                         data = JSON.parse(data);
                     if (data.status == "true") {
-                        $('#email').css('background-color', '#B8E6B8');
+                        $('#email').css('background-color', '#d1e5f0');
 
                         $('.red-logo').addClass('hidden');
                         $('.green-logo').removeClass('hidden');
                         $('.orange-logo').addClass('hidden');
                     }
                     if (data.status == "false") {
+                        $('#email').css('background-color', '#fddbc7');
                         $('.confirmPassword').removeClass('hidden');
                         showOrangeLogo();
                     }
@@ -80,8 +80,8 @@
                     $('#confirmPassword').css('background-color', '#FFCC66');
                 }
                 else if (password === confirmPassword) {
-                    $('#password').css('background-color', '#B8E6B8');
-                    $('#confirmPassword').css('background-color', '#B8E6B8');
+                    $('#password').css('background-color', '#d1e5f0');
+                    $('#confirmPassword').css('background-color', '#d1e5f0');
                 } else {
                     $('#password').css('background-color', '#FFCC66');
                     $('.errorPassword').removeAttr('hidden');
@@ -94,13 +94,13 @@
                 var email = $('#email').val();
                 var password = $("#password").val();
                 if ($('#email').val() === "") {
-                    $('#email').css('background-color', '#FFCC66');
+                    $('.invalidEmail').removeAttr('hidden');
                 }
                 else if (password === "") {
-                    $('#password').css('background-color', '#FFCC66');
+                    $('#password').css('background-color', '#fddbc7');
                 }
                 else if (!($('#confirmPassword').parents('div').hasClass('hidden')) && password !== confirmPassword) {
-                    $('#password').css('background-color', '#FFCC66');
+                    $('#confirmPassword').css('background-color', '#fddbc7');
                     $('.errorPassword').removeAttr('hidden');
                 }
                 else if (!validateEmail(email)) {
@@ -133,6 +133,7 @@
             })
             .on("click", '#email', function () {
                 $('.confirmPassword').addClass('hidden');
+                $('#email').css('color', 'black');
                 $('#password').css('background-color', 'white')
                     .val("");
                 $('#confirmPassword').css('background-color', 'white')

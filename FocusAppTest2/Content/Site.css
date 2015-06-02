@@ -9,16 +9,33 @@ header, footer, nav, section {
     display: block;
 }
 
+.collapsible-courses > .ui-collapsible-content > .post-bid {
+    background-color:#d1e5f0;
+}
+
+.collapsible-myCourses > .ui-collapsible-content > .cancel-bid{
+    background-color: #fddbc7;
+}
+
+.custom-count-pos{
+    font-size: 11px;
+    font-weight: bold;
+    padding: 0.2em 0.5em;
+    float: right;
+}
+
 
 /* Custom Styles for page
 -----------------------------------------------------------*/
 .ui-mobile { /*Bottom of the page*/
     /*background-color: lightyellow;*/
+   
 }
 
 .ui-page {
-    background-color: #FFB591;
+     background-color:#67a9cf;
 }
+
 
 .jan > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
     background: #FFFFC6;
@@ -47,13 +64,13 @@ header, footer, nav, section {
 .sep > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
     background: #BFD4FF;
 }
-.oct > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
+.okt > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
     background: #BCBCA7;
 }
 .nov > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
     background: #E6B88A;
 }
-.dec > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
+.des > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
     background: #F0D466;
 }
 
@@ -66,8 +83,23 @@ header, footer, nav, section {
     margin: auto;
 }
 
-.collapsible-myCourses .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle {
-    background: #B8E6B8;
+.ui-btn-icon-top:after{
+    background-color:black;
+}
+
+.collapsible-myCourses .ui-collapsible-heading-toggle {
+    background: #d1e5f0;
+    font-family:'Century Gothic';
+}
+.collapsible-courses .ui-collapsible-heading-toggle {
+    font-family:'Century Gothic';
+}
+
+
+.whiteBackground{
+    border:solid;
+    border-radius:30px;
+    background-color:#f7f7f7;
 }
 
 #deleteButton{
@@ -80,7 +112,10 @@ header, footer, nav, section {
 .post-bid{
     margin:0 auto;
     display:block;
-    /*background-color:lightgreen;*/
+}
+.cancel-bid{
+    margin:0 auto;
+    display:block;
 }
 
 .ui-page-theme-a .confirm {
@@ -105,7 +140,7 @@ header, footer, nav, section {
     }
 
     .ui-page-theme-a .confirm.ui-icon-check::after {
-        background-color: lightgreen !important;
+        background-color: #2166ac !important;
     }
 
 
@@ -113,35 +148,41 @@ header, footer, nav, section {
     text-align: center;
 }
 
+
+
 .ui-footer {
     border: none;
 }
 
-.footerbar {
-    background-color: beige;
+.ui-page-theme-a .ui-btn.ui-btn-active{
+    background-color:#67a9cf;
+}
+
+.ui-page-theme-a .ui-btn:focus {
+    box-shadow: none;
+}
+
+.whiteColor{
+    color:white;
 }
 
 a.footerlink.ui-btn.ui-btn-icon-top {
     border: none;
-    background-color: #5CA29D;
-    color: white;
+    background-color: #d1e5f0;
+    color: black;
     font-family: Corbel;
     font-stretch: wider;
 }
 
 a.footerlink.ui-btn-active.ui-state-persist {
     background-color: black;
+    color:white;
 }
 
 label {
     color: white;
 }
 
-b {
-    color: black;
-    font-family: 'Century Gothic';
-    font-size: 1em;
-}
 
 .mainProfile {
     font-size: 5em;
@@ -155,10 +196,20 @@ b {
     padding-bottom: 10px;
     width: 100%;
     text-align: center;
+    color:black;
+}
+
+.ui-li-count{
+    background-color:#b2182b;
 }
 
 .row {
     margin-top: -5px;
+}
+
+.finnKurs{
+    max-width:30em;
+    margin: 100px auto;
 }
 
 .ui-controlgroup {
@@ -197,7 +248,7 @@ b {
 
     .category {
         width: 100%;
-        min-width: 50px;
+        min-width: 120px;
         max-width: 150px;
     }
 
@@ -220,13 +271,6 @@ b {
 
     .loginButtons {
         max-width: 30em;
-    }
-
-    .myCourses {
-        background: #98bf21;
-        height: 100px;
-        width: 50px;
-        margin-top: 6em;
     }
 
     .toppForm {
@@ -319,6 +363,9 @@ b {
     .collapsible-myCourses{
         width:70%;
         margin:0 auto;
+    }
+    .boldText{
+        font-size: 1.5em;
     }
 }
 

@@ -7,7 +7,7 @@
     var season = "white";
 }
 
-<div id="container" class="col-xs-12">
+<div id="container" class="ui-content col-xs-12">
     <form class="ui-filterable">
         <input id="filterBasic-input" data-type="search" placeholder="Lookup by price|address|name|date" />
     </form>
@@ -26,13 +26,13 @@
                 case 7: season = "jul"; break;
                 case 8: season = "aug"; break;
                 case 9: season = "sep"; break;
-                case 10: season = "oct"; break;
+                case 10: season = "okt"; break;
                 case 11: season = "nov"; break;
-                case 12: season = "dec"; break;
+                case 12: season = "des"; break;
                 default: break;                    
             }
             <div data-role="collapsible" class="collapsible-courses @season" id="collapsible-@item.Id" data-id="@item.Id" data-collapsed-icon="plus" data-expanded-icon="minus" data-dom-cache="false">
-                <h1>@item.Name</h1>
+                <h1><div class="ui-btn-up-c ui-btn-corner-all custom-count-pos">@season</div>@item.Name</h1>
                 <p>
                     <strong>Tid: </strong> @item.Start.ToShortTimeString() (@item.Start.ToLongDateString())
                     @* Displays end-time if it differs from start-time, and end-date in parenthesis if it differs from start-date *@

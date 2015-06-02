@@ -3,27 +3,34 @@
     ViewBag.Title = "ProfileMenu";
 }
 
-<div @*class="ui-content"*@ id="profileMenu">
+<div class="ui-content" >
     <div id="container">
         <div data-role="controlgroup" data-theme="b">
-            <a href="@Url.Action("Profile","Main")" class="ui-btn ui-icon-edit ui-btn-icon-left ui-corner-all">Edit Profile</a>
+        @if (Model.firstname == null || Model.lastname == null || Model.address == null ||
+            Model.zip == null || Model.city == null || Model.phone == null)
+        {
+            <a href="@Url.Action("Profile","Main")" class="ui-btn ui-icon-edit ui-btn-icon-left ui-corner-all">Rediger<div class="ui-li-count">!</div></a>
+        }else{
+            <a href="@Url.Action("Profile","Main")" class="ui-btn ui-icon-edit ui-btn-icon-left ui-corner-all">Rediger</a>
+        }
+            
             @if (User.IsInRole("facebookmember"))
             {
                 <a href="#" onclick="fb_logout();" class="ui-btn ui-icon-power ui-btn-icon-left ui-corner-all">
-                    Log Out
+                    Logg Ut
                 </a>
             }
             else
             {
-                <a href="@Url.Action("Logout", "Home")" class="ui-btn ui-icon-power ui-btn-icon-left ui-corner-all"> Log Out</a>
+                <a href="@Url.Action("Logout", "Home")" class="ui-btn ui-icon-power ui-btn-icon-left ui-corner-all"> Logg Ut</a>
             }
             <div data-role="collapsible" class="deleteUser" data-collapsed-icon="delete">
-                <h1>Delete Account</h1>
+                <h1>Slett Konto</h1>
                 @using (@Html.BeginForm("DeleteUser", "Home"))
                 {
                     @Html.HiddenFor(x => x.memberId)
 
-                    <a href="#" id="deleteButton" data-role="button" data-inline="true" onclick="$(this).closest('form').submit(); return fb_logout();">Confirm</a>
+                    <a href="#" id="deleteButton" data-role="button" data-inline="true" onclick="$(this).closest('form').submit(); return fb_logout();">Bekreft</a>
                 }
             </div>
         </div> <!--end Control Group-->

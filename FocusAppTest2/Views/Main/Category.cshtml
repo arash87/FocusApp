@@ -2,19 +2,19 @@
     ViewBag.Title = "Category";
 }
 
-<div @*class="ui-content"*@ id="category">
+<div class="ui-content" id="category">
     <div id="container">
-        <div class="col-xs-6 col-sm-3">
-            <a href="@Url.Action("Courses", "Main", new { city = "Bergen" })" data-ajax="false"><img src="~/Content/images/logo-bergen.png" class="category img-responsive" id="bergen" /></a>
+        <div class="col-xs-5 col-sm-3 col-sm-offset-0">
+            <a href="@Url.Action("Courses", "Main", new { city = "Bergen" })" @*data-ajax="false"*@ data-transition="flip"><img src="~/Content/images/logo-bergen.png" class="category img-responsive" id="bergen" /></a>
         </div>
-        <div class="col-xs-6 col-sm-3">
-            <a href="@Url.Action("Courses","Main",new{ city = "Oslo" })" data-ajax="false"><img src="~/Content/images/logo-oslo.png" class="category img-responsive" id="oslo" /></a>
+        <div class="col-xs-5 col-xs-offset-1 col-sm-3 col-sm-offset-0">
+            <a href="@Url.Action("Courses","Main",new{ city = "Oslo" })" @*data-ajax="false"*@ data-transition="flip"><img src="~/Content/images/logo-oslo.png" class="category img-responsive" id="oslo" /></a>
         </div>
-        <div class="col-xs-6 col-sm-3">
-            <a href="@Url.Action("Courses", "Main", new { city = "London" })" data-ajax="false"><img src="~/Content/images/logo-kristiansand.png" class="category img-responsive" /></a>
+        <div class="col-xs-5 col-sm-3 col-sm-offset-0">
+            <a href="@Url.Action("Courses", "Main", new { city = "London" })" @*data-ajax="false"*@ data-transition="flip"><img src="~/Content/images/logo-kristiansand.png" class="category img-responsive" /></a>
         </div>
-        <div class="col-xs-6 col-sm-3">
-            <a href="@Url.Action("Courses", "Main", new { city = "Trondheim" })" data-ajax="false"><img src="~/Content/images/logo-stockholm.png" class="category img-responsive" /></a>
+        <div class="col-xs-5 col-xs-offset-1 col-sm-3 col-sm-offset-0">
+            <a href="@Url.Action("Courses", "Main", new { city = "Trondheim" })" @*data-ajax="false"*@ data-transition="flip"><img src="~/Content/images/logo-stockholm.png" class="category img-responsive" /></a>
         </div>
     </div>
 </div>
@@ -24,10 +24,10 @@
             $('.courseBar').addClass('ui-btn-active')
                         .addClass('ui-state-persist');
             $.getJSON('https://freegeoip.net/json/', function (location) {
-                //var country = location.country_name;
-                var city = location.city;
-                switch (city) {
-                    case "Bergen":
+                //var city = location.city;
+                var country = location.country_name;
+                switch (country) {
+                    case "Norway":
                         $('#bergen').fadeOut('fast', function () {
                             $('#bergen').attr('src', '/Content/images/logo-bergen-current.png');
                             $('#bergen').fadeIn('slow');

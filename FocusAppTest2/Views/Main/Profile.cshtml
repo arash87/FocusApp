@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="row birthdateProfileSlide fadeElement" style="display:none;">
-                <span class="glyphicon mainProfile glyphicon-calendar">
+                <span class="glyphicon mainProfile glyphicon-gift">
                 </span>
                 <div class="boldText">
                     <span id="boldBirthdate">@ViewBag.Data1</span>
@@ -181,7 +181,7 @@
                 case "firstname":
                     var inputValue = $("#firstname").val();
                     ajaxRequest("/Main/UpdateFName", { memberId: wrapper.data("id"), firstname: inputValue }, "#firstname", "#boldFName");
-                    break;
+                    break;       
                 case "lastname":
                     inputValue = $("#lastname").val();
                     ajaxRequest("/Main/UpdateLName", { memberId: wrapper.data("id"), lastname: inputValue }, "#lastname", "#boldLName");
