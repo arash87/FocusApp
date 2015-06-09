@@ -28,6 +28,10 @@ header, footer, nav, section {
     color:white;
 }
 
+.errorPage a{
+    color:black;
+}
+
 
 /* Custom Styles for page
 -----------------------------------------------------------*/
