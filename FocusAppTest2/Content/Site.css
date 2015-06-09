@@ -24,6 +24,10 @@ header, footer, nav, section {
     float: right;
 }
 
+.errorPage{
+    color:white;
+}
+
 
 /* Custom Styles for page
 -----------------------------------------------------------*/
