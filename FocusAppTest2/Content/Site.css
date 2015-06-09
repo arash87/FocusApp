@@ -36,7 +36,6 @@ header, footer, nav, section {
      background-color:#67a9cf;
 }
 
-
 .jan > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
     background: #FFFFC6;
 }
@@ -56,13 +55,13 @@ header, footer, nav, section {
     background: #E9D494;
 }
 .jul > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
-    background: #FFDE9D;
+    background: #ffffbf;
 }
 .aug > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
-    background: #CEE6FF;
+    background: #fee090;
 }
 .sep > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
-    background: #BFD4FF;
+    background: #d9ef8b;
 }
 .okt > .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle{
     background: #BCBCA7;
