@@ -24,10 +24,11 @@
             $('.courseBar').addClass('ui-btn-active')
                         .addClass('ui-state-persist');
             $.getJSON('https://freegeoip.net/json/', function (location) {
-                //var city = location.city;
-                var country = location.country_name;
-                switch (country) {
-                    case "Norway":
+                var city = location.city;
+                //var country = location.country_name;
+                switch (city) {
+                    case "Bergen":
+                    case "":
                         $('#bergen').fadeOut('fast', function () {
                             $('#bergen').attr('src', '/Content/images/logo-bergen-current.png');
                             $('#bergen').fadeIn('slow');
